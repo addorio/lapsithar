@@ -1,0 +1,154 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+ 
+ class Auth extends CI_Controller {  
+    public function __construct(){
+    parent::__construct();
+    if(!$this->session->userdata('username')){
+            redirect('Dashboard');
+        }
+    $this->load->model('m_user');   
+  }
+      //functions  
+      function index(){  
+
+        $this->form_validation->set_rules('username', 'Username', 'trim|required');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required');
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Login Page';
+            $this->load->view('templates/auth_header', $data);
+            $this->load->view('auth/login');
+            $this->load->view('templates/auth_footer');
+            view('auth', $data); 
+        } else {
+            // validasinya success
+            $this->_login();
+        }  
+           view('admin.dashboard.laporan', $data);  
+      }  
+      function fetch_laporan(){  
+           $this->load->model("m_laporan");  
+           $fetch_data = $this->m_laporan->make_datatables();  
+           $data = array(); 
+           $i=1;
+           foreach($fetch_data as $row)  
+           {  
+                $sub_array = array();  
+                  
+                $sub_array[] = $i++;
+                $sub_array[] = $row->nama_opd;  
+                $sub_array[] = $row->tanggal;
+                $sub_array[] = $row->judul;
+                $sub_array[] = $row->nama_bidang;
+                $sub_array[] = $row->isi_laporan;
+                $sub_array[] = $row->tindakan;
+                if($row->keterangan == "Selesai"){
+                  $sub_array[] = '<span class="text-success">'.$row->keterangan.'</span>';
+                } elseif ($row->keterangan == "Belum Selesai"){
+                  $sub_array[] = '<span class="text-danger">'.$row->keterangan.'</span>';
+                }
+                
+                // $sub_array[] = $row->file;  
+                $sub_array[] = '<button type="button" name="update" id="'.$row->id_laporan.'" class="btn btn-primary btn-xs update">Update</button>';  
+                $sub_array[] = '<button type="button" name="delete" id="'.$row->id_laporan.'" class="btn btn-danger btn-xs delete">Delete</button>';  
+                $data[] = $sub_array;  
+           }  
+           $output = array(  
+                "draw"                    =>     intval($_POST["draw"]),  
+                "recordsTotal"          =>      $this->m_laporan->get_all_data(),  
+                "recordsFiltered"     =>     $this->m_laporan->get_filtered_data(),  
+                "data"                    =>     $data  
+           );  
+           echo json_encode($output);  
+      }  
+      function user_action(){  
+           if($_POST["action"] == "Add")  
+           {  
+                $insert_data = array(  
+                     'nama_opd'          =>     $this->input->post('nama_opd'),  
+                     'tanggal'               =>     $this->input->post("tanggal"),
+                     'judul'          =>     $this->input->post('judul'),  
+                     'nama_bidang'               =>     $this->input->post("nama_bidang"),
+                     'isi_laporan'          =>     $this->input->post('isi_laporan'),  
+                     'tindakan'               =>     $this->input->post("tindakan"),
+                     'keterangan'               =>     $this->input->post("keterangan"),  
+                     'file'                    =>     $this->upload_file()  
+                );  
+                $this->load->model('m_laporan');  
+                $this->m_laporan->insert_crud($insert_data);  
+                echo 'Data Inserted';  
+           }  
+           if($_POST["action"] == "Edit")  
+           {  
+                $file = $_FILES["file"]["name"];  
+                if($_FILES["file"]["name"] != '')  
+                {  
+                     $file = $this->upload_file();  
+                }  
+                else  
+                {  
+                     $file = $this->input->post("hidden_user_image");  
+                }  
+                $updated_data = array(  
+                     'id_laporan'          =>     $this->input->post('id_laporan'),
+                     'nama_opd'          =>     $this->input->post('nama_opd'),  
+                     'tanggal'               =>     $this->input->post("tanggal"),
+                     'judul'          =>     $this->input->post('judul'),  
+                     'nama_bidang'               =>     $this->input->post("nama_bidang"),
+                     'isi_laporan'          =>     $this->input->post('isi_laporan'),  
+                     'tindakan'               =>     $this->input->post("tindakan"),
+                     'keterangan'               =>     $this->input->post("keterangan"),  
+                     'file'                    =>     $file  
+                );  
+                $this->load->model('m_laporan');  
+                $this->m_laporan->update_crud($this->input->post("id_laporan"), $updated_data);  
+                echo 'Data Updated';  
+           }  
+      }  
+      function upload_file()  
+      {  
+           if(isset($_FILES["file"]))  
+           {  
+                $extension = explode('.', $_FILES['file']['name']);  
+                $new_name = rand() . '.' . $extension[1];  
+                $destination = './upload/' . $new_name;  
+                move_uploaded_file($_FILES['file']['tmp_name'], $destination);  
+                return $new_name;  
+           }  
+      }  
+      function fetch_single_laporan()  
+      {  
+           $output = array();  
+           $this->load->model("m_laporan");  
+          $data = $this->m_laporan->fetch_single_laporan($_POST['id_laporan']);
+           foreach($data as $row)  
+
+           {  
+                $output['id_laporan'] = $row->id_laporan;
+                $output['nama_opd'] = $row->nama_opd;  
+                $output['tanggal'] = $row->tanggal;
+                $output['judul'] = $row->judul;  
+                $output['nama_bidang'] = $row->nama_bidang; 
+                $output['isi_laporan'] = $row->isi_laporan;  
+                $output['tindakan'] = $row->tindakan; 
+                $output['keterangan'] = $row->keterangan;
+                $output['file'] = $row->file;     
+                if($row->file != '')  
+                {  
+                     $output['file'] = $row->file;  
+                }  
+                else  
+                {  
+                     $output['file'] = '<input type="hidden" name="hidden_user_image" value="" />';  
+                }  
+           }  
+           echo json_encode($output);  
+      }  
+      function delete_single_laporan()  
+      {  
+           $this->load->model("m_laporan");  
+           $this->m_laporan->delete_single_laporan($_POST['id_laporan']);  
+           echo 'Data Deleted';  
+      }  
+ }  
