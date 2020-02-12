@@ -11,9 +11,9 @@
         time: true,
         date: false
     });
-    $('#date-format').bootstrapMaterialDatePicker({
-        format: 'YYYY-MM-DD hh:mm:ss'
-    });
+    // $('#date-format').bootstrapMaterialDatePicker({
+    //     format: 'YYYY-MM-DD hh:mm:ss'
+    // });
 
     $('#min-date').bootstrapMaterialDatePicker({
         format: 'DD/MM/YYYY HH:mm',

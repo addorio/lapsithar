@@ -1,3 +1,6 @@
+@php
+defined('BASEPATH') OR exit('No direct script access allowed');
+@endphp
 
 <!DOCTYPE html>
 <html class="h-100" lang="en">
@@ -6,11 +9,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <title>@php echo $title;@endphp</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{APP_ASSETS}}images/favicon1.png">
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{APP_ASSETS}}css/style.css" rel="stylesheet">
     
 </head>
 
@@ -42,11 +45,11 @@
     <!--**********************************
         Scripts
     ***********************************-->
-    <script src="plugins/common/common.min.js"></script>
-    <script src="js/custom.min.js"></script>
-    <script src="js/settings.js"></script>
-    <script src="js/gleek.js"></script>
-    <script src="js/styleSwitcher.js"></script>
+    <script src="{{APP_ASSETS}}plugins/common/common.min.js"></script>
+    <script src="{{APP_ASSETS}}js/custom.min.js"></script>
+    <script src="{{APP_ASSETS}}js/settings.js"></script>
+    <script src="{{APP_ASSETS}}js/gleek.js"></script>
+    <script src="{{APP_ASSETS}}js/styleSwitcher.js"></script>
 </body>
 </html>
 

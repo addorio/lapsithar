@@ -1,56 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-// class Dashboard extends CI_Controller {
-
-	// public function __construct(){
-	// 	parent::__construct();
-	// 	// if(!$this->session->userdata('username')){
- //  //           $this->session->set_flashdata('error','<div class="alert alert-danger">Maaf, anda harus login terlebih dahulu</div>');
- //  //           redirect('Login');
- //  //       }
-	// 	// $this->load->library('pdf');
-	// 	//$this->load->library('form_validation');
-	// 	$this->load->model('m_opd');
-	// 	$this->load->model('m_bidang');
-	// 	$this->load->model('m_laporan');
-	// 	$this->load->model('m_user');		
-	// }
-
-// 	public function index()
-// 	{
-//     $data['title'] = "LAPSITHAR | Dashboard";
-//     $data['opd'] = $this->m_opd->getAll();
-//     $data['bidang'] = $this->m_bidang->getAll();
-//     view('admin.dashboard.laporan', $data);
-// 	}
-
-//   function ambilData()
-//   {
-//     $dataLaporan = $this->m_laporan->ambilData('tb_laporan')->result();
-//     echo json_encode($dataLaporan);
-//   }
-
-//   function tambahData()
-//   {
-//     $nama_opd = $this->input->post('nama_opd');
-//     $nama_opd = $this->input->post('tanggal');
-//     $nama_opd = $this->input->post('judul');
-//     $nama_opd = $this->input->post('nama_bidang');
-//     $nama_opd = $this->input->post('isi_laporan');
-//     $nama_opd = $this->input->post('tindakan');
-//     $nama_opd = $this->input->post('keterangan');
-//     $nama_opd = $this->input->post('file');
-//   }
-// }
  
  class Dashboard extends CI_Controller {  
     public function __construct(){
     parent::__construct();
-    // if(!$this->session->userdata('username')){
-  //           $this->session->set_flashdata('error','<div class="alert alert-danger">Maaf, anda harus login terlebih dahulu</div>');
-  //           redirect('Login');
-  //       }
+    if(!$this->session->userdata('username')){
+            $this->session->set_flashdata('error','<div class="alert alert-danger">Maaf, anda harus login terlebih dahulu</div>');
+            redirect('Auth');
+        }
     // $this->load->library('pdf');
     //$this->load->library('form_validation');
     $this->load->model('m_opd');

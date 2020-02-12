@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="icon" type="image/png" sizes="16x16" href="{{APP_ASSETS}}images/favicon1.png">
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
     <!-- Datetimepicker -->
-    <link href="{{APP_ASSETS}}plugins/bootstrap4-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="{{APP_ASSETS}}plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
     <!-- Pignose Calender -->
     <link href="{{APP_ASSETS}}plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
     <!-- Chartist -->
@@ -100,7 +100,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <li>
                                             <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
                                         </li>
-                                        <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        <li><a href="<?php echo base_url('Auth/logout') ?>"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -120,7 +120,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <ul class="metismenu" id="menu">
                     <li class="nav-label">Dashboard</li>
                     <li>
-                        <a href="<?php echo base_url()?>" aria-expanded="false">
+                        <a href="<?php echo base_url('Dashboard')?>" aria-expanded="false">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
                         </a>
                     </li>
@@ -129,8 +129,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a href="<?php echo base_url('Users')?>" aria-expanded="false">
                             <i class="icon-user menu-icon"></i><span class="nav-text">Users</span>
                         </a>
-                    </li>
-                   
+                    </li>                   
                 </ul>
             </div>
         </div>
@@ -186,7 +185,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
     <!-- Pignose Calender -->
     <script src="{{APP_ASSETS}}plugins/moment/moment.min.js"></script>
-    <script src="{{APP_ASSETS}}plugins/bootstrap4-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
     <script src="{{APP_ASSETS}}plugins/pg-calendar/js/pignose.calendar.min.js"></script>
     <!-- ChartistJS -->
     <script src="{{APP_ASSETS}}plugins/chartist/js/chartist.min.js"></script>
@@ -198,11 +197,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
             $('#tanggal').datetimepicker({
             format: 'YYYY-MM-DD HH:MM:SS',
+            sideBySide: true
         });
+    </script> -->
+    <script type="text/javascript">
+        $('#tanggal').bootstrapMaterialDatePicker({
+        format: 'YYYY-MM-DD hh:mm:ss',
+        sideBySide: true
+    });
     </script>
+
 
 </body>
 </html>
