@@ -54,13 +54,9 @@
                                     <tr>
                                         <th>No</th>
                                         <th>OPD</th>
-                                        <th>Tanggal</th>
-                                        <th>Judul</th>
-                                        <th>Bidang</th>
-                                        <th>Isi</th>
-                                        <th>Tindakan</th>
-                                        <th>Ket</th>
-                                        <!-- <th>File</th> -->
+                                        <th>Nama</th>
+                                        <th>Username</th>
+                                        <th>Level</th>
                                         <th>Edit</th>
                                         <th>Delete</th>
                                     </tr>
@@ -76,9 +72,9 @@
     <!-- #/ container -->
 
     <!-- Modal -->
- <div id="laporanModal" class="modal fade">  
+ <div id="userModal" class="modal fade">  
       <div class="modal-dialog modal-lg" style="width: 90%;">  
-           <form method="post" id="laporan_form">  
+           <form method="post" id="user_form">  
                 <div class="modal-content">  
                      <div class="modal-header">  
                           <button type="button" class="close" data-dismiss="modal">&times;</button>   
@@ -93,59 +89,26 @@
                             <label>OPD / Kecamatan</label>
                             <select class="form-control" id="nama_opd" name="nama_opd">
                             <?php foreach ($opd as $opd) { ?>
-                                <option value="<?=$opd->nama_opd?>"><?=$opd->nama_opd?></option>
+                                <option value="<?=$opd->id_opd?>"><?=$opd->nama_opd?></option>
                             <?php } ?>
                             </select>
                           </div>
                           <div class="col-6">
-                            <label>Tanggal & Waktu</label>
-                            <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                                <input type="text" id="tanggal" name="tanggal" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
-                                <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                </div>
-                            </div>
+                            <label>Nama</label>
+                            <input type="text" class="form-control input-flat" id="nama" name="nama" placeholder="Nama">
                           </div>
                         </div>
 
                         <div class="row">
                           <div class="col-6">
-                            <label>Judul</label>
+                            <label>Username</label>
                             <input type="text" class="form-control input-flat" id="judul" name="judul" placeholder="Judul">
                           </div>
                           <div class="col-6">
-                            <label>Bidang Situasi</label>
-                            <select class="form-control" id="nama_bidang" name="nama_bidang">
-                            <?php foreach ($bidang as $bidang) { ?>
-                                <option value="<?=$bidang->nama_bidang?>"><?=$bidang->nama_bidang?></option>
-                            <?php } ?>    
-                            </select>
+                            <div class="col-6">
+                            <label>Level</label>
+                            <input type="text" class="form-control input-flat" id="judul" name="judul" placeholder="Judul">
                           </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col-6">
-                            <label>Isi Laporan</label>
-                            <textarea rows="6" class="form-control h-150px" rows="6" name="isi_laporan" id="isi_laporan"></textarea>
-                          </div>
-                          <div class="col-6">
-                            <label>Tindakan yang dilakukan</label>
-                            <textarea rows="6" class="form-control h-150px" rows="6" name="tindakan" id="tindakan"></textarea>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col-6">
-                            <label>Keterangan</label>
-                            <select class="form-control" name="keterangan" id="keterangan">
-                                <option value="Selesai">Selesai</option>
-                                <option value="Belum Selesai">Belum Selesai</option>
-                            </select>
-                          </div>
-                          <div class="col-6">
-                            <label>Berkas Pendukung</label>
-                            <input type="file" class="form-control-file" name="file" id="file">
-                            <span id="user_uploaded_image"></span> 
                           </div>
                         </div>
 

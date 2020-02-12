@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
  
- class Dashboard extends CI_Controller {  
+ class User extends CI_Controller {  
     public function __construct(){
     parent::__construct();
     if(!$this->session->userdata('username')){
@@ -18,10 +18,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   }
       //functions  
       function index(){  
-            $data['title'] = "LAPSITHAR | Dashboard";
-            $data['opd'] = $this->m_opd->getAll();
-            $data['bidang'] = $this->m_bidang->getAll();  
-           view('admin.dashboard.laporan', $data);  
+            $data['title'] = "LAPSITHAR | User";
+           view('admin.user.user', $data);  
       }  
       function fetch_laporan(){  
            $this->load->model("m_laporan");  
