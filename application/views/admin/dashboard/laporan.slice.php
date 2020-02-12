@@ -61,7 +61,7 @@
                                         <th>Tindakan</th>
                                         <th>Ket</th>
                                         <!-- <th>File</th> -->
-                                        <th>Update</th>
+                                        <th>Edit</th>
                                         <th>Delete</th>
                                     </tr>
                                 </thead>
@@ -132,18 +132,17 @@
                         </div> 
                      </div>  
                      <div class="modal-footer">  
-                          <div class="modal-footer"> 
                           <input type="hidden" name="id_laporan" id="id_laporan" class="btn btn-success" value="Add" />
                           <input type="hidden" name="action" class="btn btn-success" value="Add" />                          
-                          <input type="submit" name="action" class="btn btn-success" value="Add" />  
+                          <input type="submit" name="action" class="btn btn-success" value="Add" />
                           <button type="button" class="btn btn-default" data-dismiss="modal" id="close">Close</button>
 
-                     </div> 
+
                      </div>  
                 </div>  
            </form>  
       </div>  
- </div>   
+ </div>  
 @endsection
 <script src="{{APP_ASSETS}}plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript">
@@ -155,16 +154,6 @@ $(document).ready(function(){
            $('#user_uploaded_image').html('');  
       })  
       var dataTable = $('#laporan_data').DataTable({  
-          //  "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
-          //   if ( aData[7] == "Selesai" )
-          //   {
-          //     $('td', nRow).css('color', '#1ECD10' );
-          //   }
-          //   else if ( aData[7] == "Belum Selesai" )
-          //   {
-          //     $('td', nRow).css('color', '#F5431C');
-          //   }
-          // },
            "processing":true,  
            "serverSide":true,  
            "order":[],  
@@ -210,7 +199,7 @@ $(document).ready(function(){
                      {  
                           alert(data);  
                           $('#laporan_form')[0].reset();  
-                          $('#close').click();  
+                          $('#laporanModal').modal('hide');  
                           $('#laporan_data').DataTable().ajax.reload();  
                      }  
                 });  
@@ -229,6 +218,7 @@ $(document).ready(function(){
                 dataType:"json",  
                 success:function(data)  
                 {  
+                     $('#action').val("Edit");
                      $('#laporanModal').modal('show'); 
                      $('#nama_opd').val(data.nama_opd);  
                      $('#tanggal').val(data.tanggal);
@@ -241,7 +231,7 @@ $(document).ready(function(){
                      $('.modal-title').text("Edit User");  
                      $('#id_laporan').val(id_laporan);  
                      $('#user_uploaded_image').html(data.file);  
-                     $('#action').val("Edit");  
+                       
                 }  
            })  
       });  

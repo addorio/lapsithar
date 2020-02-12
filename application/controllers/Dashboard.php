@@ -172,14 +172,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $output['tindakan'] = $row->tindakan; 
                 $output['keterangan'] = $row->keterangan;
                 $output['file'] = $row->file;     
-                // if($row->file != '')  
-                // {  
-                //      $output['file'] = $row->file;  
-                // }  
-                // else  
-                // {  
-                //      $output['file'] = '<input type="hidden" name="hidden_user_image" value="" />';  
-                // }  
+                if($row->file != '')  
+                {  
+                     $output['file'] = $row->file;  
+                }  
+                else  
+                {  
+                     $output['file'] = '<input type="hidden" name="hidden_user_image" value="" />';  
+                }  
            }  
            echo json_encode($output);  
       }  
