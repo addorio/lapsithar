@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     $this->load->model('m_opd');
     $this->load->model('m_bidang');
     $this->load->model('m_laporan');
-    $this->load->model('m_user');
+    $this->load->model('m_user'); 
     $this->load->model('m_level');   
   }
       //functions  

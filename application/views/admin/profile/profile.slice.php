@@ -41,35 +41,24 @@
             </ol>
         </div>
     </div>
-            <!-- row -->
-    <div class="card">
-        <div class="card-body">
-            <div class="table-responsive">
-                <?php echo $this->session->userdata('id_user'); ?>
-                <table class="table table-striped zero-configuration" style="font-size: 13px; width: 100%;" id="user">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nama OPD</th>
-                            <th>Nama Admin</th>
-                            <th>Username</th>
-                            <th align="justify">Edit</th>
-                        </tr>
-                    </thead>
-                    <!-- <tbody>
-                      <?php $i=1; ?>
-                      <?php foreach ($users as $user) { ?>
-                        <tr>
-                          <td><?=$i++;?></td>
-                          <td><?=$user->nama_opd?></td>
-                          <td><?=$user->nama?></td>
-                          <td><?=$user->username?></td>
-                          <td><button type="button" value="Edit" name="action" id="<?=$user->id_user?>" class="btn btn-primary btn update"><i class="fa fa-edit"></i></button></td>
-                          <td><button type="button" name="delete" id="<?=$user->id_user?>" class="btn btn-primary btn delete"><i class="fa fa-trash"></i></button></td>
-                        </tr>
-                      <?php } ?>
-                    </tbody> -->
-                </table>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card col-12">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped zero-configuration" style="font-size: 13px; width: 100%;" id="user">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nama OPD</th>
+                                    <th>Nama Admin</th>
+                                    <th>Username</th>
+                                    <th align="justify">Edit</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
