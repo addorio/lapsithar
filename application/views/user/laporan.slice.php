@@ -79,24 +79,6 @@
                                     
                                 </div>
                             </div>
-                        
-                    
-
-
-<!--                 <div class="col-6">
-                  <label>Start</label>
-                  <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                      <input type="text" id="start" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <label>End</label>
-                  <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                      <input type="text" id="end" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
-                  </div>
-                </div> -->
-                
-                
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Rekapitulasi Laporan<span><button style="float: right;" type="button" id="add_button" data-toggle="modal" data-target="#laporanModal" class="btn btn-info btn-lg">+</button></span></h4>
@@ -223,17 +205,17 @@
 $(document).ready(function(){
 
       $('#start').on( 'keyup', function () {
-                dataTable
-                    .columns( 2 )
-                    .search( this.value )
-                    .draw();
-            } );
-              $('#end').on( 'keyup', function () {
-                dataTable
-                    .columns( 2 )
-                    .search( this.value )
-                    .draw();
-            } );
+        dataTable
+        .columns( 2 )
+        .search( this.value )
+        .draw();
+      } );
+        $('#end').on( 'keyup', function () {
+          dataTable
+          .columns( 2 )
+          .search( this.value )
+          .draw();
+      } );
 
       $('#add_button').click(function(){  
            $('#laporan_form')[0].reset();  

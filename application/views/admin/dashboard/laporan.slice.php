@@ -45,6 +45,38 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
+
+              <div id="accordion-one" class="accordion">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa" aria-hidden="true"></i> Filter by date</h5>
+                                        </div>
+                                        <div id="collapseOne" class="collapse show" data-parent="#accordion-one" style="">
+                                          <div class="card-body">
+                                            <div class="row">
+                                              <div class="col-6">
+                                                <label>Start</label>
+                                                  <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                                                      <input type="text" id="start" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
+                                                  </div>
+                                              </div>
+                                              <div class="col-6">
+                                                <label>End</label>
+                                                  <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                                                      <input type="text" id="end" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
+                                                  </div>
+                                              </div>
+                                            
+
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </div>
+                            </div>
+
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Rekapitulasi Laporan<span><button style="float: right;" type="button" id="add_button" data-toggle="modal" data-target="#laporanModal" class="btn btn-info btn-lg">+</button></span></h4>
@@ -165,6 +197,19 @@
 <script src="{{APP_ASSETS}}plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){  
+      $('#start').on( 'keyup', function () {
+        dataTable
+        .columns( 2 )
+        .search( this.value )
+        .draw();
+      });
+      $('#end').on( 'keyup', function () {
+        dataTable
+        .columns( 2 )
+        .search( this.value )
+        .draw();
+      });
+
       $('#add_button').click(function(){  
            $('#laporan_form')[0].reset();  
            $('.modal-title').text("Add User");  
@@ -173,7 +218,63 @@ $(document).ready(function(){
       })  
       var dataTable = $('#laporan_data').DataTable({  
            "processing":true,  
-           "serverSide":true,  
+           "serverSide":true,
+           dom: 'Bfrtip',
+            // buttons: [
+            //     'excel', 'pdf'
+            // ],
+            buttons: [ 
+            {
+                extend: 'excelHtml5',
+                className: 'btn btn-success btn-lg',
+                exportOptions: {
+                    columns: [ 0, 1, 2, 4, 5, 6, 7 ]
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                className: 'btn btn-danger btn-lg',
+                orientation: 'landscape',
+                pageSize: 'FOLIO',
+                exportOptions: {
+                    columns: [ 0, 1, 2, 4, 5, 6, 7 ]
+                },
+                customize: function ( doc ) {
+                // ket = table.column(7).data().toArray();
+                //   for (var i = 0; i < ket.length; i++) {
+                //     if (ket[i] = 'Belum Selesai') {
+                //       doc.content[1].table.body[i+1][7].fillColor = 'red';
+                //     }
+                //   };
+
+                doc.pageMargins = [60, 75, 60, 60];
+
+                doc.content[1].table.widths =
+                    Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+             
+                doc.content[1].table.body[0].forEach(function (h) {
+                    h.fillColor = 'blue'
+                });
+                doc.content[1].table.widths = [
+                '3%',
+                '15%',
+                '10%',
+                '12%',
+                '30%',
+                '20%',
+                '10%',
+                ]
+                }
+
+            },
+            {
+                extend: 'colvis',
+                text: 'Show/Hide Columns',
+                className: 'btn btn-danger btn-lg',
+                columnText: function ( dt, idx, title ) {
+                    return (idx+1)+': '+title;
+                }
+            } ],
            "order":[],  
            "ajax":{  
                 url:"<?php echo site_url('Dashboard/fetch_laporan') ?>",  

@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
            {  
                 $sub_array = array();  
                   
-                $sub_array[] = $row->nama_opd;
+                $sub_array[] = $i;
                 $sub_array[] = $row->nama_opd;  
                 $sub_array[] = $row->tanggal;
                 $sub_array[] = $row->judul;
