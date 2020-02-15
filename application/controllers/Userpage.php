@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $data['bidang'] = $this->m_bidang->getAll();
             $data['bid'] = $this->m_bidang->getAll();
 
-           view('user.laporan', $data);  
+           view('user.laporan', $data);   
       }  
       function fetch_laporan(){ 
           $id = $this->session->userdata('id_opd');

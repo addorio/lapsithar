@@ -296,8 +296,6 @@ $(document).ready(function(){
            ],
       });
 
-      $('#min').keyup( function() { table.draw(); } );
-      $('#max').keyup( function() { table.draw(); } ); 
       $(document).on('submit', '#laporan_form', function(event){  
            event.preventDefault();  
            var id_opd = $('#id_opd').val();  
@@ -312,7 +310,10 @@ $(document).ready(function(){
            {  
                 if(jQuery.inArray(extension, ['pdf','jpg','png']) == -1)  
                 {  
-                     alert("Invalid File");  
+                     swal({icon: 'error',
+                      title: 'Oops...',
+                      text: 'Invalid File type!',
+                      footer: 'Only .pdf .jpg and .png file accepted'});   
                      $('#file').val('');  
                      return false;  
                 }  

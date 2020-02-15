@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $data['bidang'] = $this->m_bidang->getAll();  
            view('admin.dashboard.laporan', $data);  
       }  
-      function fetch_laporan(){  
+      function fetch_laporan(){   
            $this->load->model("m_laporan");  
            $fetch_data = $this->m_laporan->make_datatables();  
            $data = array(); 

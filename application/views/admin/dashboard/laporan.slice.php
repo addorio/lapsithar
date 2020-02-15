@@ -122,6 +122,7 @@
 
                         <div class="row">
                           <div class="col-6">
+                            <input type="text" class="form-control input-flat" id="id_laporan" name="id_laporan" hidden>
                             <label>OPD / Kecamatan</label>
                             <select class="form-control" id="id_opd" name="id_opd">
                             <?php foreach ($opd as $opd) { ?>
@@ -184,7 +185,7 @@
                       </div> 
                      </div>  
                      <div class="modal-footer">  
-                          <input type="hidden" name="id_laporan" id="id_laporan" class="btn btn-success" value="Add" />
+                          <!-- <input type="hidden" name="id_laporan" id="id_laporan" class="btn btn-success" value="Add" /> -->
                           <input type="hidden" name="action" id="action" class="btn btn-success" value="Add" />
                           <input type="submit" name="action" id="action" class="btn btn-success" value="Save" />
                           <button type="button" class="btn btn-default" data-dismiss="modal" id="close">Close</button>
@@ -287,6 +288,7 @@ $(document).ready(function(){
                 },
            ],
       });  
+
       $(document).on('submit', '#laporan_form', function(event){  
            event.preventDefault();  
            var id_opd = $('#id_opd').val();  
@@ -302,9 +304,9 @@ $(document).ready(function(){
                 if(jQuery.inArray(extension, ['pdf','jpg','png']) == -1)  
                 {  
                      swal({icon: 'error',
-  title: 'Oops...',
-  text: 'Invalid File type!',
-  footer: 'Only .pdf .jpg and .png file accepted'});  
+                      title: 'Oops...',
+                      text: 'Invalid File type!',
+                      footer: 'Only .pdf .jpg and .png file accepted'});  
                      $('#file').val('');  
                      return false;  
                 }  
@@ -347,7 +349,8 @@ $(document).ready(function(){
                 success:function(data)  
                 {  
                      $('#action').val("Edit");
-                     $('#laporanModal').modal('show'); 
+                     $('#laporanModal').modal('show');
+                     $('#id_laporan').val(id_laporan); 
                      $('#id_opd').val(data.id_opd);  
                      $('#tanggal').val(data.tanggal);
                      $('#judul').val(data.judul); 
@@ -356,8 +359,7 @@ $(document).ready(function(){
                      $('#tindakan').val(data.tindakan);
                      $('#keterangan').val(data.keterangan); 
                      $('#file').val(data.file);    
-                     $('.modal-title').text("Edit User");  
-                     $('#id_laporan').val(id_laporan);  
+                     $('.modal-title').text("Edit User");    
                      $('#user_uploaded_image').html(data.file);  
                        
                 }  
