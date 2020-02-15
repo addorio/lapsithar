@@ -2,10 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
  
- class Dashboard extends CI_Controller {  
+ class Userpage extends CI_Controller {  
     public function __construct(){
     parent::__construct();
-    if(!$this->session->userdata('username') || $this->session->userdata('id_level') != 1){
+    if(!$this->session->userdata('username')){
             $this->session->set_flashdata('error','<div class="alert alert-danger">Maaf, anda harus login terlebih dahulu</div>');
             redirect('Auth');
         }
@@ -18,21 +18,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   }
       //functions  
       function index(){  
-            $data['title'] = "LAPSITHAR | Dashboard";
+            $this->session->userdata('id_opd');
+            $data['title'] = "LAPSITHAR | Laporan";
             $data['opd'] = $this->m_opd->getAll();
-            $data['bidang'] = $this->m_bidang->getAll();  
-           view('admin.dashboard.laporan', $data);  
+            $data['bidang'] = $this->m_bidang->getAll();
+            $data['bid'] = $this->m_bidang->getAll();
+
+           view('user.laporan', $data);  
       }  
-      function fetch_laporan(){  
+      function fetch_laporan(){ 
+          $id = $this->session->userdata('id_opd');
            $this->load->model("m_laporan");  
-           $fetch_data = $this->m_laporan->make_datatables();  
+           $fetch_data = $this->m_laporan->make_datatables1($id);  
            $data = array(); 
            $i=1;
            foreach($fetch_data as $row)  
            {  
+             if($row->id_opd == $id){
                 $sub_array = array();  
                   
-                $sub_array[] = $row->nama_opd;
+                $sub_array[] = $i++;
                 $sub_array[] = $row->nama_opd;  
                 $sub_array[] = $row->tanggal;
                 $sub_array[] = $row->judul;
@@ -44,11 +49,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 } elseif ($row->keterangan == "Belum Selesai"){
                   $sub_array[] = '<span class="text-danger">'.$row->keterangan.'</span>';
                 }
-                
                 // $sub_array[] = $row->file;  
                 $sub_array[] = '<button type="button" name="update" id="'.$row->id_laporan.'" class="btn btn-primary update"><i class="fa fa-edit"></i></button>';  
                 $sub_array[] = '<button type="button" name="delete" id="'.$row->id_laporan.'" class="btn btn-danger btn delete"><i class="fa fa-trash"></i></button>';  
-                $data[] = $sub_array;  
+                $data[] = $sub_array; 
+ }
            }  
            $output = array(  
                 "draw"                    =>     intval($_POST["draw"]),  
@@ -72,15 +77,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                      'file'                    =>     $this->upload_file()  
                 );  
                 $this->load->model('m_laporan');  
-                $this->m_laporan->insert_crud($insert_data);  
-                echo 'Data Inserted';  
+                $this->m_laporan->insert_crud($insert_data);    
            }  
            if($_POST["action"] == "Edit")  
            {  
                 $file = $_FILES["file"]["name"];  
                 if($_FILES["file"]["name"] != '')  
-                {  
-                     $file = $this->upload_file();  
+                {                    
+                    $file = $this->upload_file();  
                 }  
                 else  
                 {  
@@ -98,8 +102,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                      'file'                    =>     $file  
                 );  
                 $this->load->model('m_laporan');  
-                $this->m_laporan->update_crud($this->input->post("id_laporan"), $updated_data);
-                print_r($updated_data); 
+                $this->m_laporan->update_crud($this->input->post("id_laporan"), $updated_data);  
                 echo 'Data Updated';  
            }  
       }  
@@ -107,7 +110,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       {  
            if(isset($_FILES["file"]))  
            {  
-                $extension = explode('.', $_FILES['file']['name']);  
+                $extension = explode('.', $_FILES['file']['name']);
+                $filesize = '';  
                 $new_name = rand() . '.' . $extension[1];  
                 $destination = './upload/' . $new_name;  
                 move_uploaded_file($_FILES['file']['tmp_name'], $destination);  

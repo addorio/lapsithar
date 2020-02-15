@@ -1,4 +1,4 @@
-@extends('base.main_base')
+@extends('base.user_base')
 <!-- <link href="{{APP_ASSETS}}plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet"> -->
 
 <!-- <style>
@@ -36,20 +36,74 @@
     <div class="row page-titles mx-0">
         <div class="col p-md-0">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Userpage</a></li>
             </ol>
         </div>
     </div>
+       <?php $id = $this->session->userdata('id_opd'); ?>
             <!-- row -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
+
+              <div class="col-lg-12">
+                        
+                          
+                                <div id="accordion-one" class="accordion">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa" aria-hidden="true"></i> Filter by date</h5>
+                                        </div>
+                                        <div id="collapseOne" class="collapse show" data-parent="#accordion-one" style="">
+                                          <div class="card-body">
+                                            <div class="row">
+                                              <div class="col-6">
+                                                <label>Start</label>
+                                                  <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                                                      <input type="text" id="start" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
+                                                  </div>
+                                              </div>
+                                              <div class="col-6">
+                                                <label>End</label>
+                                                  <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                                                      <input type="text" id="end" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
+                                                  </div>
+                                              </div>
+                                            
+
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </div>
+                            </div>
+                        
+                    
+
+
+<!--                 <div class="col-6">
+                  <label>Start</label>
+                  <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                      <input type="text" id="start" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label>End</label>
+                  <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                      <input type="text" id="end" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
+                  </div>
+                </div> -->
+                
+                
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Rekapitulasi Laporan<span><button style="float: right;" type="button" id="add_button" data-toggle="modal" data-target="#laporanModal" class="btn btn-info btn-lg">+</button></span></h4>
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered zero-configuration" style="font-size: 13px; width: 100%;" id="laporan_data">
+
+                          
+                            <table class="table table-bordered zero-configuration" style="font-size: 14px; width: 100%;" id="laporan_data">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -60,7 +114,6 @@
                                         <th>Isi</th>
                                         <th>Tindakan</th>
                                         <th>Ket</th>
-                                        <!-- <th>File</th> -->
                                         <th>Edit</th>
                                         <th>Delete</th>
                                     </tr>
@@ -90,10 +143,13 @@
 
                         <div class="row">
                           <div class="col-6">
+                            <input type="text" class="form-control input-flat" id="id_laporan" name="id_laporan" hidden>
                             <label>OPD / Kecamatan</label>
                             <select class="form-control" id="id_opd" name="id_opd">
                             <?php foreach ($opd as $opd) { ?>
+                              <?php if($opd->id_opd == $id){?>
                                 <option value="<?=$opd->id_opd?>"><?=$opd->nama_opd?></option>
+                              <?php } ?>
                             <?php } ?>
                             </select>
                           </div>
@@ -152,7 +208,7 @@
                       </div> 
                      </div>  
                      <div class="modal-footer">  
-                          <input type="hidden" name="id_laporan" id="id_laporan" class="btn btn-success" value="Add" />
+                          <!-- <input type="hidden" name="id_laporan" id="id_laporan" class="btn btn-success" value="Add" /> -->
                           <input type="hidden" name="action" id="action" class="btn btn-success" value="Add" />
                           <input type="submit" name="action" id="action" class="btn btn-success" value="Save" />
                           <button type="button" class="btn btn-default" data-dismiss="modal" id="close">Close</button>
@@ -164,7 +220,21 @@
 @endsection
 <script src="{{APP_ASSETS}}plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){  
+$(document).ready(function(){
+
+      $('#start').on( 'keyup', function () {
+                dataTable
+                    .columns( 2 )
+                    .search( this.value )
+                    .draw();
+            } );
+              $('#end').on( 'keyup', function () {
+                dataTable
+                    .columns( 2 )
+                    .search( this.value )
+                    .draw();
+            } );
+
       $('#add_button').click(function(){  
            $('#laporan_form')[0].reset();  
            $('.modal-title').text("Add User");  
@@ -172,11 +242,68 @@ $(document).ready(function(){
            $('#user_uploaded_image').html('');  
       })  
       var dataTable = $('#laporan_data').DataTable({  
+           "bInfo" : false,
            "processing":true,  
-           "serverSide":true,  
+           "serverSide":true,
+           dom: 'Bfrtip',
+            // buttons: [
+            //     'excel', 'pdf'
+            // ],
+            buttons: [ 
+            {
+                extend: 'excelHtml5',
+                className: 'btn btn-success btn-lg',
+                exportOptions: {
+                    columns: [ 0, 1, 2, 4, 5, 6, 7 ]
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                className: 'btn btn-danger btn-lg',
+                orientation: 'landscape',
+                pageSize: 'FOLIO',
+                exportOptions: {
+                    columns: [ 0, 1, 2, 4, 5, 6, 7 ]
+                },
+                customize: function ( doc ) {
+                // ket = table.column(7).data().toArray();
+                //   for (var i = 0; i < ket.length; i++) {
+                //     if (ket[i] = 'Belum Selesai') {
+                //       doc.content[1].table.body[i+1][7].fillColor = 'red';
+                //     }
+                //   };
+
+                doc.pageMargins = [60, 75, 60, 60];
+
+                doc.content[1].table.widths =
+                    Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+             
+                doc.content[1].table.body[0].forEach(function (h) {
+                    h.fillColor = 'blue'
+                });
+                doc.content[1].table.widths = [
+                '3%',
+                '15%',
+                '10%',
+                '12%',
+                '30%',
+                '20%',
+                '10%',
+                ]
+                }
+
+            },
+            {
+                extend: 'colvis',
+                text: 'Show/Hide Columns',
+                className: 'btn btn-danger btn-lg',
+                columnText: function ( dt, idx, title ) {
+                    return (idx+1)+': '+title;
+                }
+            } ],
            "order":[],  
            "ajax":{  
-                url:"<?php echo site_url('Dashboard/fetch_laporan') ?>",  
+                url:"<?php echo site_url('Userpage/fetch_laporan') ?>",  
                 type:"POST"  
            },  
            "columnDefs":[  
@@ -185,7 +312,10 @@ $(document).ready(function(){
                      "orderable":false,  
                 },
            ],
-      });  
+      });
+
+      $('#min').keyup( function() { table.draw(); } );
+      $('#max').keyup( function() { table.draw(); } ); 
       $(document).on('submit', '#laporan_form', function(event){  
            event.preventDefault();  
            var id_opd = $('#id_opd').val();  
@@ -200,10 +330,7 @@ $(document).ready(function(){
            {  
                 if(jQuery.inArray(extension, ['pdf','jpg','png']) == -1)  
                 {  
-                     swal({icon: 'error',
-  title: 'Oops...',
-  text: 'Invalid File type!',
-  footer: 'Only .pdf .jpg and .png file accepted'});  
+                     alert("Invalid File");  
                      $('#file').val('');  
                      return false;  
                 }  
@@ -211,7 +338,7 @@ $(document).ready(function(){
            if(id_opd != '' && tanggal != '' && judul != '' && nama_bidang != '' && isi_laporan != '' && tindakan != '' && keterangan != '' && extension != '')  
            {  
                 $.ajax({  
-                     url:"<?php echo site_url('Dashboard/user_action')?>",  
+                     url:"<?php echo site_url('Userpage/user_action')?>",  
                      method:'POST',  
                      data:new FormData(this),  
                      contentType:false,  
@@ -222,7 +349,7 @@ $(document).ready(function(){
                             'Good job!',
                             'Success',
                             'success'
-                          );   
+                          );  
                           $('#laporan_form')[0].reset();  
                           $('#laporanModal').modal('hide');  
                           $('#laporan_data').DataTable().ajax.reload();  
@@ -231,22 +358,21 @@ $(document).ready(function(){
            }  
            else  
            {  
-                swal({icon: 'error',
-  title: 'Oops...',
-  text: 'All fields are required!'}); 
+                alert("All Fields are Required");  
            }  
       });  
       $(document).on('click', '.update', function(){  
            var id_laporan = $(this).attr("id");  
            $.ajax({  
-                url:"<?php echo site_url('Dashboard/fetch_single_laporan') ?>",  
+                url:"<?php echo site_url('Userpage/fetch_single_laporan') ?>",  
                 method:"POST",  
                 data:{id_laporan:id_laporan},  
                 dataType:"json",  
                 success:function(data)  
                 {  
                      $('#action').val("Edit");
-                     $('#laporanModal').modal('show'); 
+                     $('#laporanModal').modal('show');
+                     $('#id_laporan').val(id_laporan); 
                      $('#id_opd').val(data.id_opd);  
                      $('#tanggal').val(data.tanggal);
                      $('#judul').val(data.judul); 
@@ -255,28 +381,33 @@ $(document).ready(function(){
                      $('#tindakan').val(data.tindakan);
                      $('#keterangan').val(data.keterangan); 
                      $('#file').val(data.file);    
-                     $('.modal-title').text("Edit User");  
-                     $('#id_laporan').val(id_laporan);  
-                     $('#user_uploaded_image').html(data.file);  
+                     $('.modal-title').text("Edit User");
+                     $('#user_uploaded_image').html(data.file);
+
+                     swal(
+                  'Good job!',
+                  'Data Updated!',
+                  'success'
+                );  
                        
                 }  
            })  
       });  
       $(document).on('click', '.delete', function(){  
-           var id_laporan = $(this).attr("id");  
+           var id_laporan = $(this).attr("id");
            if(confirm("Are you sure you want to delete this?"))  
            {  
                 $.ajax({  
-                     url:"<?php echo site_url('Dashboard/delete_single_laporan'); ?>",  
+                     url:"<?php echo site_url('Userpage/delete_single_laporan'); ?>",  
                      method:"POST",  
                      data:{id_laporan:id_laporan},  
                      success:function(data)  
                      {  
                           swal(
-                            'Good job!',
-                            'Success',
-                            'success'
-                          );   
+                          'Good job!',
+                          'Data Deleted!',
+                          'success'
+                        );  
                           dataTable.ajax.reload();  
                      }  
                 });  
