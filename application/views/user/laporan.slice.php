@@ -78,7 +78,7 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h3>Laporan Data</h3>
+                        <h3 class="title">Laporan Data</h3>
                         <br/>
                         <button class="btn btn-success" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Laporan</button>
                         <br />
@@ -166,6 +166,7 @@ $(document).ready(function() {
             {
                 extend: 'excelHtml5',
                 className: 'btn btn-success btn-lg',
+                title: 'Laporan',
                 exportOptions: {
                     columns: [ 0, 1, 2, 4, 5, 6, 7 ]
                 }
@@ -173,6 +174,7 @@ $(document).ready(function() {
             {
                 extend: 'pdfHtml5',
                 className: 'btn btn-danger btn-lg',
+                title: 'Laporan',
                 orientation: 'landscape',
                 pageSize: 'FOLIO',
                 exportOptions: {
@@ -311,7 +313,6 @@ function edit_laporan(id)
                 $('#file-preview div').text('(No file)');
             }
  
- 
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
@@ -363,6 +364,11 @@ function save()
                     $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
                 }
             }
+            swal(
+                  'Good job!',
+                  'Success!',
+                  'success'
+                );
             $('#btnSave').text('save'); //change button text
             $('#btnSave').attr('disabled',false); //set button enable 
  
@@ -389,7 +395,11 @@ function delete_laporan(id)
             dataType: "JSON",
             success: function(data)
             {
-                //if success reload ajax table
+                swal(
+                  'Good job!',
+                  'Data telah dihapus!',
+                  'success'
+                );
                 $('#modal_form').modal('hide');
                 reload_table();
             },

@@ -364,6 +364,11 @@ function save()
                     $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
                 }
             }
+            swal(
+                  'Good job!',
+                  'Success!',
+                  'success'
+                );
             $('#btnSave').text('save'); //change button text
             $('#btnSave').attr('disabled',false); //set button enable 
  
@@ -390,7 +395,11 @@ function delete_laporan(id)
             dataType: "JSON",
             success: function(data)
             {
-                //if success reload ajax table
+                swal(
+                  'Good job!',
+                  'Data telah dihapus!',
+                  'success'
+                );
                 $('#modal_form').modal('hide');
                 reload_table();
             },
