@@ -14,14 +14,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="icon" type="image/png" sizes="16x16" href="{{APP_ASSETS}}images/favicon1.png">
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
     <link href="{{APP_ASSETS}}css/style.css" rel="stylesheet">
-    
+
 </head>
 
 <body class="h-100">
-    
-    <!--*******************
-        Preloader start
-    ********************-->
+<!-- Preloader -->
     <div id="preloader">
         <div class="loader">
             <svg class="circular" viewBox="25 25 50 50">
@@ -29,23 +26,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </svg>
         </div>
     </div>
-    <!--*******************
-        Preloader end
-    ********************-->
     @yield('content')
-
-    <!--**********************************
-        Scripts
-    ***********************************-->
-    <script src="{{APP_ASSETS}}plugins/common/common.min.js"></script>
-    <script src="{{APP_ASSETS}}js/custom.min.js"></script>
-    <script src="{{APP_ASSETS}}js/settings.js"></script>
-    <script src="{{APP_ASSETS}}js/gleek.js"></script>
-    <script src="{{APP_ASSETS}}js/styleSwitcher.js"></script>
 </body>
+
+
+<!-- Script  -->
+<script src="{{APP_ASSETS}}plugins/common/common.min.js"></script>
+<script src="{{APP_ASSETS}}js/custom.min.js"></script>
+<script src="{{APP_ASSETS}}js/settings.js"></script>
+<script src="{{APP_ASSETS}}js/gleek.js"></script>
+<script src="{{APP_ASSETS}}js/styleSwitcher.js"></script>
+</body>
+
 </html>
-
-
-
-
-

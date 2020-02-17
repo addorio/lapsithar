@@ -1,15 +1,13 @@
-
 @php
 defined('BASEPATH') OR exit('No direct script access allowed');
 @endphp
-
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">  
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>@php echo $title;@endphp</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{APP_ASSETS}}images/favicon1.png">
@@ -33,13 +31,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- FontAwesome -->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Custom Stylesheet -->
-    
+
 </head>
 
 <body>
-    <!--*******************
-        Preloader start
-    ********************-->
     <div id="preloader">
         <div class="loader">
             <svg class="circular" viewBox="25 25 50 50">
@@ -47,17 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </svg>
         </div>
     </div>
-    <!--*******************
-        Preloader end
-    ********************-->
-    <!--**********************************
-        Main wrapper start
-    ***********************************-->
     <div id="main-wrapper">
-
-        <!--**********************************
-            Nav header start
-        ***********************************-->
         <div class="nav-header">
             <div class="brand-logo" style="vertical-align: middle;">
                 <a href="<?php echo base_url() ?>">
@@ -69,15 +54,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </a>
             </div>
         </div>
-        <!--**********************************
-            Nav header end
-        ***********************************-->
-        <!--**********************************
-            Header start
-        ***********************************-->
-        <div class="header">    
+        <div class="header">
             <div class="header-content clearfix">
-                
                 <div class="nav-control">
                     <div class="hamburger">
                         <span class="toggle-icon"><i class="icon-menu"></i></span>
@@ -99,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="header-right">
                     <ul class="clearfix">
                         <li class="icons dropdown">
-                            <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                                 <span class="activity active"></span>
                                 <img src="{{APP_ASSETS}}images/user/1.png" height="40" width="40" alt="">
                             </div>
@@ -118,70 +96,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
         </div>
-        <!--**********************************
-            Header end ti-comment-alt
-        ***********************************-->
-        <!--**********************************
-            Sidebar start
-        ***********************************-->
-        <div class="nk-sidebar">           
+        <div class="nk-sidebar">
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
                     <!-- <li class="nav-label">Dashboard</li> -->
                     <li>
-                        <a href="<?php echo base_url('Dashboard')?>" aria-expanded="false">
+                        <a href="<?php echo base_url('Dashboard') ?>" aria-expanded="false">
                             <!-- <i class="icon-speedometer menu-icon"></i> --><span class="nav-text"> Dashboard</span>
                         </a>
                     </li>
                     <!-- <li class="nav-label">Users</li> -->
                     <li>
-                        <a href="<?php echo base_url('User')?>" aria-expanded="false">
+                        <a href="<?php echo base_url('User') ?>" aria-expanded="false">
                             <!-- <i class="icon-user menu-icon"></i> --><span class="nav-text"> Users</span>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('Opd')?>" aria-expanded="false">
+                        <a href="<?php echo base_url('Opd') ?>" aria-expanded="false">
                             <!-- <i class="icon-user menu-icon"></i> --><span class="nav-text"> OPD</span>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('Bidang')?>" aria-expanded="false">
+                        <a href="<?php echo base_url('Bidang') ?>" aria-expanded="false">
                             <!-- <i class="icon-user menu-icon"></i> --><span class="nav-text"> Bidang</span>
                         </a>
-                    </li>                   
+                    </li>
                 </ul>
             </div>
         </div>
-        <!--**********************************
-            Sidebar end
-        ***********************************-->
-        <!--**********************************
-            Content body start
-        ***********************************-->
+
         @yield('content')
-        <!--**********************************
-            Content body end
-        ***********************************-->
-        
-        <!--**********************************
-            Footer start
-        ***********************************-->
+
         <div class="footer">
             <div class="copyright">
                 <p>Copyright &copy; 2020 Diskominfo <span class="float-right"> Lapsithar v.1.0</span></p>
             </div>
         </div>
-        <!--**********************************
-            Footer end
-        ***********************************-->
     </div>
-    <!--**********************************
-        Main wrapper end
-    ***********************************-->
-
-    <!--**********************************
-        Scripts
-    ***********************************-->
     <!-- @section('javascript') -->
     <script src="{{APP_ASSETS}}plugins/jquery/jquery.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/common/common.min.js"></script>
@@ -201,7 +152,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Morrisjs -->
     <script src="{{APP_ASSETS}}plugins/raphael/raphael.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/morris/morris.min.js"></script>
-    
+
     <!-- Pignose Calender -->
     <script src="{{APP_ASSETS}}plugins/moment/moment.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
@@ -233,25 +184,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </script> -->
     <script type="text/javascript">
         $('#tanggal').bootstrapMaterialDatePicker({
-        format: 'YYYY-MM-DD hh:mm:ss',
-        sideBySide: true
-    });
+            format: 'YYYY-MM-DD hh:mm:ss',
+            sideBySide: true
+        });
     </script>
 
     <script type="text/javascript">
         $('#start').bootstrapMaterialDatePicker({
-        format: 'YYYY-MM-DD hh:mm:ss',
-        sideBySide: true
+            format: 'YYYY-MM-DD hh:mm:ss',
+            sideBySide: true
         });
     </script>
 
     <script type="text/javascript">
         $('#end').bootstrapMaterialDatePicker({
-        format: 'YYYY-MM-DD hh:mm:ss',
-        sideBySide: true
+            format: 'YYYY-MM-DD hh:mm:ss',
+            sideBySide: true
         });
     </script>
 
 
 </body>
+
 </html>
