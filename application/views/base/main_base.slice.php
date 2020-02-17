@@ -114,23 +114,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <!-- <li class="nav-label">Dashboard</li> -->
                     <li>
                         <a href="<?php echo base_url('Dashboard')?>" aria-expanded="false">
-                            <!-- <i class="icon-speedometer menu-icon"></i> --><span class="nav-text"> Dashboard</span>
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text"> Dashboard</span>
                         </a>
                     </li>
                     <!-- <li class="nav-label">Users</li> -->
                     <li>
                         <a href="<?php echo base_url('User')?>" aria-expanded="false">
-                            <!-- <i class="icon-user menu-icon"></i> --><span class="nav-text"> Users</span>
+                            <i class="icon-user menu-icon"></i><span class="nav-text"> Users</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?php echo base_url('Opd')?>" aria-expanded="false">
-                            <!-- <i class="icon-user menu-icon"></i> --><span class="nav-text"> OPD</span>
+                            <i class="icon-user menu-icon"></i><span class="nav-text"> OPD</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?php echo base_url('Bidang')?>" aria-expanded="false">
-                            <!-- <i class="icon-user menu-icon"></i> --><span class="nav-text"> Bidang</span>
+                            <i class="icon-user menu-icon"></i><span class="nav-text"> Bidang</span>
                         </a>
                     </li>                   
                 </ul>

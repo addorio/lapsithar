@@ -83,8 +83,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button type="button" id="btnSave" onclick="save()" class="btn mb-1 btn-flat btn-outline-primary">Save</button>
+                <button type="button" class="btn mb-1 btn-flat btn-outline-danger" data-dismiss="modal">Cancel</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -93,7 +93,7 @@
 <div class="modal" id="modal-lihat" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header p-2 bg-primary">
+            <div class="modal-header">
                 <h6 class="modal-title"><span class="fa fa-eye"></span> Lihat File</h6>
                 <button id="reload-file" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 
@@ -103,7 +103,7 @@
                 <embed id="nama-file" width="100%" height="460" type="application/pdf"></embed> 
             </div>
         <div class="modal-footer">
-        <button type="button" class="btn btn-white" data-dismiss="modal">Tutup</button>
+        <button type="button" class="btn mb-1 btn-flat btn-outline-dark" data-dismiss="modal">Tutup</button>
         </div>
         </div>
     </div>

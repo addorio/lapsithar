@@ -29,7 +29,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Daftar Bidang<span><button class="btn btn-primary" style="float: right;" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Bidang</button></span></h5>
+                        <h5 class="card-title">Daftar Bidang<span><button class="btn mb-1 btn-flat btn-outline-primary" style="float: right;" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Bidang</button></span></h5>
                         
                         <div class="table-responsive">
                         <table id="table" class="table table-bordered" cellspacing="0" width="100%" style="width: 100%;">

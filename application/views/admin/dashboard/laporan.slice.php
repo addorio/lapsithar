@@ -48,12 +48,12 @@
                           </div>
                           <div class="col-2">
                           <div class="form-group">
-                            {{form_submit("submit","Filter","class='btn btn-primary input-group'")}}              
+                            {{form_submit("submit","Filter","class='btn mb-1 btn-flat btn-outline-primary input-group'")}}              
                           </div>
                           </div>
                           <div class="col-2">
                           <div class="form-group"> 
-                            {{form_submit("submit","Reset","class='btn btn-secondary input-group'")}}             
+                            {{form_submit("submit","Reset","class='btn mb-1 btn-flat btn-outline-secondary input-group'")}}             
                           </div>
                           </div>
                         </div>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Rekapitulasi Laporan<span><button class="btn btn-primary" style="float: right;" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Laporan</button></span></h5>
+                        <h5 class="card-title">Rekapitulasi Laporan<span><button class="btn mb-1 btn-flat btn-outline-primary" style="float: right;" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Laporan</button></span></h5>
                         <div class="table-responsive">
                         <table id="table" class="table table-bordered" cellspacing="0" width="100%" style="font-size: 12px; width: 100%;">
                           <thead>
@@ -150,7 +150,7 @@ $(document).ready(function() {
         buttons: [ 
             {
                 extend: 'excelHtml5',
-                className: 'btn btn-success btn-lg',
+                className: 'btn mb-1 btn-flat btn-outline-success',
                 title: 'Laporan',
                 exportOptions: {
                     columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ]
@@ -158,7 +158,7 @@ $(document).ready(function() {
             },
             {
                 extend: 'pdfHtml5',
-                className: 'btn btn-danger btn-lg',
+                className: 'btn mb-1 btn-flat btn-outline-danger',
                 title: 'Laporan',
                 orientation: 'landscape',
                 pageSize: 'FOLIO',
