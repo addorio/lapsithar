@@ -42,7 +42,7 @@ class Userpage extends CI_Controller {
             if($laporan->file)
                 $row[] = '<a class="btn btn-sm btn-success" href="'.base_url('upload/'.$laporan->file).'" target="_blank"><i class="glyphicon glyphicon-pencil"></i>Lihat</a>';
             else
-                $row[] = '(No file)';
+                $row[] = '(Tidak ada lampiran)';
  
             //add html for action
             $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_laporan('."'".$laporan->id_laporan."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>';

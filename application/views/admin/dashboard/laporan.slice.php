@@ -79,7 +79,7 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h3>Laporan Data</h3>
+                        <h5 class="card-title">Rekapitulasi Laporan</h5>
                         <br/>
                         <button class="btn btn-success" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Laporan</button>
                         <br />
