@@ -47,14 +47,14 @@
             <div class="card col-12">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped zero-configuration" style="font-size: 13px; width: 100%;" id="user">
+                        <table class="table zero-configuration" style="font-size: 13px; width: 100%;" id="user">
                             <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>Nama OPD</th>
                                     <th>Nama Admin</th>
                                     <th>Username</th>
-                                    <th align="justify">Edit</th>
+                                    <th align="justify"></th>
                                 </tr>
                             </thead>
                         </table>

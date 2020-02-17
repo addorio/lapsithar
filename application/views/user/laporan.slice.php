@@ -23,7 +23,7 @@
 
 @section('content')
 <div class="content-body">
-
+ 
     <div class="row page-titles mx-0">
         <div class="col p-md-0">
             <ol class="breadcrumb">
@@ -80,11 +80,11 @@
                     <div class="card-body">
                         <h5 class="card-title">Rekapitulasi Laporan</h5>
                         <br/>
-                        <button class="btn btn-success" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Laporan</button>
+                        <button class="btn btn-primary" style="float: right;" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i>Tambah Laporan</button>
                         <br />
                         <br />
                         <div class="table-responsive">
-                        <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size: 13px; width: 100%;">
+                        <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size: 12px; width: 100%;">
                           <thead>
                             <tr>
                               <th>No</th>
@@ -96,8 +96,8 @@
                               <th>Tindakan</th>
                               <th>Ket</th>
                               <th>File</th>
-                              <th>Edit</th>
-                              <th>Delete</th>
+                              <th>Ubah</th>
+                              <th>Hapus</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -168,7 +168,7 @@ $(document).ready(function() {
                 className: 'btn btn-success btn-lg',
                 title: 'Laporan',
                 exportOptions: {
-                    columns: [ 0, 1, 2, 4, 5, 6, 7 ]
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ]
                 }
             },
             {
@@ -178,7 +178,7 @@ $(document).ready(function() {
                 orientation: 'landscape',
                 pageSize: 'FOLIO',
                 exportOptions: {
-                    columns: [ 0, 1, 2, 4, 5, 6, 7 ]
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ]
                 },
                 customize: function ( doc ) {
                 // ket = table.column(7).data().toArray();
