@@ -161,7 +161,7 @@ $(document).ready(function() {
         "bInfo" : false,
         "processing": true, //Feature control the processing indicator.
         "serverSide": true, //Feature control DataTables' server-side processing mode.
-        dom: 'Bfrtip',
+        dom: 'Bfrtlp',
         buttons: [ 
             {
                 extend: 'excelHtml5',

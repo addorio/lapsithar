@@ -162,11 +162,12 @@ $(document).ready(function() {
         "bInfo" : false,
         "processing": true, //Feature control the processing indicator.
         "serverSide": true, //Feature control DataTables' server-side processing mode.
-        dom: 'Bfrtip',
+        dom: 'Bfrtlp',
         buttons: [ 
             {
                 extend: 'excelHtml5',
                 className: 'btn btn-success btn-lg',
+                title: 'Laporan',
                 exportOptions: {
                     columns: [ 0, 1, 2, 4, 5, 6, 7 ]
                 }
@@ -174,6 +175,7 @@ $(document).ready(function() {
             {
                 extend: 'pdfHtml5',
                 className: 'btn btn-danger btn-lg',
+                title: 'Laporan',
                 orientation: 'landscape',
                 pageSize: 'FOLIO',
                 exportOptions: {
