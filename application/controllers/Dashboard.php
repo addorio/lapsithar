@@ -13,7 +13,7 @@ class Dashboard extends CI_Controller {
         $data['title'] = "LAPSITHAR | Dashboard";
         $data['opd'] = $this->m_opd->getAll();
         $data['bidang'] = $this->m_bidang->getAll();  
-        view('admin.dashboard.laporan', $data);
+        view('admin.dashboard.laporan', $data); 
     }
  
     public function ajax_list()

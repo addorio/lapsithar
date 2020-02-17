@@ -32,15 +32,6 @@
 
 @section('content')
 <div class="content-body">
-
-    <div class="row page-titles mx-0">
-        <div class="col p-md-0">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
-            </ol>
-        </div>
-    </div>
             <!-- row -->
     <div class="container-fluid">
         <div class="row">
@@ -48,9 +39,9 @@
                 <div class="card">
                     <div class="card-body">
                         <!-- <h4 class="card-title">Rekapitulasi Laporan<span><button style="float: right;" type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">+</button></span></h4> -->
-                        <button class="btn btn-primary" onclick="add_person()"><i class="glyphicon glyphicon-plus"></i> Tambah User</button>
+                        <h5 class="card-title">Daftar User<span><button class="btn btn-primary" style="float: right;" onclick="add_person()"><i class="glyphicon glyphicon-plus"></i> Tambah User</button></span></h5>
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered zero-configuration" style="font-size: 13px; width: 100%;" id="user_data">
+                            <table class="table table-bordered zero-configuration" style="font-size: 13px; width: 100%;" id="user_data">
                                 <thead>
                                     <tr>
                                         <th>No</th>
