@@ -4,7 +4,7 @@
            {  
                 margin:0;  
                 padding:0;  
-                background-color:#f1f1f1;  
+                background-color:#f1f1f1;   
            }  
            .box  
            {  
@@ -47,12 +47,12 @@
                 <div class="row">
                   <div class="col-4">
                     <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                      <input type="text" id="start" name="start_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" placeholder="Tanggal mulai" />
+                      <input type="text" id="start" name="start_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" placeholder="Tanggal mulai" />
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                      <input type="text" id="end" name="end_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" placeholder="Tanggal akhir"/>
+                      <input type="text" id="end" name="end_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" placeholder="Tanggal akhir"/>
                     </div>
                   </div>
                   
@@ -95,6 +95,7 @@
                               <th>Tindakan</th>
                               <th>Ket</th>
                               <th>File</th>
+                              <th>Detail</th>
                               <th>Ubah</th>
                               <th>Hapus</th>
                             </tr>

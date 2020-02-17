@@ -27,7 +27,7 @@
                             <div class="col-6">
                               <label>Tanggal & Waktu</label>
                               <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                                  <input type="text" id="tanggal" name="tanggal" class="form-control datetimepicker-input" data-target="#datetimepicker2" required="">
+                                  <input type="text" id="tanggal" name="tanggal" class="form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" required="">
                                   <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
                                       <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                   </div>
@@ -38,7 +38,7 @@
                         <div class="row">
                           <div class="col-6">
                             <label>Judul</label>
-                            <input type="text" class="form-control input-flat" id="judul" name="judul" placeholder="Judul" readonly="">
+                            <input type="text" class="form-control input-flat" id="judul" name="judul" autocomplete="off" placeholder="Judul" readonly="">
                           </div>
                           <div class="col-6">
                             <label>Bidang Situasi</label>
@@ -53,11 +53,11 @@
                         <div class="row">
                           <div class="col-6">
                             <label>Isi Laporan</label>
-                            <textarea rows="6" class="form-control h-150px" rows="6" name="isi_laporan" id="isi_laporan" required=""></textarea>
+                            <textarea rows="6" class="form-control h-150px summernote" rows="6" name="isi_laporan" id="isi_laporan" required=""></textarea>
                           </div>
                           <div class="col-6">
                             <label>Tindakan yang dilakukan</label>
-                            <textarea rows="6" class="form-control h-150px" rows="6" name="tindakan" id="tindakan" required=""></textarea>
+                            <textarea rows="6" class="form-control h-150px summernote" rows="6" name="tindakan" id="tindakan" required=""></textarea>
                           </div>
                         </div>
 

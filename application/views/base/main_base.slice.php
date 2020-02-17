@@ -17,6 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
     <!-- Datetimepicker -->
     <link href="{{APP_ASSETS}}plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+    <link href="{{APP_ASSETS}}plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
     <!-- Pignose Calender -->
     <link href="{{APP_ASSETS}}plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
     <!-- Chartist -->
@@ -24,12 +25,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="{{APP_ASSETS}}plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     <!-- Data Table -->
     <link href="{{APP_ASSETS}}plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/datatables-colvis/1.1.2/css/dataTables.colVis.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/datatables-colvis/1.1.2/css/dataTables.colVis.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/datatables-colvis/1.1.2/css/dataTables.colvis.jqueryui.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/datatables-colvis/1.1.2/css/dataTables.colvis.jqueryui.min.css"> -->
     <link rel="stylesheet" type="text/css" href="{{APP_ASSETS}}plugins/sweetalert2/dist/sweetalert2.min.css">
+    <link href="{{APP_ASSETS}}plugins/summernote/dist/summernote.css" rel="stylesheet"> 
     <!-- FontAwesome -->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Custom Stylesheet -->
@@ -81,19 +78,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="nav-control">
                     <div class="hamburger">
                         <span class="toggle-icon"><i class="icon-menu"></i></span>
-                    </div>
-                </div>
-                <div class="header-left">
-                    <div class="input-group icons">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
-                        </div>
-                        <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
-                        <div class="drop-down animated flipInX d-md-none">
-                            <form action="#">
-                                <input type="text" class="form-control" placeholder="Search">
-                            </form>
-                        </div>
                     </div>
                 </div>
                 <div class="header-right">
@@ -205,6 +189,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Pignose Calender -->
     <script src="{{APP_ASSETS}}plugins/moment/moment.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <script src="{{APP_ASSETS}}plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/pg-calendar/js/pignose.calendar.min.js"></script>
     <!-- ChartistJS -->
     <script src="{{APP_ASSETS}}plugins/chartist/js/chartist.min.js"></script>
@@ -224,6 +209,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="{{APP_ASSETS}}plugins/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/summernote/dist/summernote.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/summernote/dist/summernote-init.js"></script>
 
     <!-- <script type="text/javascript">
             $('#tanggal').datetimepicker({
@@ -237,18 +224,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         sideBySide: true
     });
     </script>
-
     <script type="text/javascript">
-        $('#start').bootstrapMaterialDatePicker({
-        format: 'YYYY-MM-DD hh:mm:ss',
-        sideBySide: true
+        $('#start').datepicker({
+        format: 'yyyy-mm-dd'
         });
     </script>
 
     <script type="text/javascript">
-        $('#end').bootstrapMaterialDatePicker({
-        format: 'YYYY-MM-DD hh:mm:ss',
-        sideBySide: true
+        $('#end').datepicker({
+        format: 'yyyy-mm-dd'
         });
     </script>
 

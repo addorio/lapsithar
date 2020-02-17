@@ -23,67 +23,48 @@
 
 @section('content')
 <div class="content-body">
-
-    <div class="row page-titles mx-0">
-        <div class="col p-md-0">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
-            </ol>
-        </div>
-    </div>
             <!-- row -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-
               <div id="accordion-one" class="accordion">
-          <div class="card">
-            <div class="card-header">
-              <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa" aria-hidden="true"></i> Filter per tanggal</h5>
-            </div>
-            <div id="collapseOne" class="collapse show" data-parent="#accordion-one" style="">
-              {{form_open("","id='form-filter'")}}
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-4">
-                    <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                      <input type="text" id="start" name="start_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" placeholder="Tanggal mulai" />
+                  <div class="card">
+                    <div class="card-header">
+                      <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa" aria-hidden="true"></i> Filter per tanggal</h5>
                     </div>
-                  </div>
-                  <div class="col-4">
-                    <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                      <input type="text" id="end" name="end_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" placeholder="Tanggal akhir"/>
+                    <div id="collapseOne" class="collapse show" data-parent="#accordion-one" style="">
+                      {{form_open("","id='form-filter'")}}
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-4">
+                            <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                              <input type="text" id="start" name="start_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" placeholder="Tanggal mulai" />
+                            </div>
+                          </div>
+                          <div class="col-4">
+                            <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                              <input type="text" id="end" name="end_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" placeholder="Tanggal akhir"/>
+                            </div>
+                          </div>
+                          <div class="col-2">
+                          <div class="form-group">
+                            {{form_submit("submit","Filter","class='btn btn-primary input-group'")}}              
+                          </div>
+                          </div>
+                          <div class="col-2">
+                          <div class="form-group"> 
+                            {{form_submit("submit","Reset","class='btn btn-secondary input-group'")}}             
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                      {{form_close()}}
                     </div>
-                  </div>
-                  
-
-                  <div class="col-2">
-                  <div class="form-group">
-                    {{form_submit("submit","Filter","class='btn btn-primary input-group'")}}              
-                  </div>
-                  </div>
-                  <div class="col-2">
-                  <div class="form-group"> 
-                    {{form_submit("submit","Reset","class='btn btn-secondary input-group'")}}             
-                  </div>
                   </div>
                 </div>
-              </div>
-              {{form_close()}}
-            </div>
-
-
-          </div>
-        </div>
-
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Rekapitulasi Laporan</h5>
-                        <br/>
-                        <button class="btn btn-primary" style="float: right;" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Laporan</button>
-                        <br />
-                        <br />
+                        <h5 class="card-title">Rekapitulasi Laporan<span><button class="btn btn-primary" style="float: right;" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Laporan</button></span></h5>
                         <div class="table-responsive">
                         <table id="table" class="table table-bordered" cellspacing="0" width="100%" style="font-size: 12px; width: 100%;">
                           <thead>
@@ -97,6 +78,7 @@
                               <th>Tindakan</th>
                               <th>Ket</th>
                               <th>File</th>
+                              <th>Detail</th>
                               <th>Ubah</th>
                               <th>Hapus</th>
                             </tr>
@@ -113,7 +95,7 @@
   </div>
 
 @include('admin.dashboard.modal')
- @endsection
+@endsection
 <script src="{{APP_ASSETS}}plugins/jquery/jquery.min.js"></script>
  
  
@@ -287,6 +269,56 @@ function edit_laporan(id)
     //Ajax Load data from ajax
     $.ajax({
         url : "<?php echo site_url('dashboard/ajax_edit')?>/" + id,
+        type: "GET",
+        dataType: "JSON",
+        success: function(data)
+        {
+            $('[name="id_laporan"]').val(data.id_laporan);
+            $('[name="id_opd"]').val(data.id_opd);
+            $('[name="tanggal"]').val(data.tanggal);
+            $('[name="judul"]').val(data.judul);
+            $('[name="nama_bidang"]').val(data.nama_bidang);
+            $('[name="isi_laporan"]').val(data.isi_laporan);
+            $('[name="tindakan"]').val(data.tindakan);
+            $('[name="keterangan"]').val(data.keterangan);
+            // $('[name="file"]').val(data.file);
+            $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
+            $('.modal-title').text('Edit Laporan'); // Set title to Bootstrap modal title
+ 
+            $('#file-preview').show(); // show file preview modal
+ 
+            if(data.file)
+            {
+                $('#label-file').text('Change file'); // label file upload
+                $('#file-preview div').html('<img src="'+base_url+'upload/'+data.file+'" class="img-responsive">'); // show file
+                $('#file-preview div').append('<input type="checkbox" name="file" value="'+data.file+'"/> Remove file when saving'); // remove file
+ 
+            }
+            else
+            {
+                $('#label-file').text('Upload file'); // label file upload
+                $('#file-preview div').text('(No file)');
+            }
+ 
+ 
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error get data from ajax');
+        }
+    });
+}
+
+function lihat_laporan(id)
+{
+    $('#form')[0].reset(); // reset form on modals
+    $('.form-group').removeClass('has-error'); // clear error class
+    $('.help-block').empty(); // clear error string
+ 
+ 
+    //Ajax Load data from ajax
+    $.ajax({
+        url : "<?php echo site_url('dashboard/ajax_lihat')?>/" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data)

@@ -37,11 +37,12 @@ class Dashboard extends CI_Controller {
               $row[] = '<span class="text-danger">'.$laporan->keterangan.'</span>';
             }
             if($laporan->file)
-                $row[] = '<a class="open btn btn-sm btn-success" href="javascript:void(0)" data-toggle="modal" data-id="'.$laporan->file.'"><i class="glyphicon glyphicon-pencil"></i>Lihat</a>';
+                $row[] = '<a class="open btn btn-sm btn-success" href="javascript:void(0)" data-toggle="modal" data-id="'.$laporan->file.'"><i class="glyphicon glyphicon-pencil"></i>Lihat File</a>';
             else
                 $row[] = '(Tidak ada lampiran)';
  
             //add html for action
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="lihat_laporan('."'".$laporan->id_laporan."'".')"><i class="glyphicon glyphicon-pencil"></i> Detail</a>';
             $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_laporan('."'".$laporan->id_laporan."'".')"><i class="glyphicon glyphicon-pencil"></i> Ubah</a>';
             $row[] = '<a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_laporan('."'".$laporan->id_laporan."'".')"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
          
