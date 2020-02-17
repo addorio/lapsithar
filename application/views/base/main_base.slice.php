@@ -13,6 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title>@php echo $title;@endphp</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{APP_ASSETS}}images/favicon1.png">
+    <link href="{{APP_ASSETS}}css/style.css" rel="stylesheet">
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
     <!-- Datetimepicker -->
     <link href="{{APP_ASSETS}}plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
@@ -23,16 +24,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="{{APP_ASSETS}}plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     <!-- Data Table -->
     <link href="{{APP_ASSETS}}plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/datatables-colvis/1.1.2/css/dataTables.colVis.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/datatables-colvis/1.1.2/css/dataTables.colVis.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/datatables-colvis/1.1.2/css/dataTables.colvis.jqueryui.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/datatables-colvis/1.1.2/css/dataTables.colvis.jqueryui.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/datatables-colvis/1.1.2/css/dataTables.colvis.jqueryui.min.css"> -->
     <link rel="stylesheet" type="text/css" href="{{APP_ASSETS}}plugins/sweetalert2/dist/sweetalert2.min.css">
     <!-- FontAwesome -->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Custom Stylesheet -->
-    <link href="{{APP_ASSETS}}css/style.css" rel="stylesheet">
+    
 </head>
 
 <body>
@@ -129,13 +130,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <!-- <li class="nav-label">Dashboard</li> -->
                     <li>
                         <a href="<?php echo base_url('Dashboard')?>" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text"> DASHBOARD</span>
+                            <!-- <i class="icon-speedometer menu-icon"></i> --><span class="nav-text"> Dashboard</span>
                         </a>
                     </li>
                     <!-- <li class="nav-label">Users</li> -->
                     <li>
                         <a href="<?php echo base_url('User')?>" aria-expanded="false">
-                            <i class="icon-user menu-icon"></i><span class="nav-text"> USERS</span>
+                            <!-- <i class="icon-user menu-icon"></i> --><span class="nav-text"> Users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('Opd')?>" aria-expanded="false">
+                            <!-- <i class="icon-user menu-icon"></i> --><span class="nav-text"> OPD</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('Bidang')?>" aria-expanded="false">
+                            <!-- <i class="icon-user menu-icon"></i> --><span class="nav-text"> Bidang</span>
                         </a>
                     </li>                   
                 </ul>
