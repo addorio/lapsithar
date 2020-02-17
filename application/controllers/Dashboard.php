@@ -4,7 +4,7 @@ class Dashboard extends CI_Controller {
     parent::__construct();         
      $this->load->model('m_opd');
     $this->load->model('m_bidang');
-    $this->load->model('m_laporan', 'laporan');
+    $this->load->model('m_laporan', 'laporan'); 
     $this->load->model('m_user'); 
     }
  
