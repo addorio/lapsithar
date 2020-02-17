@@ -37,7 +37,7 @@ class Dashboard extends CI_Controller {
               $row[] = '<span class="text-danger">'.$laporan->keterangan.'</span>';
             }
             if($laporan->file)
-                $row[] = '<a class="btn btn-sm btn-success" href="'.base_url('upload/'.$laporan->file).'" target="_blank"><i class="glyphicon glyphicon-pencil"></i>Lihat</a>';
+                $row[] = '<a class="open btn btn-sm btn-success" href="javascript:void(0)" data-toggle="modal" data-id="'.$laporan->file.'"><i class="glyphicon glyphicon-pencil"></i>Lihat</a>';
             else
                 $row[] = '(Tidak ada lampiran)';
  
