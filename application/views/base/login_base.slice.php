@@ -33,14 +33,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         Preloader end
     ********************-->
     @yield('content')
-    
-
-
-
-
-    
-
-    
 
     <!--**********************************
         Scripts
