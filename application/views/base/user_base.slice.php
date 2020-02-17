@@ -152,7 +152,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+                <p>Copyright &copy; 2020 Diskominfo <span class="float-right"> Lapsithar v.1.0</span></p>
             </div>
         </div>
         <!--**********************************
