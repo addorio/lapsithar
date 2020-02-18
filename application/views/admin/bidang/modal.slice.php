@@ -12,7 +12,8 @@
                       <div class="form-group">
                         <label>Nama Bidang</label>
                         <input type="text" class="form-control input-flat" id="id_bidang" name="id_bidang" placeholder="Nama OPD / Kecamatan" required="" hidden>
-                        <input type="text" class="form-control input-flat" id="nama_bidang" name="nama_bidang" placeholder="Nama OPD / Kecamatan" required="">
+                        <input type="text" class="form-control input-flat" id="nama_bidang" name="nama_bidang" placeholder="Nama Bidang" required="">
+                        <span name="nama_bidang" style="color: red;"></span>
                       </div>
                     </div>
                 </form>

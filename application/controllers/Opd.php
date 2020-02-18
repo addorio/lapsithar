@@ -98,7 +98,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     if($this->input->post('nama_opd') == '')
     {
-      $data['inputerror'][] = 'id_opd';
+      $data['inputerror'][] = 'nama_opd';
       $data['error_string'][] = 'OPD name is required';
       $data['status'] = FALSE;
     }

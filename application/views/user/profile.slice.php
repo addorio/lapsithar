@@ -166,7 +166,12 @@ function save()
 
             if(data.status) //if success close modal and reload ajax table
             {
-                $('#userModal').modal('hide');
+                swal(
+                  'Good job!',
+                  'Berhasil!',
+                  'success'
+                );
+                $('#userModal').modal('hide'); 
                 reload_table();
             }
             else
@@ -177,11 +182,7 @@ function save()
                     $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
                 }
             }
-            swal(
-                  'Good job!',
-                  'Data Updated!',
-                  'success'
-                );
+            
             $('#btnSave').text('save'); //change button text
             $('#btnSave').attr('disabled',false); //set button enable 
 
@@ -207,6 +208,11 @@ function save()
 
             if(data.status) //if success close modal and reload ajax table
             {
+                swal(
+                  'Good job!',
+                  'Data Updated!',
+                  'success'
+                );
                 $('#editModal').modal('hide');
                 reload_table();
             }
@@ -219,11 +225,7 @@ function save()
                 }
             }
             // alert('Data Updated');
-            swal(
-                  'Good job!',
-                  'Data Updated!',
-                  'success'
-                );
+            
             $('#btnSave').text('save'); //change button text
             $('#btnSave').attr('disabled',false); //set button enable 
 
@@ -272,4 +274,3 @@ function delete_person(id)
 }
 
 </script>
-

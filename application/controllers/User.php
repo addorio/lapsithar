@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     $this->load->model('m_bidang');
     $this->load->model('m_laporan');
     $this->load->model('m_user');
-    $this->load->model('m_level');   
+    $this->load->model('m_level');    
   }
       //functions  
       function index(){  
@@ -46,8 +46,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       $row[] = $person->username;
 
       //add html for action
-      $row[] = '<a class="btn mb-1 btn-flat btn-outline-success btn-sm" href="javascript:void(0)" title="Edit" onclick="edit_person('."'".$person->id_user."'".')"><i class="glyphicon glyphicon-pencil"></i> Ubah</a>';
-      $row[] = '<a class="btn mb-1 btn-flat btn-outline-danger btn-sm" href="javascript:void(0)" title="Hapus" onclick="delete_person('."'".$person->id_user."'".')"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
+      $row[] = '<a class="btn mb-1 btn-flat btn-outline-primary" href="javascript:void(0)" title="Edit" onclick="edit_person('."'".$person->id_user."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
+      $row[] = '<a class="btn mb-1 btn-flat btn-outline-danger" href="javascript:void(0)" title="Hapus" onclick="delete_person('."'".$person->id_user."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
     
       $data[] = $row;
     }
@@ -165,7 +165,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     if($this->input->post('id_opd') == '')
     {
       $data['inputerror'][] = 'id_opd';
-      $data['error_string'][] = 'OPD name is required';
+      $data['error_string'][] = 'OPD name is required'; 
       $data['status'] = FALSE;
     }
 

@@ -4,8 +4,8 @@ class Dashboard extends CI_Controller {
     parent::__construct();         
      $this->load->model('m_opd');
     $this->load->model('m_bidang');
-    $this->load->model('m_laporan', 'laporan'); 
-    $this->load->model('m_user'); 
+    $this->load->model('m_laporan', 'laporan');
+    $this->load->model('m_user');  
     }
  
     public function index()
@@ -13,7 +13,7 @@ class Dashboard extends CI_Controller {
         $data['title'] = "LAPSITHAR | Dashboard";
         $data['opd'] = $this->m_opd->getAll();
         $data['bidang'] = $this->m_bidang->getAll();  
-        view('admin.dashboard.laporan', $data); 
+        view('admin.dashboard.laporan', $data);
     }
  
     public function ajax_list()
@@ -37,14 +37,14 @@ class Dashboard extends CI_Controller {
               $row[] = '<span class="text-danger">'.$laporan->keterangan.'</span>';
             }
             if($laporan->file)
-                $row[] = '<a class="open btn btn-sm mb-1 btn-flat btn-outline-info" href="javascript:void(0)" data-toggle="modal" data-id="'.$laporan->file.'"><i class="glyphicon glyphicon-pencil"></i>Lihat File</a>';
+                $row[] = '<a class="open btn mb-1 btn-flat btn-outline-success btn-sm" href="javascript:void(0)" data-toggle="modal" data-id="'.$laporan->file.'"><i class="glyphicon glyphicon-pencil"></i>Lihat</a>';
             else
                 $row[] = '(Tidak ada lampiran)';
  
             //add html for action
-            $row[] = '<a class="btn btn-sm mb-1 btn-flat btn-outline-dark" href="javascript:void(0)" title="Detail" onclick="lihat_laporan('."'".$laporan->id_laporan."'".')"><i class="glyphicon glyphicon-pencil"></i> Detail</a>';
-            $row[] = '<a class="btn mb-1 btn-flat btn-outline-success btn-sm" href="javascript:void(0)" title="Edit" onclick="edit_laporan('."'".$laporan->id_laporan."'".')"><i class="glyphicon glyphicon-pencil"></i> Ubah</a>';
-            $row[] = '<a class="btn mb-1 btn-flat btn-outline-danger btn-sm" href="javascript:void(0)" title="Hapus" onclick="delete_laporan('."'".$laporan->id_laporan."'".')"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
+            $row[] = '<a class="btn btn-sm mb-1 btn-flat btn-outline-dark lihatlaporan" href="javascript:void(0)" title="Detail" onclick="lihat_laporan('."'".$laporan->id_laporan."'".')"><i class="glyphicon glyphicon-pencil"></i> Detail</a>';
+            $row[] = '<a class="btn mb-1 btn-flat btn-outline-primary btn-sm" href="javascript:void(0)" title="Edit" onclick="edit_laporan('."'".$laporan->id_laporan."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
+            $row[] = '<a class="btn mb-1 btn-flat btn-outline-danger btn-sm" href="javascript:void(0)" title="Hapus" onclick="delete_laporan('."'".$laporan->id_laporan."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
          
             $data[] = $row;
         }
@@ -69,8 +69,10 @@ class Dashboard extends CI_Controller {
     public function ajax_add()
     {
         $this->_validate();
-         
-        $data = array(
+        
+        if(!empty($_FILES['file']['name']))
+        {
+            $data = array(
                 'id_laporan'          =>     $this->input->post('id_laporan'),
                      'id_opd'          =>     $this->input->post('id_opd'),  
                      'tanggal'               =>     $this->input->post("tanggal"),
@@ -80,16 +82,38 @@ class Dashboard extends CI_Controller {
                      'tindakan'               =>     $this->input->post("tindakan"),
                      'keterangan'               =>     $this->input->post("keterangan"),
             );
- 
-        if(!empty($_FILES['file']['name']))
-        {
+
             $upload = $this->_do_upload();
             $data['file'] = $upload;
+
+            
+
+            $insert = $this->laporan->save($data);
+ 
+            echo json_encode(array("status" => TRUE));
         }
+        // $this->_validate();
+         
+        // $data = array(
+        //         'id_laporan'          =>     $this->input->post('id_laporan'),
+        //              'id_opd'          =>     $this->input->post('id_opd'),  
+        //              'tanggal'               =>     $this->input->post("tanggal"),
+        //              'judul'          =>     $this->input->post('judul'),  
+        //              'nama_bidang'               =>     $this->input->post("nama_bidang"),
+        //              'isi_laporan'          =>     $this->input->post('isi_laporan'),  
+        //              'tindakan'               =>     $this->input->post("tindakan"),
+        //              'keterangan'               =>     $this->input->post("keterangan"),
+        //     );
  
-        $insert = $this->laporan->save($data);
+        // if(!empty($_FILES['file']['name']))
+        // {
+        //     $upload = $this->_do_upload();
+        //     $data['file'] = $upload;
+        // }
  
-        echo json_encode(array("status" => TRUE));
+        // $insert = $this->laporan->save($data);
+ 
+        // echo json_encode(array("status" => TRUE));
     }
  
     public function ajax_update()
@@ -170,42 +194,42 @@ class Dashboard extends CI_Controller {
         if($this->input->post('id_opd') == '')
         {
             $data['inputerror'][] = 'id_opd';
-            $data['error_string'][] = 'OPD is required';
+            $data['error_string'][] = 'Silahkan pilih Nama OPD';
             $data['status'] = FALSE;
         }
  
         if($this->input->post('tanggal') == '')
         {
             $data['inputerror'][] = 'tanggal';
-            $data['error_string'][] = 'Tanggal is required';
+            $data['error_string'][] = 'Tanggal tidak boleh kosong';
             $data['status'] = FALSE;
         }
  
         if($this->input->post('judul') == '')
         {
             $data['inputerror'][] = 'judul';
-            $data['error_string'][] = 'Judul is required';
+            $data['error_string'][] = 'Judul tidak boleh kosong';
             $data['status'] = FALSE;
         }
  
         if($this->input->post('nama_bidang') == '')
         {
             $data['inputerror'][] = 'nama_bidang';
-            $data['error_string'][] = 'Please select Bidang';
+            $data['error_string'][] = 'Silahkan pilih Nama Bidang';
             $data['status'] = FALSE;
         }
  
         if($this->input->post('isi_laporan') == '')
         {
-            $data['inputerror'][] = 'isi_laporan';
-            $data['error_string'][] = 'Isi is required';
+            $data['inputerror'][] = 'laporan_error';
+            $data['error_string'][] = 'Isi laporan tidak boleh kosong';
             $data['status'] = FALSE;
         }
 
         if($this->input->post('tindakan') == '')
         {
-            $data['inputerror'][] = 'tindakan';
-            $data['error_string'][] = 'Tindakan is required';
+            $data['inputerror'][] = 'tindakan_error';
+            $data['error_string'][] = 'Tindakan tidak boleh kosong';
             $data['status'] = FALSE;
         }
 
@@ -215,7 +239,7 @@ class Dashboard extends CI_Controller {
             $data['error_string'][] = 'Please select Keterangan';
             $data['status'] = FALSE;
         }
- 
+
         if($data['status'] === FALSE)
         {
             echo json_encode($data);
@@ -227,5 +251,23 @@ class Dashboard extends CI_Controller {
           $data = $this->laporan->filterTanggal();
           json_encode($data);
      }
+
+     function ambil_satu_lap()
+    {
+        $output = array();
+        $data = $this->laporan->ambilSatuLap($this->input->post('id_laporan'));
+        foreach($data as $row)
+        {
+            $output['id_laporan'] = $row->id_laporan;
+            $output['nama_opd'] = $row->nama_opd;
+            $output['tanggal'] = $row->tanggal;
+            $output['judul'] = $row->judul;
+            $output['nama_bidang'] = $row->nama_bidang;
+            $output['isi_laporan'] = $row->isi_laporan;
+            $output['tindakan'] = $row->tindakan;
+            $output['keterangan'] = $row->keterangan;
+        }
+        echo json_encode($output);
+    }
  
 }

@@ -8,16 +8,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
     <meta name="viewport" content="width=device-width,initial-scale=1">  
     <title>@php echo $title;@endphp</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{APP_ASSETS}}images/favicon1.png">
-    <link href="{{APP_ASSETS}}css/style.css" rel="stylesheet">
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
     <!-- Datetimepicker -->
     <link href="{{APP_ASSETS}}plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
-    <link href="{{APP_ASSETS}}plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
     <!-- Pignose Calender -->
     <link href="{{APP_ASSETS}}plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
     <!-- Chartist -->
@@ -25,12 +23,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="{{APP_ASSETS}}plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     <!-- Data Table -->
     <link href="{{APP_ASSETS}}plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="{{APP_ASSETS}}plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{APP_ASSETS}}plugins/sweetalert2/dist/sweetalert2.min.css">
-    <link href="{{APP_ASSETS}}plugins/summernote/dist/summernote.css" rel="stylesheet"> 
     <!-- FontAwesome -->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.css" rel="stylesheet">
     <!-- Custom Stylesheet -->
-    
+    <link href="{{APP_ASSETS}}css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -78,6 +77,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="nav-control">
                     <div class="hamburger">
                         <span class="toggle-icon"><i class="icon-menu"></i></span>
+                    </div>
+                </div>
+                <div class="header-left">
+                    <div class="input-group icons">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
+                        </div>
+                        <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
+                        <div class="drop-down animated flipInX d-md-none">
+                            <form action="#">
+                                <input type="text" class="form-control" placeholder="Search">
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <div class="header-right">
@@ -132,7 +144,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a href="<?php echo base_url('Bidang')?>" aria-expanded="false">
                             <i class="icon-user menu-icon"></i><span class="nav-text"> Bidang</span>
                         </a>
-                    </li>                   
+                    </li>                       
                 </ul>
             </div>
         </div>
@@ -152,7 +164,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright &copy; 2020 Diskominfo <span class="float-right"> Lapsithar v.1.0</span></p>
+                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
             </div>
         </div>
         <!--**********************************
@@ -209,8 +221,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="{{APP_ASSETS}}plugins/sweetalert2/dist/sweetalert2.min.js"></script>
-    <script src="{{APP_ASSETS}}plugins/summernote/dist/summernote.min.js"></script>
-    <script src="{{APP_ASSETS}}plugins/summernote/dist/summernote-init.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
+  <!--   <script type="text/javascript" src="{{APP_ASSETS}}plugins/ckeditor/ckeditor.js"></script> -->
 
     <!-- <script type="text/javascript">
             $('#tanggal').datetimepicker({
@@ -224,6 +236,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         sideBySide: true
     });
     </script>
+
     <script type="text/javascript">
         $('#start').datepicker({
         format: 'yyyy-mm-dd'
@@ -235,6 +248,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         format: 'yyyy-mm-dd'
         });
     </script>
+  
 
 
 </body>

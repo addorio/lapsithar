@@ -32,15 +32,6 @@
 
 @section('content')
 <div class="content-body">
-
-    <div class="row page-titles mx-0">
-        <div class="col p-md-0">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
-            </ol>
-        </div>
-    </div>
     <div class="container-fluid">
         <div class="row">
             <div class="card col-12">
@@ -65,7 +56,7 @@
   </div>
     <!-- #/ container -->
 
- @include('admin.profile.modal')
+@include('admin.profile.modal')
 @endsection
 <script src="{{APP_ASSETS}}plugins/jquery/jquery.min.js"></script>
 
@@ -210,6 +201,11 @@ function save()
 
             if(data.status) //if success close modal and reload ajax table
             {
+                            swal(
+                  'Good job!',
+                  'Berhasil!',
+                  'success'
+                );
                 $('#editModal').modal('hide');
                 reload_table();
             }
@@ -221,11 +217,7 @@ function save()
                     $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
                 }
             }
-            swal(
-                  'Good job!',
-                  'Data Updated!',
-                  'success'
-                );
+
             $('#btnSave').text('save'); //change button text
             $('#btnSave').attr('disabled',false); //set button enable 
 
@@ -272,4 +264,3 @@ function delete_person(id)
 }
 
 </script>
-

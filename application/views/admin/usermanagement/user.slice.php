@@ -38,10 +38,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <!-- <h4 class="card-title">Rekapitulasi Laporan<span><button style="float: right;" type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">+</button></span></h4> -->
                         <h5 class="card-title">Daftar User<span><button class="btn mb-1 btn-flat btn-outline-primary" style="float: right;" onclick="add_person()"><i class="glyphicon glyphicon-plus"></i> Tambah User</button></span></h5>
                         <div class="table-responsive">
-                            <table class="table table-bordered zero-configuration" style="font-size: 13px; width: 100%;" id="user_data">
+                            <table class="table table-striped table-bordered zero-configuration" style="font-size: 13px; width: 100%;" id="user_data">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -74,6 +73,7 @@
     </div>
   </div>
     <!-- #/ container -->
+
 
 @include('admin.usermanagement.modal')
 @endsection
@@ -234,22 +234,30 @@ function save()
 
             if(data.status) //if success close modal and reload ajax table
             {
+                swal(
+                  'Good job!',
+                  'Data Updated!',
+                  'success'
+                );
                 $('#editModal').modal('hide');
                 reload_table();
             }
             else
             {
+                swal(
+                  'error',
+                  'Form tidak boleh kosong',
+                  'Something went wrong!',
+                  '<a href>Why do I have this issue?</a>'
+                );
                 for (var i = 0; i < data.inputerror.length; i++) 
                 {
                     $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
                     $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
                 }
+
             }
-            swal(
-                  'Good job!',
-                  'Data Updated!',
-                  'success'
-                );
+            
             $('#btnSave').text('save'); //change button text
             $('#btnSave').attr('disabled',false); //set button enable 
 

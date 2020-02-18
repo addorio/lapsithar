@@ -13,13 +13,15 @@
                         <label>Nama OPD</label>
                         <input type="text" class="form-control input-flat" id="id_opd" name="id_opd" placeholder="Nama OPD / Kecamatan" required="" hidden>
                         <input type="text" class="form-control input-flat" id="nama_opd" name="nama_opd" placeholder="Nama OPD / Kecamatan" required="">
+                        <span name="nama_opd" style="color: red;"></span>
                       </div>
+
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" id="btnSave" onclick="save()" class="btn mb-1 btn-flat btn-outline-primary">Simpan</button>
-                <button type="button" class="btn mb-1 btn-flat btn-outline-danger" data-dismiss="modal">Batal</button>
+                <button type="button" id="btnSave" onclick="save()" class="btn mb-1 btn-flat btn-outline-primary">save</button>
+                <button type="button" class="btn mb-1 btn-flat btn-outline-danger" data-dismiss="modal">cancel</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

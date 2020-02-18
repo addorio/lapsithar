@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     $this->load->model('m_bidang');
     $this->load->model('m_laporan');
     $this->load->model('m_user');
-    $this->load->model('m_level');   
+    $this->load->model('m_level');    
   }
       //functions  
       function index(){ 
@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           
 
           //add html for action
-          $row[] = '<a class="btn mb-1 btn-flat btn-outline-primary" href="javascript:void(0)" title="Edit" onclick="edit_person('."'".$person->id_user."'".')"><i class="glyphicon glyphicon-pencil"></i> Ubah</a>';
+          $row[] = '<a class="btn mb-1 btn-flat btn-outline-primary btn-sm" href="javascript:void(0)" title="Edit" onclick="edit_person('."'".$person->id_user."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
         
           $data[] = $row;
         }

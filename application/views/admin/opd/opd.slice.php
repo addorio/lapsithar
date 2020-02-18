@@ -233,5 +233,3 @@ function delete_laporan(id)
     }
 } 
 </script>
- 
-

@@ -4,7 +4,7 @@
            {  
                 margin:0;  
                 padding:0;  
-                background-color:#f1f1f1;   
+                background-color:#f1f1f1;  
            }  
            .box  
            {  
@@ -19,7 +19,7 @@
                 font-weight: bold;
                 color: blue;
             }  
-</style> 
+</style>  
 
 @section('content')
 <div class="content-body">
@@ -27,46 +27,52 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
+
               <div id="accordion-one" class="accordion">
-                  <div class="card">
-                    <div class="card-header">
-                      <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa" aria-hidden="true"></i> Filter per tanggal</h5>
-                    </div>
-                    <div id="collapseOne" class="collapse show" data-parent="#accordion-one" style="">
-                      {{form_open("","id='form-filter'")}}
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-4">
-                            <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                              <input type="text" id="start" name="start_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" placeholder="Tanggal mulai" />
-                            </div>
-                          </div>
-                          <div class="col-4">
-                            <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                              <input type="text" id="end" name="end_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" placeholder="Tanggal akhir"/>
-                            </div>
-                          </div>
-                          <div class="col-2">
-                          <div class="form-group">
-                            {{form_submit("submit","Filter","class='btn mb-1 btn-flat btn-outline-primary input-group'")}}              
-                          </div>
-                          </div>
-                          <div class="col-2">
-                          <div class="form-group"> 
-                            {{form_submit("submit","Reset","class='btn mb-1 btn-flat btn-outline-secondary input-group'")}}             
-                          </div>
-                          </div>
-                        </div>
-                      </div>
-                      {{form_close()}}
+          <div class="card">
+            <div class="card-header">
+              <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa" aria-hidden="true"></i> Filter per tanggal</h5>
+            </div>
+            <div id="collapseOne" class="collapse show" data-parent="#accordion-one" style="">
+              {{form_open("","id='form-filter'")}}
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-4">
+                    <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                      <input type="text" id="start" name="start_date" autocomplete="off" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" placeholder="Tanggal mulai" />
                     </div>
                   </div>
+                  <div class="col-4">
+                    <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                      <input type="text" id="end" name="end_date" autocomplete="off" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" placeholder="Tanggal akhir"/>
+                    </div>
+                  </div>
+                  
+
+                  <div class="col-2">
+                  <div class="form-group">
+                    {{form_submit("submit","Filter","class='btn mb-1 btn-flat btn-outline-primary input-group'")}}              
+                  </div>
+                  </div>
+                  <div class="col-2">
+                  <div class="form-group"> 
+                    {{form_submit("submit","Reset","class='btn mb-1 btn-flat btn-outline-secondary input-group'")}}             
+                  </div>
+                  </div>
                 </div>
+              </div>
+              {{form_close()}}
+            </div>
+
+
+          </div>
+        </div>
+
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Rekapitulasi Laporan<span><button class="btn mb-1 btn-flat btn-outline-primary" style="float: right;" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Laporan</button></span></h5>
+                        <h5 class="card-title">Rekapitulasi Laporan<span><button style="float: right;" class="btn mb-1 btn-flat btn-outline-success" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Laporan</button></span></h5>
                         <div class="table-responsive">
-                        <table id="table" class="table table-bordered" cellspacing="0" width="100%" style="font-size: 12px; width: 100%;">
+                        <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size: 12px; width: 100%;">
                           <thead>
                             <tr>
                               <th>No</th>
@@ -93,9 +99,8 @@
         </div>
     </div>
   </div>
-
-@include('admin.dashboard.modal')
-@endsection
+  @include('admin.dashboard.modal')
+ @endsection
 <script src="{{APP_ASSETS}}plugins/jquery/jquery.min.js"></script>
  
  
@@ -106,6 +111,21 @@ var table;
 var base_url = '<?php echo base_url();?>';
  
 $(document).ready(function() {
+    // CKEDITOR.replace( 'isi_laporan' );
+    // CKEDITOR.replace( 'tindakan' );
+    $('.summernote').summernote({
+    height: 150,
+    toolbar: [
+        // [groupName, [list of button]]
+        ['style', ['bold', 'italic', 'underline', 'clear']],
+        ['font', ['strikethrough', 'superscript', 'subscript']],
+        ['fontsize', ['fontsize']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['height', ['height']]
+    ],
+    tooltip: false
+});
+
     $('#start').on('keyup', function() {
       dataTable
         .columns(2)
@@ -185,13 +205,28 @@ $(document).ready(function() {
                 '3%',
                 '15%',
                 '10%',
-                '12%',
-                '25%',
+                '15%',
+                '15%',
                 '20%',
-                '10%',
-                '5%',
+                '15%',
+                '7%',
                 ]
-                }
+                },
+                // customize: function (doc) {
+    
+                //         // Change dataTable layout (Table styling)
+                //         // To use predefined layouts uncomment the line below and comment the custom lines below
+                //         // doc.content[0].layout = 'lightHorizontalLines'; // noBorders , headerLineOnly
+                //         // var objLayout = {};
+                //         // objLayout['hLineWidth'] = function(i) { return .5; };
+                //         // objLayout['vLineWidth'] = function(i) { return .5; };
+                //         // objLayout['hLineColor'] = function(i) { return '#aaa'; };
+                //         // objLayout['vLineColor'] = function(i) { return '#aaa'; };
+                //         // objLayout['paddingLeft'] = function(i) { return 4; };
+                //         // objLayout['paddingRight'] = function(i) { return 4; };
+                //         // doc.content[0].layout = objLayout;
+                // }
+                
 
             }
             // {
@@ -310,15 +345,29 @@ function edit_laporan(id)
 }
 
 function lihat_laporan(id)
-{
-    $('#form')[0].reset(); // reset form on modals
-    $('.form-group').removeClass('has-error'); // clear error class
-    $('.help-block').empty(); // clear error string
- 
- 
-    //Ajax Load data from ajax
+{          
+    // $.ajax({
+    //     url : "<?php echo site_url('dashboard/ambil_satu_lap')?>/" + id,
+    //     type: "GET",
+    //     dataType: "JSON",
+    //     success: function(data)
+    //     {
+    //         $('[name="id_laporan"]').val(data.id_laporan);
+    //         $('[name="id_opd"]').val(data.id_opd);
+    //         $('[name="tanggal"]').val(data.tanggal);
+    //         $('[name="judul"]').val(data.judul);
+    //         $('[name="nama_bidang"]').val(data.nama_bidang);
+    //         $('[name="isi_laporan"]').val(data.isi_laporan);
+    //         $('[name="tindakan"]').val(data.tindakan);
+    //         $('[name="keterangan"]').val(data.keterangan);
+
+    //         $('#modal_lihatlaporan').modal('show'); // show bootstrap modal when complete loaded
+    //         $('.modal-title').text('Detail Laporan'); // Set title to Bootstrap modal title 
+    //     }
+    // });
+
     $.ajax({
-        url : "<?php echo site_url('dashboard/ajax_lihat')?>/" + id,
+        url : "<?php echo site_url('dashboard/ajax_edit')?>/" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data)
@@ -332,29 +381,11 @@ function lihat_laporan(id)
             $('[name="tindakan"]').val(data.tindakan);
             $('[name="keterangan"]').val(data.keterangan);
             // $('[name="file"]').val(data.file);
-            $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
+            $('#modal_lihatlaporan').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit Laporan'); // Set title to Bootstrap modal title
  
-            $('#file-preview').show(); // show file preview modal
- 
-            if(data.file)
-            {
-                $('#label-file').text('Change file'); // label file upload
-                $('#file-preview div').html('<img src="'+base_url+'upload/'+data.file+'" class="img-responsive">'); // show file
-                $('#file-preview div').append('<input type="checkbox" name="file" value="'+data.file+'"/> Remove file when saving'); // remove file
- 
-            }
-            else
-            {
-                $('#label-file').text('Upload file'); // label file upload
-                $('#file-preview div').text('(No file)');
-            }
  
  
-        },
-        error: function (jqXHR, textStatus, errorThrown)
-        {
-            alert('Error get data from ajax');
         }
     });
 }
@@ -391,18 +422,22 @@ function save()
  
             if(data.status) //if success close modal and reload ajax table
             {
+                swal(
+                  'Good job!',
+                  'Berhasil',
+                  'success'
+                );
                 $('#modal_form').modal('hide');
                 reload_table();
             }
             else
-            {
+            {   
                 for (var i = 0; i < data.inputerror.length; i++) 
                 {
                     $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
                     $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
                 }
             }
-            
             $('#btnSave').text('save'); //change button text
             $('#btnSave').attr('disabled',false); //set button enable 
  
@@ -410,7 +445,7 @@ function save()
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
-            alert('Error adding / update data');
+            alert('File tidak boleh kosong');
             $('#btnSave').text('save'); //change button text
             $('#btnSave').attr('disabled',false); //set button enable 
  
@@ -453,8 +488,12 @@ $(document).on("click", ".open", function() {
         var data = "{{site_url('upload/'.'" + namaFile + "'.'')}}";
         $("#judul-file").html(judulFile);
         $(".modal-body #nama-file").attr("src", data);
-    });
+    })
+ 
+        
+
  
 </script>
  
+
 

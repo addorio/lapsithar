@@ -17,7 +17,7 @@
            }
            td.highlight {
                 font-weight: bold;
-                color: blue;
+                color: blue; 
             }  
 </style> 
 
@@ -83,7 +83,7 @@
                         <br />
                         <br />
                         <div class="table-responsive">
-                        <table id="table" class="table table-bordered" cellspacing="0" width="100%" style="font-size: 12px; width: 100%;">
+                        <table id="table" class="table table-bordered" cellspacing="0" width="100%" style="font-size: 11px; width: 100%;">
                           <thead>
                             <tr>
                               <th>No</th>
@@ -121,7 +121,20 @@ var save_method; //for save method string
 var table;
 var base_url = '<?php echo base_url();?>';
  
+
 $(document).ready(function() {
+    $('.summernote').summernote({
+    height: 150,
+    toolbar: [
+        // [groupName, [list of button]]
+        ['style', ['bold', 'italic', 'underline', 'clear']],
+        ['font', ['strikethrough', 'superscript', 'subscript']],
+        ['fontsize', ['fontsize']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['height', ['height']]
+    ],
+    tooltip: false
+});
     $('#start').on('keyup', function() {
       dataTable
         .columns(2)
@@ -314,6 +327,32 @@ function edit_laporan(id)
         }
     });
 }
+
+function lihat_laporan(id)
+{          
+    $.ajax({
+        url : "<?php echo site_url('userpage/ajax_edit')?>/" + id,
+        type: "GET",
+        dataType: "JSON",
+        success: function(data)
+        {
+            $('[name="id_laporan"]').val(data.id_laporan);
+            $('[name="id_opd"]').val(data.id_opd);
+            $('[name="tanggal"]').val(data.tanggal);
+            $('[name="judul"]').val(data.judul);
+            $('[name="nama_bidang"]').val(data.nama_bidang);
+            $('[name="isi_laporan"]').val(data.isi_laporan);
+            $('[name="tindakan"]').val(data.tindakan);
+            $('[name="keterangan"]').val(data.keterangan);
+            // $('[name="file"]').val(data.file);
+            $('#modal_lihatlaporan').modal('show'); // show bootstrap modal when complete loaded
+            $('.modal-title').text('Edit Laporan'); // Set title to Bootstrap modal title
+ 
+ 
+ 
+        }
+    });
+}
  
 function reload_table()
 {
@@ -347,6 +386,11 @@ function save()
  
             if(data.status) //if success close modal and reload ajax table
             {
+                swal(
+                  'Good job!',
+                  'Berhasil',
+                  'success'
+                );
                 $('#modal_form').modal('hide');
                 reload_table();
             }
@@ -358,11 +402,6 @@ function save()
                     $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
                 }
             }
-            // swal(
-            //       'Good job!',
-            //       'Success!',
-            //       'success'
-            //     );
             $('#btnSave').text('save'); //change button text
             $('#btnSave').attr('disabled',false); //set button enable 
  
@@ -370,7 +409,7 @@ function save()
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
-            alert('Error adding / update data');
+            alert('File tidak boleh kosong');
             $('#btnSave').text('save'); //change button text
             $('#btnSave').attr('disabled',false); //set button enable 
  

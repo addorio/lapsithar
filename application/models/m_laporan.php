@@ -228,4 +228,12 @@ public function __construct()
           ]; 
            $this->session->set_userdata($sesi_tanggal);
       }
+
+      function ambilSatuLap($id_laporan)
+    {
+        $this->db->from('tb_laporan l');
+        $this->db->join('tb_opd','tb_opd.id_opd=l.id_opd');
+        $this->db->where('l.id_laporan',$id_laporan);
+        return $this->db->get($this->table)->result();
+    }
  }  

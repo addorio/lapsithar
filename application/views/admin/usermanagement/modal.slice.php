@@ -1,4 +1,4 @@
-<!-- Modal -->
+    <!-- Modal -->
  <div id="userModal" class="modal fade">  
       <div class="modal-dialog modal-lg" style="width: 90%;">  
            <form method="post" id="user_form">  
@@ -19,10 +19,12 @@
                                 <option value="<?=$opd->id_opd?>"><?=$opd->nama_opd?></option>
                             <?php } ?>
                             </select>
+                            <span name="id_opd" style="color: red;"></span>
                           </div>
                           <div class="col-6">
                             <label>Nama</label>
                             <input type="text" class="form-control input-flat" name="nama" placeholder="Nama">
+                            <span name="nama" style="color: red;"></span>
                           </div>
                         </div>
 
@@ -32,10 +34,12 @@
                           <div class="col-6">
                             <label>Username</label>
                             <input type="text" class="form-control input-flat" name="username" placeholder="Username">
+                            <span name="username" style="color: red;"></span>
                           </div>
                           <div class="col-6">
                             <label>Password</label>
                             <input type="password" class="form-control input-flat" name="password" placeholder="Password">
+                            <span name="password" style="color: red;"></span>
                           </div>
                         </div>
 
@@ -49,12 +53,17 @@
                                 <option value="<?=$lvl->id_level?>"><?=$lvl->nama_level?></option>
                             <?php } ?>
                             </select>
+                            <span name="id_level" style="color: red;"></span>
                           </div>
                         </div>
 
                       </div> 
                      </div>  
                      <div class="modal-footer">  
+<!--                           <input type="hidden" name="id_user" id="id_user" class="btn btn-success" value="Add" />
+                          <input type="hidden" name="action" class="btn btn-success" value="Add" />                          
+                          <input type="submit" name="action" class="btn btn-success" value="Add" />
+                          <button type="button" class="btn btn-default" data-dismiss="modal" id="close">Close</button> -->
                           <button type="button" id="btnSave" onclick="save()" class="btn mb-1 btn-flat btn-outline-primary">Save</button>
                           <button type="button" class="btn mb-1 btn-flat btn-outline-danger" data-dismiss="modal">Cancel</button>
                      </div>  
@@ -123,8 +132,8 @@
                           <input type="hidden" name="action" class="btn btn-success" value="Add" />                          
                           <input type="submit" name="action" class="btn btn-success" value="Add" />
                           <button type="button" class="btn btn-default" data-dismiss="modal" id="close">Close</button> -->
-                          <button type="button" id="btnSave" onclick="save()" class="btn mb-1 btn-flat btn-outline-primary">Simpan</button>
-                          <button type="button" class="btn mb-1 btn-flat btn-outline-danger" data-dismiss="modal">Batal</button>
+                          <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                      </div>  
                 </div>  
            </form>  
