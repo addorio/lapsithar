@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2020 at 02:45 PM
+-- Generation Time: Feb 18, 2020 at 05:14 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -71,10 +71,15 @@ CREATE TABLE `tb_laporan` (
 --
 
 INSERT INTO `tb_laporan` (`id_laporan`, `id_opd`, `tanggal`, `judul`, `nama_bidang`, `isi_laporan`, `tindakan`, `keterangan`, `file`) VALUES
-(37, 1, '2020-02-28 03:03:51', 'Sekretariat Daerah', 'Ideologi', 'aaaaaaaaaaaaaaaaaa', 'aaaaaaaaaaaaaaaaaaaaaa', 'Belum Selesai', '1106211521.pdf'),
-(47, 10, '2020-02-01 12:00:44', 'Laporan KOMINFO', 'Kegiatan Kemasyarakatan', 'Laporan KOMINFO', 'Laporan KOMINFO', 'Selesai', '464855170.pdf'),
-(61, 10, '2020-02-20 06:18:43', 'Laporan KOMINFO	', 'Ideologi', 'Laporan KOMINFO	', 'Laporan KOMINFO	', 'Selesai', '1864974557.pdf'),
-(64, 3, '2020-02-15 06:59:33', 'Disdik', 'Sosial Budaya', 'Disdik', 'Disdik', 'Selesai', '1730300921.pdf');
+(82, 1, '2020-02-23 09:20:22', 'Laporan Baru', 'Ideologi', 'Laporan Baru', 'Laporan Baru', 'Selesai', '1581906037732.pdf'),
+(95, 1, '2020-02-18 11:20:40', 'xcb', 'Ideologi', 'xcb', 'xcb', 'Selesai', '1581999664960.png'),
+(100, 4, '2020-02-26 10:16:27', 'Dinas Kesehatan', 'Kegiatan Kemasyarakatan', '<p>Dinas Kesehatan</p>', '<p>Dinas Kesehatan</p>', 'Belum Selesai', '1582039015177.pdf'),
+(101, 3, '2020-02-18 10:17:23', 'Dinas Kesehatan', 'Ideologi', '<p>Dinas Kesehatan</p>', '<p>Dinas Kesehatan</p>', 'Selesai', '1582039052185.pdf'),
+(108, 10, '2020-02-17 10:52:21', 'asd', 'Ideologi', '<p>asd</p>', '<p>asd</p>', 'Belum Selesai', '1582041151783.png'),
+(109, 10, '2020-02-19 10:52:37', 'aaaaaa', 'Kegiatan Kemasyarakatan', '<p>aaaaa</p>', '<p>aaaaaaaaaaa</p>', 'Belum Selesai', '1582041171349.pdf'),
+(110, 10, '2020-02-20 10:53:09', 'asd', 'Ideologi', '<p>asd</p>', '<p>asd</p>', 'Belum Selesai', '1582041192994.pdf'),
+(112, 1, '2020-02-18 11:00:39', 'asd', 'Ideologi', '<p>asd</p>', '<p>asd</p>', 'Selesai', '1582041643951.pdf'),
+(113, 10, '2020-02-18 11:02:05', 'a', 'Kegiatan Kemasyarakatan', '<p>a</p>', '<p>a</p>', 'Selesai', '1582041733160.pdf');
 
 -- --------------------------------------------------------
 
@@ -169,30 +174,9 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `id_opd`, `nama`, `username`, `password`, `id_level`) VALUES
-(14, 36, 'adminkesbangpol', 'adminkesbangpol', '$2y$10$XBTi9fkF2YWzMuB7JK0i2uV0sVbRo0BttgVJ52B/K4uoRfImxS5FO', 1),
+(14, 36, 'kesbang', 'adminkesbangpol', '$2y$10$XBTi9fkF2YWzMuB7JK0i2uV0sVbRo0BttgVJ52B/K4uoRfImxS5FO', 1),
 (29, 1, 'Administrator Sekda', 'adminsekda', '$2y$10$3cx3JxlMXUbZf8CUAIhO8e5NruU6FCbQ.rz0IrINvk0oXOJk3C6tS', 2),
 (30, 10, 'Admin Diskominfo Bintan', 'kominfo', '$2y$10$vGsmWEGrXwztR6KpYa/kyOxiyrvjdhbAOkwQ3lfJuWypPLNt2DFxG', 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `first_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
-  `image` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `image`) VALUES
-(1, 'Dadan', 'Maha', '12.jpg'),
-(2, 'Bondan', 'xcvxcvxvc', '1332241618.jpg');
 
 --
 -- Indexes for dumped tables
@@ -231,12 +215,6 @@ ALTER TABLE `tb_user`
   ADD KEY `level_akses` (`id_level`);
 
 --
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -244,13 +222,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `tb_bidang`
 --
 ALTER TABLE `tb_bidang`
-  MODIFY `id_bidang` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_bidang` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tb_laporan`
 --
 ALTER TABLE `tb_laporan`
-  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT for table `tb_level`
@@ -262,19 +240,13 @@ ALTER TABLE `tb_level`
 -- AUTO_INCREMENT for table `tb_opd`
 --
 ALTER TABLE `tb_opd`
-  MODIFY `id_opd` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_opd` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Constraints for dumped tables
