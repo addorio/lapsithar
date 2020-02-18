@@ -17,7 +17,7 @@
                           <div class="col-12">
                             <label>Nama</label>
                             <input type="text" class="form-control input-flat" name="nama" placeholder="Nama">
-                            <span name="nama" style="color: red;"></span>
+                            <span name="nama" style="color: red;"></span> 
                           </div>
                         </div>
                         <br>
