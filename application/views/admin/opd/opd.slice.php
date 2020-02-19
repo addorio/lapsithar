@@ -1,29 +1,6 @@
 @extends('base.main_base')
-<style>  
-           body  
-           {  
-                margin:0;  
-                padding:0;  
-                background-color:#f1f1f1;   
-           }  
-           .box  
-           {  
-                width:900px;  
-                padding:20px;  
-                background-color:#fff;  
-                border:1px solid #ccc;  
-                border-radius:5px;  
-                margin-top:10px;  
-           }
-           td.highlight {
-                font-weight: bold;
-                color: blue;
-            }  
-</style> 
-
 @section('content')
 <div class="content-body">
-            <!-- row -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -106,7 +83,6 @@ $(document).ready(function() {
     });
  
 });
- 
  
  
 function add_laporan()

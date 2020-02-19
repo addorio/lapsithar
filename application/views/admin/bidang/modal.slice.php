@@ -1,7 +1,7 @@
-<div class="modal fade" id="modal_form" role="dialog">
-    <div class="modal-dialog modal-lg" style="width: 90%;">
-        <div class="modal-content">
-            <div class="modal-header">
+<div class="modal" id="modal_form" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content animated fadeInDown">
+            <div class="modal-header p-2">
                 <h3 class="modal-title">Bidang Form</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
