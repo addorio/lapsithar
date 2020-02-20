@@ -53,6 +53,7 @@
 
           </div>
         </div>
+        
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Rekapitulasi Laporan<span><button style="float: right;" class="btn mb-1 btn-flat btn-outline-success" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Laporan</button></span></h5>
