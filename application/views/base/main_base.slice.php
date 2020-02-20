@@ -42,7 +42,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
     <div id="main-wrapper">
-<<<<<<< HEAD
 
         <!--**********************************
             Nav header start
@@ -50,11 +49,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="nav-header">
             <div class="brand-logo" style="vertical-align: middle;">
                 <a href="{{base_url('Dashboard')}}">
-=======
-        <div class="nav-header sticky">
-            <div class="brand-logo">
-                <a href="<?php echo base_url() ?>">
->>>>>>> 0712e5412117d1d55ee871fdc4059f1a0cdc2958
                     <!-- <b class="logo-abbr"><img src="{{APP_ASSETS}}images/bintan.png" alt="" sizes="100x100">Lapsithar</b> -->
                     <!-- <img src="{{APP_ASSETS}}images/bintan.png" alt="" style="max-height: 25px; max-width: 25px;"> -->
                     <span class="brand-title" style="color: white;">
