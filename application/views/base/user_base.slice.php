@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width,initial-scale=1"> 
     <title>@php echo $title;@endphp</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{APP_ASSETS}}images/favicon1.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{APP_ASSETS}}images/favicon.ico">
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
     <!-- Datetimepicker -->
     <link href="{{APP_ASSETS}}plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
@@ -126,7 +126,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <!-- <li class="nav-label">Dashboard</li> -->
                     <li>
                         <a href="<?php echo base_url('Userpage')?>" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text"> DASHBOARD</span>
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text"> Dashboard</span>
                         </a>
                     </li>
                     <!-- <li class="nav-label">Users</li> -->                   

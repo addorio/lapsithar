@@ -23,20 +23,16 @@
 
 @section('content')
 <div class="content-body">
- 
-    <div class="row page-titles mx-0">
-        <div class="col p-md-0">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-            </ol>
-        </div>
-    </div>
+
             <!-- row -->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
+        <div class="col-12">
+            <div id="judullaporan" style="color: red;">
+                <?php echo $this->session->userdata('nama_opd');?>
+            </div>
 
-              <div id="accordion-one" class="accordion">
+        <div id="accordion-one" class="accordion">
           <div class="card">
             <div class="card-header">
               <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa" aria-hidden="true"></i> Filter per tanggal</h5>
@@ -71,8 +67,41 @@
               </div>
               {{form_close()}}
             </div>
+          </div>
+        </div>
 
+        <div id="accordion-one" class="accordion">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa" aria-hidden="true"></i> Filter per tanggal</h5>
+            </div>
+            <div id="collapseOne" class="collapse show" data-parent="#accordion-one" style="">
+              {{form_open("","id='ket-filter'")}}
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-4">
+                    <div class="form-group" id="datetimepicker2" data-target-input="nearest">
+                      <select class="form-control" name="ket" id="ket">
+                          <option value="Selesai">Selesai</option>
+                          <option value="Belum">Belum Selesai</option>
+                      </select>
+                    </div>
+                  </div>
 
+                  <div class="col-2">
+                  <div class="form-group">
+                    {{form_submit("submit","Filter","class='btn mb-1 btn-flat btn-outline-primary input-group'")}}              
+                  </div>
+                  </div>
+                  <div class="col-2">
+                  <div class="form-group"> 
+                    {{form_submit("submit","Reset","class='btn mb-1 btn-flat btn-outline-secondary input-group'")}}             
+                  </div>
+                  </div>
+                </div>
+              </div>
+              {{form_close()}}
+            </div>
           </div>
         </div>
 
@@ -83,7 +112,7 @@
                         <br />
                         <br />
                         <div class="table-responsive">
-                        <table id="table" class="table table-bordered" cellspacing="0" width="100%" style="font-size: 11px; width: 100%;">
+                        <table id="table" class="table table-bordered" cellspacing="0" width="100%" style="font-size: 11px; width: 100%;" data-export-title="<?= $this->session->userdata('nama_opd') ?>">
                           <thead>
                             <tr>
                               <th>No</th>
@@ -94,6 +123,7 @@
                               <th>Isi</th>
                               <th>Tindakan</th>
                               <th>Ket</th>
+                              <th>Nama</th>
                               <th>File</th>
                               <th>Detail</th>
                               <th>Ubah</th>
@@ -116,10 +146,11 @@
  
  
 <script type="text/javascript">
- 
+
 var save_method; //for save method string
 var table;
 var base_url = '<?php echo base_url();?>';
+var user  = '<?= $user->nama_opd ?>';
  
 
 $(document).ready(function() {
@@ -135,18 +166,6 @@ $(document).ready(function() {
     ],
     tooltip: false
 });
-    $('#start').on('keyup', function() {
-      dataTable
-        .columns(2)
-        .search(this.value)
-        .draw();
-      });$('#end').on('keyup', function() {
-      dataTable
-        .columns(2)
-        .search(this.value)
-        .draw();
-      });
-
       $('#form-filter').submit('click', function() {
       $.ajax({
         url: "<?php echo site_url('userpage/filter_tanggal'); ?>",
@@ -168,10 +187,32 @@ $(document).ready(function() {
       return false;
     });
 
-
+      $('#ket-filter').submit('click', function() {
+      $.ajax({
+        url: "<?php echo site_url('userpage/filter_ket'); ?>",
+        method: "POST",
+        data: new FormData(this),
+        contentType: false,
+        processData: false,
+        success: function(data) {
+          $('#start').val("");
+          $('#end').val("");
+          swal(
+            'Sedang memfilter..',
+            'Tunggu sebentar..',
+            'info'
+          );
+          table.ajax.reload();
+        }
+      });
+      return false;
+    });
 
     //datatables
+
     table = $('#table').DataTable({ 
+
+        
         "bInfo" : false,
         "processing": true, //Feature control the processing indicator.
         "serverSide": true, //Feature control DataTables' server-side processing mode.
@@ -180,7 +221,7 @@ $(document).ready(function() {
             {
                 extend: 'excelHtml5',
                 className: 'btn mb-1 btn-flat btn-outline-success',
-                title: 'Laporan',
+                title: user,
                 exportOptions: {
                     columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ]
                 }
@@ -188,7 +229,7 @@ $(document).ready(function() {
             {
                 extend: 'pdfHtml5',
                 className: 'btn mb-1 btn-flat btn-outline-danger',
-                title: 'Laporan',
+                title: user,
                 orientation: 'landscape',
                 pageSize: 'FOLIO',
                 exportOptions: {
@@ -298,10 +339,10 @@ function edit_laporan(id)
             $('[name="tanggal"]').val(data.tanggal);
             $('[name="judul"]').val(data.judul);
             $('[name="nama_bidang"]').val(data.nama_bidang);
-            $('[name="isi_laporan"]').val(data.isi_laporan);
-            $('[name="tindakan"]').val(data.tindakan);
+            $('[name="isi_laporan"]').summernote('code', data.isi_laporan);
+            $('[name="tindakan"]').summernote('code',data.tindakan);
             $('[name="keterangan"]').val(data.keterangan);
-            // $('[name="file"]').val(data.file);
+            $('[name="nama"]').val(data.nama);
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit Laporan'); // Set title to Bootstrap modal title
  
@@ -341,9 +382,12 @@ function lihat_laporan(id)
             $('[name="tanggal"]').val(data.tanggal);
             $('[name="judul"]').val(data.judul);
             $('[name="nama_bidang"]').val(data.nama_bidang);
-            $('[name="isi_laporan"]').val(data.isi_laporan);
-            $('[name="tindakan"]').val(data.tindakan);
+            var isi = $(data.isi_laporan).text();
+            $('[name="isi_laporan"]').val(isi);
+            var tind = $(data.tindakan).text();
+            $('[name="tindakan"]').val(tind);
             $('[name="keterangan"]').val(data.keterangan);
+            $('[name="nama"]').val(data.nama);
             // $('[name="file"]').val(data.file);
             $('#modal_lihatlaporan').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit Laporan'); // Set title to Bootstrap modal title

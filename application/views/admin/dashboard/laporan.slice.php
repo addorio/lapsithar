@@ -1,26 +1,4 @@
 @extends('base.main_base')
-<style>  
-           body  
-           {  
-                margin:0;  
-                padding:0;  
-                background-color:#f1f1f1;  
-           }  
-           .box  
-           {  
-                width:900px;  
-                padding:20px;  
-                background-color:#fff;  
-                border:1px solid #ccc;  
-                border-radius:5px;  
-                margin-top:10px;  
-           }
-           td.highlight {
-                font-weight: bold;
-                color: blue;
-            }  
-</style>  
-
 @section('content')
 <div class="content-body">
             <!-- row -->
@@ -83,6 +61,7 @@
                               <th>Isi</th>
                               <th>Tindakan</th>
                               <th>Ket</th>
+                              <th>Nama</th>
                               <th>File</th>
                               <th>Detail</th>
                               <th>Ubah</th>
@@ -109,6 +88,7 @@
 var save_method; //for save method string
 var table;
 var base_url = '<?php echo base_url();?>';
+var user  = '<?= $user->nama_opd ?>';
  
 $(document).ready(function() {
     // CKEDITOR.replace( 'isi_laporan' );
@@ -171,7 +151,7 @@ $(document).ready(function() {
             {
                 extend: 'excelHtml5',
                 className: 'btn mb-1 btn-flat btn-outline-success',
-                title: 'Laporan',
+                title: user,
                 exportOptions: {
                     columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ]
                 }
@@ -179,7 +159,7 @@ $(document).ready(function() {
             {
                 extend: 'pdfHtml5',
                 className: 'btn mb-1 btn-flat btn-outline-danger',
-                title: 'Laporan',
+                title: user,
                 orientation: 'landscape',
                 pageSize: 'FOLIO',
                 exportOptions: {
@@ -313,10 +293,10 @@ function edit_laporan(id)
             $('[name="tanggal"]').val(data.tanggal);
             $('[name="judul"]').val(data.judul);
             $('[name="nama_bidang"]').val(data.nama_bidang);
-            $('[name="isi_laporan"]').val(data.isi_laporan);
-            $('[name="tindakan"]').val(data.tindakan);
+            $('[name="isi_laporan"]').summernote('code', data.isi_laporan);
+            $('[name="tindakan"]').summernote('code',data.tindakan);
             $('[name="keterangan"]').val(data.keterangan);
-            // $('[name="file"]').val(data.file);
+            $('[name="nama"]').val(data.nama);
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit Laporan'); // Set title to Bootstrap modal title
  
@@ -346,26 +326,6 @@ function edit_laporan(id)
 
 function lihat_laporan(id)
 {          
-    // $.ajax({
-    //     url : "<?php echo site_url('dashboard/ambil_satu_lap')?>/" + id,
-    //     type: "GET",
-    //     dataType: "JSON",
-    //     success: function(data)
-    //     {
-    //         $('[name="id_laporan"]').val(data.id_laporan);
-    //         $('[name="id_opd"]').val(data.id_opd);
-    //         $('[name="tanggal"]').val(data.tanggal);
-    //         $('[name="judul"]').val(data.judul);
-    //         $('[name="nama_bidang"]').val(data.nama_bidang);
-    //         $('[name="isi_laporan"]').val(data.isi_laporan);
-    //         $('[name="tindakan"]').val(data.tindakan);
-    //         $('[name="keterangan"]').val(data.keterangan);
-
-    //         $('#modal_lihatlaporan').modal('show'); // show bootstrap modal when complete loaded
-    //         $('.modal-title').text('Detail Laporan'); // Set title to Bootstrap modal title 
-    //     }
-    // });
-
     $.ajax({
         url : "<?php echo site_url('dashboard/ajax_edit')?>/" + id,
         type: "GET",
@@ -377,10 +337,13 @@ function lihat_laporan(id)
             $('[name="tanggal"]').val(data.tanggal);
             $('[name="judul"]').val(data.judul);
             $('[name="nama_bidang"]').val(data.nama_bidang);
-            $('[name="isi_laporan"]').val(data.isi_laporan);
-            $('[name="tindakan"]').val(data.tindakan);
+            var isi = $(data.isi_laporan).text();
+            $('[name="isi_laporan"]').val(isi);
+            var tind = $(data.tindakan).text();
+            $('[name="tindakan"]').val(tind);
             $('[name="keterangan"]').val(data.keterangan);
             // $('[name="file"]').val(data.file);
+            $('[name="nama"]').val(data.nama);
             $('#modal_lihatlaporan').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit Laporan'); // Set title to Bootstrap modal title
  
@@ -390,7 +353,7 @@ function lihat_laporan(id)
     });
 }
  
-function reload_table()
+function reload_table() 
 {
     table.ajax.reload(null,false); //reload datatable ajax 
 }

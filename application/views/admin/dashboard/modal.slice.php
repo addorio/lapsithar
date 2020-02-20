@@ -1,8 +1,8 @@
 <!-- Bootstrap modal -->
-<div class="modal fade" id="modal_form" role="dialog">
-    <div class="modal-dialog modal-lg" style="width: 90%;">
-        <div class="modal-content">
-            <div class="modal-header">
+<div class="modal" id="modal_form" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content animated fadeInDown">
+            <div class="modal-header  p-2">
                 <h3 class="modal-title">Laporan Form</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
@@ -77,6 +77,12 @@
                             <input type="file" class="form-control-file" name="file" id="file">
                             <div style="color: red;"></div>
                             <span id="user_uploaded_image"></span>  
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-6">
+                            <input type="text" class="form-control input-flat" id="nama" name="nama" value="<?php echo $this->session->userdata('nama')?>" hidden>
                           </div>
                         </div>
 
@@ -165,7 +171,18 @@
                       <input type="text" class="form-control" id="keterangan" name="keterangan" readonly>
                     </div>
                 </div>
-              
+                <div class="form-group row">
+                    <label class="col-sm-2 control-label" style="font-size: 14.5px;">Yang Melaporkan</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="nama" name="nama" readonly>
+                    </div>
+                </div>
+                <!-- <div class="form-group row">
+                    <embed id="nama-file" width="100%" height="460" type="application/pdf" name="file" src="<?php site_url()?>"></embed> 
+                </div> -->
+                <!-- <div class="form-group row">
+                <a class="open btn mb-1 btn-flat btn-outline-success btn-sm" data-toggle="modal" name="file">Lihat</a>
+                </div> -->
 
               </div>
                 

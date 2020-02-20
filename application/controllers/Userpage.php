@@ -9,7 +9,9 @@ class Userpage extends CI_Controller {
     }
  
     public function index()
-    {
+    {   
+        $id_user = $this->session->userdata('id_user');
+        $data['user'] = $this->m_user->getbyid($id_user); 
         $data['title'] = "LAPSITHAR | Dashboard";
         $data['opd'] = $this->m_opd->getAll();
         $data['bidang'] = $this->m_bidang->getAll();  
@@ -39,13 +41,11 @@ class Userpage extends CI_Controller {
             } else {
               $row[] = '<span class="text-danger">'.$laporan->keterangan.'</span>';
             }
-            if($laporan->file)
-                $row[] = '<a class="open btn mb-1 btn-flat btn-outline-success btn-sm" href="javascript:void(0)" data-toggle="modal" data-id="'.$laporan->file.'"><i class="glyphicon glyphicon-pencil"></i>Lihat</a>';
-            else
-                $row[] = '(Tidak ada lampiran)';
- 
+            $row[] = $laporan->nama;
+            $row[] = '<a class="open btn mb-1 btn-flat btn-outline-success btn-sm" href="javascript:void(0)" data-toggle="modal" data-id="'.$laporan->file.'"><i class="glyphicon glyphicon-pencil"></i>Lihat</a>';
+            
             //add html for action
-            $row[] = '<a class="btn btn-sm mb-1 btn-flat btn-outline-dark" href="javascript:void(0)" title="Detail" onclick="lihat_laporan('."'".$laporan->id_laporan."'".')"><i class="glyphicon glyphicon-pencil"></i> Detail</a>';
+            $row[] = '<a class="btn btn-sm mb-1 btn-flat btn-outline-dark lihatlaporan" href="javascript:void(0)" title="Detail" onclick="lihat_laporan('."'".$laporan->id_laporan."'".')"><i class="glyphicon glyphicon-pencil"></i> Detail</a>';
             $row[] = '<a class="btn mb-1 btn-flat btn-outline-primary btn-sm" href="javascript:void(0)" title="Edit" onclick="edit_laporan('."'".$laporan->id_laporan."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
             $row[] = '<a class="btn mb-1 btn-flat btn-outline-danger btn-sm" href="javascript:void(0)" title="Hapus" onclick="delete_laporan('."'".$laporan->id_laporan."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
          
@@ -85,6 +85,7 @@ class Userpage extends CI_Controller {
                      'isi_laporan'          =>     $this->input->post('isi_laporan'),  
                      'tindakan'               =>     $this->input->post("tindakan"),
                      'keterangan'               =>     $this->input->post("keterangan"),
+                     'nama'               =>     $this->input->post("nama"),
             );
 
             $upload = $this->_do_upload();
@@ -110,6 +111,7 @@ class Userpage extends CI_Controller {
                      'isi_laporan'          =>     $this->input->post('isi_laporan'),  
                      'tindakan'               =>     $this->input->post("tindakan"),
                      'keterangan'               =>     $this->input->post("keterangan"),
+                     'nama'               =>     $this->input->post("nama"),
             );
  
         if($this->input->post('remove_file')) // if remove file checked
@@ -234,6 +236,11 @@ class Userpage extends CI_Controller {
           json_encode($data);
      }
 
+     function filter_ket(){
+          $data = $this->laporan->filterKet();
+          json_encode($data);
+     }
+
      function ambil_satu_lap()
     {
         $output = array();
@@ -248,6 +255,8 @@ class Userpage extends CI_Controller {
             $output['isi_laporan'] = $row->isi_laporan;
             $output['tindakan'] = $row->tindakan;
             $output['keterangan'] = $row->keterangan;
+            $output['nama'] = $row->keterangan;
+            // $output['file'] = $row->keterangan;
         }
         echo json_encode($output);
     }
