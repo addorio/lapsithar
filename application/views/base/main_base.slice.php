@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo" style="vertical-align: middle;">
-                <a href="<?php echo base_url() ?>">
+                <a href="{{base_url('Dashboard')}}">
                     <!-- <b class="logo-abbr"><img src="{{APP_ASSETS}}images/bintan.png" alt="" sizes="100x100">Lapsithar</b> -->
                     <!-- <img src="{{APP_ASSETS}}images/bintan.png" alt="" style="max-height: 25px; max-width: 25px;"> -->
                     <span class="brand-title" style="color: white;">
@@ -79,19 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <span class="toggle-icon"><i class="icon-menu"></i></span>
                     </div>
                 </div>
-                <div class="header-left">
-                    <div class="input-group icons">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
-                        </div>
-                        <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
-                        <div class="drop-down animated flipInX d-md-none">
-                            <form action="#">
-                                <input type="text" class="form-control" placeholder="Search">
-                            </form>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="header-right">
                     <ul class="clearfix">
                         <li class="icons dropdown">
@@ -164,7 +152,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+                <p>Copyright &copy; Dirancang & Dibangun oleh  <a href="diskominfo.bintankab.go.id">Diskominfo</a> 2020</p>
             </div>
         </div>
         <!--**********************************
@@ -210,16 +198,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="{{APP_ASSETS}}js/dashboard/dashboard-1.js"></script>
 
     <script src="{{APP_ASSETS}}plugins/tables/js/jquery.dataTables.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.responsive.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.buttons.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js" type="text/javascript"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/buttons.flash.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/jszip.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/pdfmake.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/vfs_fonts.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/buttons.html5.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/buttons.print.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/buttons.colVis.min.j"></script>
     <script type="text/javascript" src="{{APP_ASSETS}}plugins/sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
   <!--   <script type="text/javascript" src="{{APP_ASSETS}}plugins/ckeditor/ckeditor.js"></script> -->
