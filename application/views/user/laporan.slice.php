@@ -40,19 +40,26 @@
             <div id="collapseOne" class="collapse show" data-parent="#accordion-one" style="">
               {{form_open("","id='form-filter'")}}
               <div class="card-body">
-                <div class="row">
-                  <div class="col-4">
-                    <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                      <input type="text" id="start" name="start_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" placeholder="Tanggal mulai" />
-                    </div>
-                  </div>
-                  <div class="col-4">
-                    <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                      <input type="text" id="end" name="end_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" placeholder="Tanggal akhir"/>
-                    </div>
-                  </div>
-                  
 
+                <div class="row">
+                  <div class="col-3">
+                    <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                      <input type="text" id="start" name="start_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" placeholder="Dari tanggal" />
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                      <input type="text" id="end" name="end_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" placeholder="Hingga tanggal"/>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="form-group" id="datetimepicker2" data-target-input="nearest">
+                      <select>
+                        <option value="Selesai">Selesai</option>
+                        <option value="Belum">Belum Selesai</option>
+                      </select>
+                    </div>
+                  </div>
                   <div class="col-2">
                   <div class="form-group">
                     {{form_submit("submit","Filter","class='btn mb-1 btn-flat btn-outline-primary input-group'")}}              
@@ -63,6 +70,14 @@
                     {{form_submit("submit","Reset","class='btn mb-1 btn-flat btn-outline-secondary input-group'")}}             
                   </div>
                   </div>
+                </div>
+              </div>
+              {{form_close()}}
+
+              {{form_open("","id='ket-filter'")}}
+              <div class="card-body">
+                <div class="row">
+                  
                 </div>
               </div>
               {{form_close()}}
@@ -76,31 +91,7 @@
               <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa" aria-hidden="true"></i> Filter per tanggal</h5>
             </div>
             <div id="collapseOne" class="collapse show" data-parent="#accordion-one" style="">
-              {{form_open("","id='ket-filter'")}}
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-4">
-                    <div class="form-group" id="datetimepicker2" data-target-input="nearest">
-                      <select class="form-control" name="ket" id="ket">
-                          <option value="Selesai">Selesai</option>
-                          <option value="Belum">Belum Selesai</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="col-2">
-                  <div class="form-group">
-                    {{form_submit("submit","Filter","class='btn mb-1 btn-flat btn-outline-primary input-group'")}}              
-                  </div>
-                  </div>
-                  <div class="col-2">
-                  <div class="form-group"> 
-                    {{form_submit("submit","Reset","class='btn mb-1 btn-flat btn-outline-secondary input-group'")}}             
-                  </div>
-                  </div>
-                </div>
-              </div>
-              {{form_close()}}
+              
             </div>
           </div>
         </div>
@@ -176,6 +167,7 @@ $(document).ready(function() {
         success: function(data) {
           $('#start').val("");
           $('#end').val("");
+          $('#ket').val("");
           swal(
             'Sedang memfilter..',
             'Tunggu sebentar..',

@@ -15,7 +15,7 @@ class Dashboard extends CI_Controller {
         $data['title'] = "LAPSITHAR | Dashboard";
         $data['opd'] = $this->m_opd->getAll();
         $data['bidang'] = $this->m_bidang->getAll();  
-        view('admin.dashboard.laporan', $data);
+        view('admin.dashboard.laporan', $data); 
     }
  
     public function ajax_list()
@@ -252,7 +252,11 @@ class Dashboard extends CI_Controller {
     function filter_tanggal(){
           $data = $this->laporan->filterTanggal();
           json_encode($data);
-     } 
+    } 
+    function filter_ket(){
+          $data = $this->laporan->filterKeterangan();
+          json_encode($data);
+    } 
 
      function ambil_satu_lap()
     {

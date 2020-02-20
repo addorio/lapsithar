@@ -119,16 +119,25 @@ public function __construct()
     private function _get_datatables_query()
     {
          
+        // $tanggal_mulai = $this->session->userdata('tanggal_mulai');
+        // $tanggal_akhir = $this->session->userdata('tanggal_akhir');
+        // if($tanggal_mulai != '' && $tanggal_akhir != ''){
+        //        $this->db->where('tb_laporan.tanggal >=', $tanggal_mulai);
+        //        $this->db->where('tb_laporan.tanggal <=', $tanggal_akhir);
+        //    }
+
         $tanggal_mulai = $this->session->userdata('tanggal_mulai');
         $tanggal_akhir = $this->session->userdata('tanggal_akhir');
-        if($tanggal_mulai != '' && $tanggal_akhir != ''){
+        $ket = $this->session->userdata('ket');
+        if($tanggal_mulai != '' && $tanggal_akhir != '' && $ket = ''){
                $this->db->where('tb_laporan.tanggal >=', $tanggal_mulai);
                $this->db->where('tb_laporan.tanggal <=', $tanggal_akhir);
-           }
-        $ket = $this->session->userdata('ket');
-        if($ket != ''){
-               $this->db->where('tb_laporan.keterangan =', $ket);
-           }
+        } else if($tanggal_mulai != '' && $tanggal_akhir != '' && $ket != ''){
+               $this->db->where('tb_laporan.tanggal >=', $tanggal_mulai);
+               $this->db->where('tb_laporan.tanggal <=', $tanggal_akhir);
+               $this->db->where('tb_laporan.keterangan', $ket);
+        }
+        
         $this->db->from('tb_laporan');
         $this->db->join('tb_opd','tb_opd.id_opd=tb_laporan.id_opd');
  
@@ -233,7 +242,7 @@ public function __construct()
            $this->session->set_userdata($sesi_tanggal);
       }
 
-      function filterKet()
+      function filterKeterangan()
       {
           $ket = $this->input->post('ket');
   

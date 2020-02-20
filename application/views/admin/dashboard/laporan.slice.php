@@ -15,18 +15,25 @@
               {{form_open("","id='form-filter'")}}
               <div class="card-body">
                 <div class="row">
-                  <div class="col-4">
+                  <div class="col-3">
                     <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                      <input type="text" id="start" name="start_date" autocomplete="off" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" placeholder="Tanggal mulai" />
+                      <input type="text" id="start" name="start_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" placeholder="Dari tanggal" />
                     </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-3">
                     <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                      <input type="text" id="end" name="end_date" autocomplete="off" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" placeholder="Tanggal akhir"/>
+                      <input type="text" id="end" name="end_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" placeholder="Hingga tanggal"/>
                     </div>
                   </div>
-                  
-
+                  <div class="col-3">
+                    <div class="form-group" id="datetimepicker2" data-target-input="nearest">
+                      <select class="form-control">
+                        <option value="-">-</option>
+                        <option value="Selesai">Selesai</option>
+                        <option value="Belum">Belum Selesai</option>
+                      </select>
+                    </div>
+                  </div>
                   <div class="col-2">
                   <div class="form-group">
                     {{form_submit("submit","Filter","class='btn mb-1 btn-flat btn-outline-primary input-group'")}}              

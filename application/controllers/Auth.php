@@ -57,8 +57,10 @@ class Auth extends CI_Controller
                     $this->session->set_userdata($data);
                     if ($user['id_level'] == 1) {
                         redirect('Dashboard');
+                        helper_log("login", "Logged in");
                     } else {
                         redirect('Userpage');
+                        helper_log("login", "Logged in");
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
@@ -72,6 +74,7 @@ class Auth extends CI_Controller
 
     public function logout()
     {
+        helper_log("logout", "Logged Out");
         $this->session->unset_userdata('username');
         $this->session->unset_userdata('id_level');
         $this->session->sess_destroy();

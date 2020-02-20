@@ -97,7 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <img src="{{APP_ASSETS}}images/user/1.png" height="40" width="40" alt="">
+                                <img src="{{APP_ASSETS}}images/user/form-user.png" height="40" width="40" alt="">
                             </div>
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
@@ -144,7 +144,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a href="<?php echo base_url('Bidang')?>" aria-expanded="false">
                             <i class="icon-user menu-icon"></i><span class="nav-text"> Bidang</span>
                         </a>
-                    </li>                       
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('Riwayat')?>" aria-expanded="false">
+                            <i class="icon-user menu-icon"></i><span class="nav-text"> Riwayat Aktivitas</span>
+                        </a>
+                    </li>                     
                 </ul>
             </div>
         </div>
