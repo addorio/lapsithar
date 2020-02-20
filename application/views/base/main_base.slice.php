@@ -33,9 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 
 <body>
-    <!--*******************
-        Preloader start
-    ********************-->
+
     <div id="preloader">
         <div class="loader">
             <svg class="circular" viewBox="25 25 50 50">
@@ -43,13 +41,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </svg>
         </div>
     </div>
-    <!--*******************
-        Preloader end
-    ********************-->
-    <!--**********************************
-        Main wrapper start
-    ***********************************-->
     <div id="main-wrapper">
+<<<<<<< HEAD
 
         <!--**********************************
             Nav header start
@@ -57,6 +50,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="nav-header">
             <div class="brand-logo" style="vertical-align: middle;">
                 <a href="{{base_url('Dashboard')}}">
+=======
+        <div class="nav-header sticky">
+            <div class="brand-logo">
+                <a href="<?php echo base_url() ?>">
+>>>>>>> 0712e5412117d1d55ee871fdc4059f1a0cdc2958
                     <!-- <b class="logo-abbr"><img src="{{APP_ASSETS}}images/bintan.png" alt="" sizes="100x100">Lapsithar</b> -->
                     <!-- <img src="{{APP_ASSETS}}images/bintan.png" alt="" style="max-height: 25px; max-width: 25px;"> -->
                     <span class="brand-title" style="color: white;">
@@ -65,15 +63,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </a>
             </div>
         </div>
-        <!--**********************************
-            Nav header end
-        ***********************************-->
-        <!--**********************************
-            Header start
-        ***********************************-->
         <div class="header">    
             <div class="header-content clearfix">
-                
                 <div class="nav-control">
                     <div class="hamburger">
                         <span class="toggle-icon"><i class="icon-menu"></i></span>
@@ -102,22 +93,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
         </div>
-        <!--**********************************
-            Header end ti-comment-alt
-        ***********************************-->
-        <!--**********************************
-            Sidebar start
-        ***********************************-->
         <div class="nk-sidebar">           
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
-                    <!-- <li class="nav-label">Dashboard</li> -->
                     <li>
                         <a href="<?php echo base_url('Dashboard')?>" aria-expanded="false">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text"> Dashboard</span>
                         </a>
                     </li>
-                    <!-- <li class="nav-label">Users</li> -->
                     <li>
                         <a href="<?php echo base_url('User')?>" aria-expanded="false">
                             <i class="icon-user menu-icon"></i><span class="nav-text"> Users</span>
@@ -136,36 +119,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </ul>
             </div>
         </div>
-        <!--**********************************
-            Sidebar end
-        ***********************************-->
-        <!--**********************************
-            Content body start
-        ***********************************-->
         @yield('content')
-        <!--**********************************
-            Content body end
-        ***********************************-->
-        
-        <!--**********************************
-            Footer start
-        ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright &copy; Dirancang & Dibangun oleh  <a href="diskominfo.bintankab.go.id">Diskominfo</a> 2020</p>
+            <p>Copyright &copy; 2020 Diskominfo All Right Reserved<span class="float-right"> Lapsithar v.1.0</span></p>
             </div>
         </div>
-        <!--**********************************
-            Footer end
-        ***********************************-->
     </div>
-    <!--**********************************
-        Main wrapper end
-    ***********************************-->
-
-    <!--**********************************
-        Scripts
-    ***********************************-->
     <!-- @section('javascript') -->
     <script src="{{APP_ASSETS}}plugins/jquery/jquery.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/common/common.min.js"></script>
@@ -211,14 +171,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="{{APP_ASSETS}}plugins/tables/js/buttons.colVis.min.j"></script>
     <script type="text/javascript" src="{{APP_ASSETS}}plugins/sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
-  <!--   <script type="text/javascript" src="{{APP_ASSETS}}plugins/ckeditor/ckeditor.js"></script> -->
-
-    <!-- <script type="text/javascript">
-            $('#tanggal').datetimepicker({
-            format: 'YYYY-MM-DD HH:MM:SS',
-            sideBySide: true
-        });
-    </script> -->
     <script type="text/javascript">
         $('#tanggal').bootstrapMaterialDatePicker({
         format: 'YYYY-MM-DD hh:mm:ss',
