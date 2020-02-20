@@ -186,7 +186,7 @@ public function __construct()
 
     function get_datatables1($id_opd)
     {
-        $this->_get_datatables_query1($id_opd);
+        $this->_get_datatables_query($id_opd);
         if($_POST['length'] != -1)
         $this->db->limit($_POST['length'], $_POST['start']);
         $query = $this->db->get();
@@ -252,8 +252,8 @@ public function __construct()
       function ambilSatuLap($id_laporan)
     {
         $this->db->from('tb_laporan l');
-        $this->db->join('tb_opd','tb_opd.id_opd=l.id_opd');
+        $this->db->join('tb_opd o','o.id_opd=l.id_opd');
         $this->db->where('l.id_laporan',$id_laporan);
-        return $this->db->get($this->table)->result();
+        return $this->db->get()->result();
     }
  }  

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2020 at 05:14 PM
+-- Generation Time: Feb 20, 2020 at 06:09 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -63,23 +63,18 @@ CREATE TABLE `tb_laporan` (
   `isi_laporan` text NOT NULL,
   `tindakan` text NOT NULL,
   `keterangan` text NOT NULL,
-  `file` text NOT NULL
+  `file` text NOT NULL,
+  `nama` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_laporan`
 --
 
-INSERT INTO `tb_laporan` (`id_laporan`, `id_opd`, `tanggal`, `judul`, `nama_bidang`, `isi_laporan`, `tindakan`, `keterangan`, `file`) VALUES
-(82, 1, '2020-02-23 09:20:22', 'Laporan Baru', 'Ideologi', 'Laporan Baru', 'Laporan Baru', 'Selesai', '1581906037732.pdf'),
-(95, 1, '2020-02-18 11:20:40', 'xcb', 'Ideologi', 'xcb', 'xcb', 'Selesai', '1581999664960.png'),
-(100, 4, '2020-02-26 10:16:27', 'Dinas Kesehatan', 'Kegiatan Kemasyarakatan', '<p>Dinas Kesehatan</p>', '<p>Dinas Kesehatan</p>', 'Belum Selesai', '1582039015177.pdf'),
-(101, 3, '2020-02-18 10:17:23', 'Dinas Kesehatan', 'Ideologi', '<p>Dinas Kesehatan</p>', '<p>Dinas Kesehatan</p>', 'Selesai', '1582039052185.pdf'),
-(108, 10, '2020-02-17 10:52:21', 'asd', 'Ideologi', '<p>asd</p>', '<p>asd</p>', 'Belum Selesai', '1582041151783.png'),
-(109, 10, '2020-02-19 10:52:37', 'aaaaaa', 'Kegiatan Kemasyarakatan', '<p>aaaaa</p>', '<p>aaaaaaaaaaa</p>', 'Belum Selesai', '1582041171349.pdf'),
-(110, 10, '2020-02-20 10:53:09', 'asd', 'Ideologi', '<p>asd</p>', '<p>asd</p>', 'Belum Selesai', '1582041192994.pdf'),
-(112, 1, '2020-02-18 11:00:39', 'asd', 'Ideologi', '<p>asd</p>', '<p>asd</p>', 'Selesai', '1582041643951.pdf'),
-(113, 10, '2020-02-18 11:02:05', 'a', 'Kegiatan Kemasyarakatan', '<p>a</p>', '<p>a</p>', 'Selesai', '1582041733160.pdf');
+INSERT INTO `tb_laporan` (`id_laporan`, `id_opd`, `tanggal`, `judul`, `nama_bidang`, `isi_laporan`, `tindakan`, `keterangan`, `file`, `nama`) VALUES
+(116, 1, '2020-02-19 09:18:40', 'asd', 'Kegiatan Kemasyarakatan', '<p>asd</p>', '<p>asd</p>', 'Selesai', '1582165128552.pdf', 'Dadan Mahardhika'),
+(117, 10, '2020-02-20 09:35:43', 'asd', 'Kegiatan Kemasyarakatan', '<p>asd</p>', '<p>asd</p>', 'Selesai', '1582166154344.pdf', 'Admin Diskominfo Bintan'),
+(118, 10, '2020-02-20 09:55:58', 'asdasd', 'Ideologi', '<p><b>asd</b></p>', '<p><b><i>asd</i></b></p>', 'Belum Selesai', '1582167366833.pdf', 'Admin Diskominfo Bintan');
 
 -- --------------------------------------------------------
 
@@ -174,7 +169,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `id_opd`, `nama`, `username`, `password`, `id_level`) VALUES
-(14, 36, 'kesbang', 'adminkesbangpol', '$2y$10$XBTi9fkF2YWzMuB7JK0i2uV0sVbRo0BttgVJ52B/K4uoRfImxS5FO', 1),
+(14, 36, 'Dadan Mahardhika', 'adminkesbangpol', '$2y$10$XBTi9fkF2YWzMuB7JK0i2uV0sVbRo0BttgVJ52B/K4uoRfImxS5FO', 1),
 (29, 1, 'Administrator Sekda', 'adminsekda', '$2y$10$3cx3JxlMXUbZf8CUAIhO8e5NruU6FCbQ.rz0IrINvk0oXOJk3C6tS', 2),
 (30, 10, 'Admin Diskominfo Bintan', 'kominfo', '$2y$10$vGsmWEGrXwztR6KpYa/kyOxiyrvjdhbAOkwQ3lfJuWypPLNt2DFxG', 2);
 
@@ -228,7 +223,7 @@ ALTER TABLE `tb_bidang`
 -- AUTO_INCREMENT for table `tb_laporan`
 --
 ALTER TABLE `tb_laporan`
-  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 
 --
 -- AUTO_INCREMENT for table `tb_level`
