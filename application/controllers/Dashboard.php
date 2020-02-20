@@ -30,7 +30,7 @@ class Dashboard extends CI_Controller
             $row = array();
             $row[] = $no;
             $row[] = $laporan->nama_opd;
-            $row[] = $laporan->tanggal;
+            $row[] = date('d/m/Y (h:i:s)', strtotime($laporan->tanggal));
             $row[] = $laporan->judul;
             $row[] = $laporan->nama_bidang;
             $row[] = $laporan->isi_laporan;
@@ -250,7 +250,7 @@ class Dashboard extends CI_Controller
         $data = $this->laporan->ambilSatuLap($id_laporan);
         foreach ($data as $row) {
             $output['lihat_nama_opd'] = $row->nama_opd;
-            $output['lihat_tanggal'] = date('d/m/Y (h:i:s)',strtotime($row->tanggal));
+            $output['lihat_tanggal'] = date('d/m/Y (h:i:s)', strtotime($row->tanggal));
             $output['lihat_judul'] = $row->judul;
             $output['lihat_nama_bidang'] = $row->nama_bidang;
             $output['lihat_isi_laporan'] = $row->isi_laporan;

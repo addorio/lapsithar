@@ -225,13 +225,15 @@
 
       //Set column definition initialisation properties.
       "columnDefs": [{
-          "targets": [-1], //last column
+          "targets": [0,-1], //last column
           "orderable": false, //set not orderable
         },
         {
           "targets": [-2], //2 last column (photo)
           "orderable": false, //set not orderable
         },
+        { responsivePriority: 1, targets: 0 },
+        { responsivePriority: 2, targets: [-1,-2,-3] },
       ],
 
     });;
