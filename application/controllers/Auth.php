@@ -56,11 +56,11 @@ class Auth extends CI_Controller
                     ];
                     $this->session->set_userdata($data);
                     if ($user['id_level'] == 1) {
+                        helper_log("login", "Logged in");
                         redirect('Dashboard');
-                        helper_log("login", "Logged in");
                     } else {
-                        redirect('Userpage');
                         helper_log("login", "Logged in");
+                        redirect('Userpage');  
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');

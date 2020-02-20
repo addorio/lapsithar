@@ -22,26 +22,20 @@
                   </div>
                   <div class="col-3">
                     <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-<<<<<<< HEAD
+
                       <input type="text" id="end" name="end_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" placeholder="Hingga tanggal"/>
                     </div>
                   </div>
                   <div class="col-3">
                     <div class="form-group" id="datetimepicker2" data-target-input="nearest">
-                      <select class="form-control">
-                        <option value="-">-</option>
-                        <option value="Selesai">Selesai</option>
-                        <option value="Belum">Belum Selesai</option>
-                      </select>
-                    </div>
-                  </div>
-=======
-                      <input type="text" id="end" name="end_date" autocomplete="off" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" placeholder="Tanggal akhir" />
+                      <input type="text" name="ket" id="ket" class="form-control">
                     </div>
                   </div>
 
+                      
+                    </div>
+                  </div>
 
->>>>>>> 04608a4cd7a9dd92f12bb225cca979f10947553d
                   <div class="col-2">
                     <div class="form-group">
                       {{form_submit("submit","Filter","class='btn mb-1 btn-flat btn-outline-primary input-group'")}}
@@ -117,18 +111,18 @@
       tooltip: false
     });
 
-    $('#start').on('keyup', function() {
-      dataTable
-        .columns(2)
-        .search(this.value)
-        .draw();
-    });
-    $('#end').on('keyup', function() {
-      dataTable
-        .columns(2)
-        .search(this.value)
-        .draw();
-    });
+    // $('#start').on('keyup', function() {
+    //   dataTable
+    //     .columns(2)
+    //     .search(this.value)
+    //     .draw();
+    // });
+    // $('#end').on('keyup', function() {
+    //   dataTable
+    //     .columns(2)
+    //     .search(this.value)
+    //     .draw();
+    // });
 
     $('#form-filter').submit('click', function() {
       $.ajax({
@@ -163,9 +157,9 @@
       buttons: [{
           extend: 'excelHtml5',
           className: 'btn mb-1 btn-flat btn-outline-success',
-          title: user,
+          title: 'Laporan',
           exportOptions: {
-            columns: [0, 1, 2, 3, 4, 5, 6, 7]
+            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8]
           }
         },
         {
@@ -175,49 +169,125 @@
           orientation: 'landscape',
           pageSize: 'FOLIO',
           exportOptions: {
-            columns: [0, 1, 2, 3, 4, 5, 6, 7]
+            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8]
           },
-          customize: function(doc) {
-            // ket = table.column(7).data().toArray();
-            //   for (var i = 0; i < ket.length; i++) {
-            //     if (ket[i] = 'Belum Selesai') {
-            //       doc.content[1].table.body[i+1][7].fillColor = 'red';
-            //     }
-            //   };
+          // customize: function(doc) {
+          //   var now = new Date();
+          //   var jsDate = now.getDate()+'-'+(now.getMonth()+1)+'-'+now.getFullYear();
 
-            doc.pageMargins = [60, 75, 60, 60];
+          //   var objLayout = {};
+          //   objLayout['hLineWidth'] = function(i) { return 10; };
+          //   objLayout['vLineWidth'] = function(i) { return 10; };
+          //   objLayout['hLineColor'] = function(i) { return '#A9ACAC'; };
+          //   objLayout['vLineColor'] = function(i) { return '#A9ACAC'; };
+          //   objLayout['paddingLeft'] = function(i) { return 4; };
+          //   objLayout['paddingRight'] = function(i) { return 4; };
+          //   doc.content[0].layout = objLayout;
 
-            doc.content[1].table.widths =
-              Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+          //   doc.pageMargins = [60, 75, 60, 60];
 
-            doc.content[1].table.body[0].forEach(function(h) {
-              h.fillColor = 'blue'
-            });
-            doc.content[1].table.widths = [
-              '3%',
-              '15%',
-              '10%',
-              '15%',
-              '15%',
-              '20%',
-              '15%',
-              '7%',
-            ]
-          },
-          // customize: function (doc) {
+          //   doc.content[1].table.widths =
+          //     Array(doc.content[1].table.body[0].length + 1).join('*').split('');
 
-          //         // Change dataTable layout (Table styling)
-          //         // To use predefined layouts uncomment the line below and comment the custom lines below
-          //         // doc.content[0].layout = 'lightHorizontalLines'; // noBorders , headerLineOnly
-          //         // var objLayout = {};
-          //         // objLayout['hLineWidth'] = function(i) { return .5; };
-          //         // objLayout['vLineWidth'] = function(i) { return .5; };
-          //         // objLayout['hLineColor'] = function(i) { return '#aaa'; };
-          //         // objLayout['vLineColor'] = function(i) { return '#aaa'; };
-          //         // objLayout['paddingLeft'] = function(i) { return 4; };
-          //         // objLayout['paddingRight'] = function(i) { return 4; };
-          //         // doc.content[0].layout = objLayout;
+          //   doc.content[1].table.body[0].forEach(function(h) {
+          //     h.fillColor = 'black';
+          //     h.vLineColor = 'black';
+          //     h.hLineColor = 'black';
+          //   });
+          //   doc.content[1].table.widths = [
+          //     '2%',
+          //     '15%',
+          //     '10%',
+          //     '10%',
+          //     '10%',
+          //     '18%',
+          //     '15%',
+          //     '10%',
+          //     '10%',
+          //   ]
           // }
+          customize: function (doc) {
+            //Remove the title created by datatTables
+            doc.content.splice(0,1);
+            //Create a date string that we use in the footer. Format is dd-mm-yyyy
+            var now = new Date();
+            var jsDate = now.getDate()+'-'+(now.getMonth()+1)+'-'+now.getFullYear();
+            // Logo converted to base64
+            // var logo = getBase64FromImageUrl('https://datatables.net/media/images/logo.png');
+            // The above call should work, but not when called from codepen.io
+            // So we use a online converter and paste the string in.
+            // Done on http://codebeautify.org/image-to-base64-converter
+            // It's a LONG string scroll down to see the rest of the code !!!
+  
+            // A documentation reference can be found at
+            // https://github.com/bpampuch/pdfmake#getting-started
+            // Set page margins [left,top,right,bottom] or [horizontal,vertical]
+            // or one number for equal spread
+            // It's important to create enough space at the top for a header !!!
+            doc.pageMargins = [45, 75, 45, 60];
+            // Set the font size fot the entire document
+            doc.defaultStyle.fontSize = 9;
+            // Set the fontsize for the table header
+            doc.styles.tableHeader.fontSize = 9;
+            // Create a header object with 3 columns
+            // Left side: Logo
+            // Middle: brandname
+            // Right side: A document title
+            doc['header']=(function() {
+              return {
+                columns: [
+                  {
+                    alignment: 'center',
+                    text: user,
+                    fontSize: 12,
+                    margin: [300,15],
+                  }
+                ],
+                margin: 20
+              }
+            });
+            // Create a footer object with 2 columns
+            // Left side: report creation date
+            // Right side: current page and total pages
+            doc['footer']=(function(page, pages) {
+              return {
+                columns: [
+                  {
+                    alignment: 'left',
+                    text: ['Dibuat pada: ', { text: jsDate.toString() }]
+                  },
+                  {
+                    alignment: 'right',
+                    text: ['Halaman ', { text: page.toString() },  ' dari ', { text: pages.toString() }]
+                  }
+                ],
+                margin: 20
+              }
+            });
+            // Change dataTable layout (Table styling)
+            // To use predefined layouts uncomment the line below and comment the custom lines below
+            // doc.content[0].layout = 'lightHorizontalLines'; // noBorders , headerLineOnly
+            var objLayout = {};
+            objLayout['hLineWidth'] = function(i) { return .5; };
+            objLayout['vLineWidth'] = function(i) { return .5; };
+            objLayout['hLineColor'] = function(i) { return '#aaa'; };
+            objLayout['vLineColor'] = function(i) { return '#aaa'; };
+            objLayout['paddingLeft'] = function(i) { return 4; };
+            objLayout['paddingRight'] = function(i) { return 4; };
+            doc.content[0].layout = objLayout;
+
+            doc.content[0].table.widths = [
+              '2%',
+              '15%',
+              '12%',
+              '10%',
+              '10%',
+              '18%',
+              '15%',
+              '8%',
+              '10%',
+            ]
+        }
 
 
         }
@@ -247,8 +317,8 @@
           "targets": [-2], //2 last column (photo)
           "orderable": false, //set not orderable
         },
-        { responsivePriority: 1, targets: 0 },
-        { responsivePriority: 2, targets: [-1,-2,-3] },
+        { responsivePriority: 1, targets: [0, 1, 2, 4, 7] },
+        { responsivePriority: 2, targets: [-1,-2] },
       ],
 
     });;

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_user extends CI_Model {
 
 	var $table = 'tb_user';
-	var $column_order = array('id_user','nama_opd','nama','username','nama_level',null,null); //set column field database for datatable orderable
+	var $column_order = array('id_user','nama_opd','nama','username','id_level',null,null); //set column field database for datatable orderable
 	var $column_search = array('nama_opd','nama','username'); //set column field database for datatable searchable just firstname , lastname , address are searchable
 	var $order = array('id_user' => 'desc'); // default order 
 
@@ -17,7 +17,7 @@ class M_user extends CI_Model {
 	private function _get_datatables_query() 
 	{
 		
-		$this->db->from('tb_opd')->where('id_level',2)->join('tb_user', 'tb_opd.id_opd = tb_user.id_opd');
+		$this->db->from('tb_opd')->join('tb_user', 'tb_opd.id_opd = tb_user.id_opd');
 
 		$i = 0;
 	

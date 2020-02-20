@@ -129,13 +129,9 @@ public function __construct()
         $tanggal_mulai = $this->session->userdata('tanggal_mulai');
         $tanggal_akhir = $this->session->userdata('tanggal_akhir');
         $ket = $this->session->userdata('ket');
-        if($tanggal_mulai != '' && $tanggal_akhir != '' && $ket = ''){
+        if($tanggal_mulai != '' && $tanggal_akhir != ''){
                $this->db->where('tb_laporan.tanggal >=', $tanggal_mulai);
                $this->db->where('tb_laporan.tanggal <=', $tanggal_akhir);
-        } else if($tanggal_mulai != '' && $tanggal_akhir != '' && $ket != ''){
-               $this->db->where('tb_laporan.tanggal >=', $tanggal_mulai);
-               $this->db->where('tb_laporan.tanggal <=', $tanggal_akhir);
-               $this->db->where('tb_laporan.keterangan', $ket);
         }
         
         $this->db->from('tb_laporan');

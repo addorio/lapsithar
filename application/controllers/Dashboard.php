@@ -4,6 +4,10 @@ class Dashboard extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        if(!$this->session->userdata('username') || $this->session->userdata('id_level') != 1){
+            $this->session->set_flashdata('error','<div class="alert alert-danger">Maaf, anda harus login terlebih dahulu</div>');
+            redirect('Auth');
+        }
         $this->load->model('m_opd');
         $this->load->model('m_bidang');
         $this->load->model('m_laporan', 'laporan');
@@ -16,13 +20,8 @@ class Dashboard extends CI_Controller
         $data['user'] = $this->m_user->getbyid($id_user);
         $data['title'] = "LAPSITHAR | Dashboard";
         $data['opd'] = $this->m_opd->getAll();
-<<<<<<< HEAD
-        $data['bidang'] = $this->m_bidang->getAll();  
-        view('admin.dashboard.laporan', $data); 
-=======
         $data['bidang'] = $this->m_bidang->getAll();
         view('admin.dashboard.laporan', $data);
->>>>>>> 04608a4cd7a9dd92f12bb225cca979f10947553d
     }
 
     public function ajax_list()
@@ -93,6 +92,7 @@ class Dashboard extends CI_Controller
 
 
             $insert = $this->laporan->save($data);
+            helper_log("add", "Menambahkan laporan dengan judul ".$this->input->post('judul'));
 
             echo json_encode(array("status" => TRUE));
         }
@@ -154,6 +154,7 @@ class Dashboard extends CI_Controller
         }
 
         $this->laporan->update(array('id_laporan' => $this->input->post('id_laporan')), $data);
+        helper_log("edit", "Mengubah laporan dengan judul ".$this->input->post('judul'));
         echo json_encode(array("status" => TRUE));
     }
 
@@ -165,6 +166,7 @@ class Dashboard extends CI_Controller
             unlink('upload/' . $laporan->file);
 
         $this->laporan->delete_by_id($id_laporan);
+        helper_log("delete", "Menghapus laporan");
         echo json_encode(array("status" => TRUE));
     }
 
@@ -243,22 +245,17 @@ class Dashboard extends CI_Controller
         }
     }
 
-<<<<<<< HEAD
-    function filter_tanggal(){
-          $data = $this->laporan->filterTanggal();
-          json_encode($data);
-    } 
-    function filter_ket(){
-          $data = $this->laporan->filterKeterangan();
-          json_encode($data);
-    } 
-=======
     function filter_tanggal()
     {
         $data = $this->laporan->filterTanggal();
         json_encode($data);
     }
->>>>>>> 04608a4cd7a9dd92f12bb225cca979f10947553d
+
+    // function filter_laporan()
+    // {
+    //     $data = $this->laporan->filterTanggal();
+    //     json_encode($data);
+    // }
 
     function ambil_satu_lap($id_laporan)
     {

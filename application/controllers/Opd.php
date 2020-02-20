@@ -67,6 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         'nama_opd' =>$this->input->post('nama_opd'),
       );
     $insert = $this->m_opd->save($data);
+    helper_log("add", "Menambah OPD dengan nama ".$this->input->post('nama_opd'));
     echo json_encode(array("status" => TRUE));
   }
 
@@ -79,11 +80,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         'nama_opd' => $this->input->post('nama_opd'),
       );
     $this->m_opd->update($id_opd, $data);
+    helper_log("edit", "Mengubah OPD dengan menjadi ".$this->input->post('nama_opd'));
     echo json_encode(array("status" => TRUE));
   }
 
   public function ajax_delete($id_user)
   {
+    helper_log("delete", "Menghapus data OPD");
     $this->m_opd->delete_by_id($id_user);
     echo json_encode(array("status" => TRUE));
   }

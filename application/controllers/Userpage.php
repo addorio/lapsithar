@@ -94,6 +94,7 @@ class Userpage extends CI_Controller {
             
 
             $insert = $this->laporan->save($data);
+            helper_log("add", "Menambahkan laporan dengan judul ".$this->input->post('judul'));
  
             echo json_encode(array("status" => TRUE));
         }
@@ -134,6 +135,7 @@ class Userpage extends CI_Controller {
         }
  
         $this->laporan->update(array('id_laporan' => $this->input->post('id_laporan')), $data);
+        helper_log("edit", "Mengubah laporan dengan judul ".$this->input->post('judul'));
         echo json_encode(array("status" => TRUE));
     }
  
@@ -145,6 +147,7 @@ class Userpage extends CI_Controller {
             unlink('upload/'.$laporan->file);
          
         $this->laporan->delete_by_id($id_laporan);
+        helper_log("delete", "Menghapus laporan");
         echo json_encode(array("status" => TRUE));
     }
  

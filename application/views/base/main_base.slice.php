@@ -1,4 +1,3 @@
-
 @php
 defined('BASEPATH') OR exit('No direct script access allowed');
 @endphp
@@ -111,9 +110,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </li>
                     <li>
                         <a href="<?php echo base_url('Riwayat')?>" aria-expanded="false">
-                            <i class="icon-user menu-icon"></i><span class="nav-text"> Riwayat Aktivitas</span>
+                            <i class="icon-user menu-icon"></i><span class="nav-text"> Riwayat</span>
                         </a>
-                    </li>                     
+                    </li>                       
                 </ul>
             </div>
         </div>
@@ -121,6 +120,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="footer">
             <div class="copyright">
             <p>Copyright &copy; 2020 Diskominfo All Right Reserved<span class="float-right"> Lapsithar v.1.0</span></p>
+            </div>
         </div>
     </div>
     <!-- @section('javascript') -->
@@ -165,7 +165,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="{{APP_ASSETS}}plugins/tables/js/vfs_fonts.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/buttons.html5.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/buttons.print.min.js"></script>
-    <script src="{{APP_ASSETS}}plugins/tables/js/buttons.colVis.min.j"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/buttons.colVis.min.js"></script>
     <script type="text/javascript" src="{{APP_ASSETS}}plugins/sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
     <script type="text/javascript">
