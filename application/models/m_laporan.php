@@ -125,6 +125,10 @@ public function __construct()
                $this->db->where('tb_laporan.tanggal >=', $tanggal_mulai);
                $this->db->where('tb_laporan.tanggal <=', $tanggal_akhir);
            }
+        $ket = $this->session->userdata('ket');
+        if($ket != ''){
+               $this->db->where('tb_laporan.keterangan =', $ket);
+           }
         $this->db->from('tb_laporan');
         $this->db->join('tb_opd','tb_opd.id_opd=tb_laporan.id_opd');
  
@@ -227,6 +231,13 @@ public function __construct()
                 'tanggal_akhir'=>$this->input->post('end_date')
           ]; 
            $this->session->set_userdata($sesi_tanggal);
+      }
+
+      function filterKet()
+      {
+          $ket = $this->input->post('ket');
+  
+          $this->session->set_userdata($ket);
       }
 
       function ambilSatuLap($id_laporan)

@@ -78,7 +78,13 @@
                             <label>Berkas Pendukung ( .jpg | .png | .pdf| ) maks 1 MB</label>
                             <input type="file" class="form-control-file" name="file" id="file">
                             <div style="color: red;"></div>
-                            <span id="user_uploaded_image"></span>  
+                            <span id="user_uploaded_image"></span>   
+                          </div>
+                        </div>
+
+                         <div class="row">
+                          <div class="col-6">
+                            <input type="text" class="form-control input-flat" id="nama" name="nama" value="<?php echo $this->session->userdata('nama')?>" hidden>
                           </div>
                         </div>
 
@@ -167,6 +173,14 @@
                       <input type="text" class="form-control" id="keterangan" name="keterangan" readonly>
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 control-label" style="font-size: 14.5px;">Yang Melaporkan</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="nama" name="nama" readonly>
+                    </div>
+                </div>
+
+                <!-- <embed id="nama-file" width="100%" height="460" type="application/pdf" ></embed>  -->
               
 
               </div>

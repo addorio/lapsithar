@@ -132,6 +132,12 @@ class M_user extends CI_Model {
 		return $query->row();
 	}
 
+	public function getbyid($id_user){
+		$this->db->from('tb_opd')->where('id_user',$id_user)->join('tb_user', 'tb_opd.id_opd = tb_user.id_opd');
+		$query = $this->db->get();
+		return $query->row();
+	}
+
 	public function save($data)
 	{
 		$this->db->insert($this->table, $data);

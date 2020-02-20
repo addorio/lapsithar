@@ -80,6 +80,12 @@
                           </div>
                         </div>
 
+                        <div class="row">
+                          <div class="col-6">
+                            <input type="text" class="form-control input-flat" id="nama" name="nama" value="<?php echo $this->session->userdata('nama')?>" hidden>
+                          </div>
+                        </div>
+
                       </div>
                     </div>
                 </form>
@@ -165,7 +171,18 @@
                       <input type="text" class="form-control" id="keterangan" name="keterangan" readonly>
                     </div>
                 </div>
-              
+                <div class="form-group row">
+                    <label class="col-sm-2 control-label" style="font-size: 14.5px;">Yang Melaporkan</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="nama" name="nama" readonly>
+                    </div>
+                </div>
+                <!-- <div class="form-group row">
+                    <embed id="nama-file" width="100%" height="460" type="application/pdf" name="file" src="<?php site_url()?>"></embed> 
+                </div> -->
+                <!-- <div class="form-group row">
+                <a class="open btn mb-1 btn-flat btn-outline-success btn-sm" data-toggle="modal" name="file">Lihat</a>
+                </div> -->
 
               </div>
                 
