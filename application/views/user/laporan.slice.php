@@ -23,14 +23,7 @@
 
 @section('content')
 <div class="content-body">
- 
-    <div class="row page-titles mx-0">
-        <div class="col p-md-0">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-            </ol>
-        </div>
-    </div>
+
             <!-- row -->
     <div class="container-fluid">
         <div class="row">
@@ -135,17 +128,17 @@ $(document).ready(function() {
     ],
     tooltip: false
 });
-    $('#start').on('keyup', function() {
-      dataTable
-        .columns(2)
-        .search(this.value)
-        .draw();
-      });$('#end').on('keyup', function() {
-      dataTable
-        .columns(2)
-        .search(this.value)
-        .draw();
-      });
+    // $('#start').on('keyup', function() {
+    //   dataTable
+    //     .columns(2)
+    //     .search(this.value)
+    //     .draw();
+    //   });$('#end').on('keyup', function() {
+    //   dataTable
+    //     .columns(2)
+    //     .search(this.value)
+    //     .draw();
+    //   });
 
       $('#form-filter').submit('click', function() {
       $.ajax({

@@ -126,7 +126,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <!-- <li class="nav-label">Dashboard</li> -->
                     <li>
                         <a href="<?php echo base_url('Userpage')?>" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text"> DASHBOARD</span>
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text"> Dashboard</span>
                         </a>
                     </li>
                     <!-- <li class="nav-label">Users</li> -->                   

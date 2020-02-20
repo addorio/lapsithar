@@ -250,7 +250,7 @@ class Dashboard extends CI_Controller {
     function filter_tanggal(){
           $data = $this->laporan->filterTanggal();
           json_encode($data);
-     }
+     } 
 
      function ambil_satu_lap()
     {
