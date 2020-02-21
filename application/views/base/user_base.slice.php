@@ -26,7 +26,7 @@
      <link rel="stylesheet" type="text/css" href="{{APP_ASSETS}}plugins/sweetalert2/dist/sweetalert2.min.css">
      <!-- FontAwesome -->
      <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.css" rel="stylesheet">
+     <link href="{{APP_ASSETS}}plugins/summernote/dist/summernote.css" rel="stylesheet">
      <!-- Custom Stylesheet -->
      <link href="{{APP_ASSETS}}css/style.css" rel="stylesheet">
  </head>
@@ -148,18 +148,17 @@
      <script src="{{APP_ASSETS}}js/dashboard/dashboard-1.js"></script>
 
      <script src="{{APP_ASSETS}}plugins/tables/js/jquery.dataTables.min.js"></script>
+     <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.responsive.min.js"></script>
      <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
      <script src="{{APP_ASSETS}}plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
-     <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
-     <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
-     <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
-     <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
-     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js" type="text/javascript"></script>
-     <script type="text/javascript" src="{{APP_ASSETS}}plugins/sweetalert2/dist/sweetalert2.min.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
+     <script src="{{APP_ASSETS}}plugins/tables/js/buttons.flash.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/jszip.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/pdfmake.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/vfs_fonts.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/buttons.html5.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/buttons.print.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/sweetalert/js/sweetalert.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/summernote/dist/summernote.min.js"></script>
 
      <!-- <script type="text/javascript">
             $('#tanggal').datetimepicker({
