@@ -3,12 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 @endphp
 
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-    <meta name="viewport" content="width=device-width,initial-scale=1">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>@php echo $title;@endphp</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{APP_ASSETS}}images/favicon.ico">
@@ -33,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 
 <body>
-
+    <!-- Preloader  -->
     <div id="preloader">
         <div class="loader">
             <svg class="circular" viewBox="25 25 50 50">
@@ -41,33 +41,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </svg>
         </div>
     </div>
+    <!-- Content Wrapper  -->
     <div id="main-wrapper">
-        <!--**********************************
-            Nav header start
-        ***********************************-->
         <div class="nav-header">
-            <div class="brand-logo" style="vertical-align: middle;">
+            <div class="brand-logo text-center">
                 <a href="{{base_url('Dashboard')}}">
-                    <!-- <b class="logo-abbr"><img src="{{APP_ASSETS}}images/bintan.png" alt="" sizes="100x100">Lapsithar</b> -->
-                    <!-- <img src="{{APP_ASSETS}}images/bintan.png" alt="" style="max-height: 25px; max-width: 25px;"> -->
-                    <span class="brand-title" style="color: white;">
+                    <b class="logo-abbr brand-logo"><img src="{{APP_ASSETS}}images/bintan.png" alt=""></b>
+                    <img class="logo-compact" src="{{APP_ASSETS}}images/bintan.png">
+                    <span class="brand-title text-white">
                         LAPSITHAR
                     </span>
                 </a>
             </div>
         </div>
-        <div class="header">    
+        <div class="header">
             <div class="header-content clearfix">
                 <div class="nav-control">
                     <div class="hamburger">
                         <span class="toggle-icon"><i class="icon-menu"></i></span>
                     </div>
                 </div>
-
                 <div class="header-right">
                     <ul class="clearfix">
                         <li class="icons dropdown">
-                            <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                                 <span class="activity active"></span>
                                 <img src="{{APP_ASSETS}}images/user/form-user.png" height="40" width="40" alt="">
                             </div>
@@ -142,7 +139,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Morrisjs -->
     <script src="{{APP_ASSETS}}plugins/raphael/raphael.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/morris/morris.min.js"></script>
-    
+
     <!-- Pignose Calender -->
     <script src="{{APP_ASSETS}}plugins/moment/moment.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
@@ -164,28 +161,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="{{APP_ASSETS}}plugins/tables/js/buttons.html5.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/buttons.print.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/sweetalert/js/sweetalert.min.js"></script>
-    <script src="{{APP_ASSETS}}plugins/summernote/dist/summernote.min.js"></script> 
-    <script src="{{APP_ASSETS}}plugins/select2/js/select2.full.min.js"></script> 
+    <script src="{{APP_ASSETS}}plugins/summernote/dist/summernote.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/select2/js/select2.full.min.js"></script>
     <script type="text/javascript">
         $('#tanggal').bootstrapMaterialDatePicker({
-        format: 'YYYY-MM-DD hh:mm:ss',
-        sideBySide: true
-    });
+            format: 'YYYY-MM-DD hh:mm:ss',
+            sideBySide: true
+        });
     </script>
 
     <script type="text/javascript">
         $('#start').datepicker({
-        format: 'yyyy-mm-dd'
+            format: 'yyyy-mm-dd'
         });
     </script>
 
     <script type="text/javascript">
         $('#end').datepicker({
-        format: 'yyyy-mm-dd'
+            format: 'yyyy-mm-dd'
         });
     </script>
-  
-@yield('js')
+
+    @yield('js')
 
 </body>
+
 </html>

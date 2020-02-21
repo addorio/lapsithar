@@ -2,12 +2,12 @@
 
 
 @section('content')
-<div class="login-form-bg h-100 gradient-7">
+<div class="login-form-bg h-100 bg-1">
     <div class="container h-100">
         <div class="row justify-content-center h-100">
             <div class="col-12 col-lg-6">
                 <div class="form-input-content">
-                    <div class="card login-form shadow-lg mb-0">
+                    <div class="card login-form shadow-lg mb-0 animated fadeInDown">
                         <div class="card-body text-center">
                             <a href="<?= base_url() ?>">
                                 <img class="logo-sm" src="{{APP_ASSETS}}images/bintan.png" style="max-width: 100px;">
@@ -26,7 +26,7 @@
                                 <div class="form-group">
                                     <input type="password" name="password" class="form-control" placeholder="Masukkan Password..." required="">
                                 </div>
-                                <button class="btn login-form__btn submit btn-block">Sign In</button>
+                                <button class="btn btn-primary submit btn-block">Sign In</button>
                             </form>
                             <p class="mt-5 login-form__footer">
                                 <a href="#link Website" class="text-primary">Kembali Ke Website</a>
