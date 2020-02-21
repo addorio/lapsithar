@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     $this->load->model('m_bidang');
     $this->load->model('m_laporan');
     $this->load->model('m_user'); 
-    $this->load->model('m_level');   
+    $this->load->model('m_level'); 
   } 
       //functions  
       function index(){ 
@@ -79,6 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         'id_level' => $this->input->post('id_level'),
       );
     $this->m_user->update($id_user, $data);
+    helper_log("edit", "Mengubah profil");
     echo json_encode(array("status" => TRUE));
   }
 

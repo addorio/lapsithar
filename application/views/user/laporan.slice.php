@@ -1,145 +1,90 @@
 @extends('base.user_base')
-<style>  
-           body  
-           {  
-                margin:0;  
-                padding:0;  
-                background-color:#f1f1f1;   
-           }  
-           .box  
-           {  
-                width:900px;  
-                padding:20px;  
-                background-color:#fff;  
-                border:1px solid #ccc;  
-                border-radius:5px;  
-                margin-top:10px;  
-           }
-           td.highlight {
-                font-weight: bold;
-                color: blue; 
-            }  
-</style> 
-
 @section('content')
 <div class="content-body">
-
-            <!-- row -->
-    <div class="container-fluid">
-        <div class="row">
-        <div class="col-12">
-            <div id="judullaporan" style="color: red;">
-                <?php echo $this->session->userdata('nama_opd');?>
-            </div>
+  <!-- row -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
 
         <div id="accordion-one" class="accordion">
           <div class="card">
             <div class="card-header">
               <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa" aria-hidden="true"></i> Filter per tanggal</h5>
             </div>
-            <div id="collapseOne" class="collapse show" data-parent="#accordion-one" style="">
+            <div id="collapseOne" class="collapse show" data-parent="#accordion-one">
               {{form_open("","id='form-filter'")}}
               <div class="card-body">
                 <div class="row">
-                  <div class="col-4">
+                  <div class="col-3">
                     <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                      <input type="text" id="start" name="start_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" placeholder="Tanggal mulai" />
+                      <input type="text" id="start" name="start_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" placeholder="Dari tanggal" />
                     </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-3">
                     <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                      <input type="text" id="end" name="end_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" placeholder="Tanggal akhir"/>
+
+                      <input type="text" id="end" name="end_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" placeholder="Hingga tanggal"/>
                     </div>
                   </div>
-                  
-
-                  <div class="col-2">
-                  <div class="form-group">
-                    {{form_submit("submit","Filter","class='btn mb-1 btn-flat btn-outline-primary input-group'")}}              
-                  </div>
-                  </div>
-                  <div class="col-2">
-                  <div class="form-group"> 
-                    {{form_submit("submit","Reset","class='btn mb-1 btn-flat btn-outline-secondary input-group'")}}             
-                  </div>
-                  </div>
-                </div>
-              </div>
-              {{form_close()}}
-            </div>
-          </div>
-        </div>
-
-        <div id="accordion-one" class="accordion">
-          <div class="card">
-            <div class="card-header">
-              <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa" aria-hidden="true"></i> Filter per tanggal</h5>
-            </div>
-            <div id="collapseOne" class="collapse show" data-parent="#accordion-one" style="">
-              {{form_open("","id='ket-filter'")}}
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-4">
+                  <div class="col-3">
                     <div class="form-group" id="datetimepicker2" data-target-input="nearest">
-                      <select class="form-control" name="ket" id="ket">
-                          <option value="Selesai">Selesai</option>
-                          <option value="Belum">Belum Selesai</option>
-                      </select>
+                      <input type="text" name="ket" id="ket" class="form-control">
+                    </div>
+                  </div>
+
+                      
                     </div>
                   </div>
 
                   <div class="col-2">
-                  <div class="form-group">
-                    {{form_submit("submit","Filter","class='btn mb-1 btn-flat btn-outline-primary input-group'")}}              
-                  </div>
+                    <div class="form-group">
+                      {{form_submit("submit","Filter","class='btn mb-1 btn-flat btn-outline-primary input-group'")}}
+                    </div>
                   </div>
                   <div class="col-2">
-                  <div class="form-group"> 
-                    {{form_submit("submit","Reset","class='btn mb-1 btn-flat btn-outline-secondary input-group'")}}             
-                  </div>
+                    <div class="form-group">
+                      {{form_submit("submit","Reset","class='btn mb-1 btn-flat btn-outline-secondary input-group'")}}
+                    </div>
                   </div>
                 </div>
               </div>
               {{form_close()}}
             </div>
+
           </div>
         </div>
-
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Rekapitulasi Laporan<span><button class="btn mb-1 btn-flat btn-outline-primary" style="float: right;" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i>Tambah Laporan</button></span></h5>
-                        
-                        <br />
-                        <br />
-                        <div class="table-responsive">
-                        <table id="table" class="table table-bordered" cellspacing="0" width="100%" style="font-size: 11px; width: 100%;" data-export-title="<?= $this->session->userdata('nama_opd') ?>">
-                          <thead>
-                            <tr>
-                              <th>No</th>
-                              <th>OPD</th>
-                              <th>Tanggal</th>
-                              <th>Judul</th>
-                              <th>Bidang</th>
-                              <th>Isi</th>
-                              <th>Tindakan</th>
-                              <th>Ket</th>
-                              <th>Nama</th>
-                              <th>File</th>
-                              <th>Detail</th>
-                              <th>Ubah</th>
-                              <th>Hapus</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                </div>
+        
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Rekapitulasi Laporan<span><button style="float: right;" class="btn mb-1 btn-flat btn-outline-success" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Laporan</button></span></h5>
+            <div class="table-responsive">
+              <table id="table" class="table table-striped table-bordered display nowrap responsive" cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th width="1%">No</th>
+                    <th>OPD</th>
+                    <th>Tanggal</th>
+                    <th>Judul</th>
+                    <th>Bidang</th>
+                    <th>Isi</th>
+                    <th>Tindakan</th>
+                    <th>Ket</th>
+                    <th>Nama</th>
+                    <th>Detail</th>
+                    <th>Ubah</th>
+                    <th>Hapus</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
             </div>
+          </div>
         </div>
+      </div>
     </div>
   </div>
+</div>
 @include('user.modal')
  @endsection
 <script src="{{APP_ASSETS}}plugins/jquery/jquery.min.js"></script>
@@ -176,6 +121,7 @@ $(document).ready(function() {
         success: function(data) {
           $('#start').val("");
           $('#end').val("");
+          $('#ket').val("");
           swal(
             'Sedang memfilter..',
             'Tunggu sebentar..',
@@ -211,81 +157,142 @@ $(document).ready(function() {
     //datatables
 
     table = $('#table').DataTable({ 
-
-        
         "bInfo" : false,
         "processing": true, //Feature control the processing indicator.
         "serverSide": true, //Feature control DataTables' server-side processing mode.
+        "responsive": true,
         dom: 'frBtlp',
-        buttons: [ 
-            {
-                extend: 'excelHtml5',
-                className: 'btn mb-1 btn-flat btn-outline-success',
-                title: user,
-                exportOptions: {
-                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ]
-                }
-            },
-            {
-                extend: 'pdfHtml5',
-                className: 'btn mb-1 btn-flat btn-outline-danger',
-                title: user,
-                orientation: 'landscape',
-                pageSize: 'FOLIO',
-                exportOptions: {
-                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ]
-                },
-                customize: function ( doc ) {
-                // ket = table.column(7).data().toArray();
-                //   for (var i = 0; i < ket.length; i++) {
-                //     if (ket[i] = 'Belum Selesai') {
-                //       doc.content[1].table.body[i+1][7].fillColor = 'red';
-                //     }
-                //   };
-
-                doc.pageMargins = [60, 75, 60, 60];
-
-                doc.content[1].table.widths =
-                    Array(doc.content[1].table.body[0].length + 1).join('*').split('');
-             
-                doc.content[1].table.body[0].forEach(function (h) {
-                    h.fillColor = 'blue'
-                });
-                doc.content[1].table.widths = [
-                '3%',
-                '15%',
-                '10%',
-                '12%',
-                '25%',
-                '20%',
-                '10%',
-                '5%',
-                ]
-                }
-
-            } ],
-        "order": [], //Initial no order.
- 
-        // Load data for the table's content from an Ajax source
-        "ajax": {
-            "url": "<?php echo site_url('userpage/ajax_list')?>",
-            "type": "POST"
+        buttons: [{
+          extend: 'excelHtml5',
+          className: 'btn mb-1 btn-flat btn-outline-success',
+          title: 'Laporan',
+          exportOptions: {
+            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+          }
         },
- 
-        //Set column definition initialisation properties.
-        "columnDefs": [
-            { 
-                "targets": [ -1 ], //last column
-                "orderable": false, //set not orderable
-            },
-            { 
-                "targets": [ -2 ], //2 last column (photo)
-                "orderable": false, //set not orderable
-            },
-        ],
- 
-    });
- ;
+        {
+          extend: 'pdfHtml5',
+          className: 'btn mb-1 btn-flat btn-outline-danger',
+          title: user,
+          orientation: 'landscape',
+          pageSize: 'FOLIO',
+          exportOptions: {
+            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+        },
+          customize: function (doc) {
+            //Remove the title created by datatTables
+            doc.content.splice(0,1);
+            //Create a date string that we use in the footer. Format is dd-mm-yyyy
+            var now = new Date();
+            var jsDate = now.getDate()+'-'+(now.getMonth()+1)+'-'+now.getFullYear();
+            // Logo converted to base64
+            // var logo = getBase64FromImageUrl('https://datatables.net/media/images/logo.png');
+            // The above call should work, but not when called from codepen.io
+            // So we use a online converter and paste the string in.
+            // Done on http://codebeautify.org/image-to-base64-converter
+            // It's a LONG string scroll down to see the rest of the code !!!
+  
+            // A documentation reference can be found at
+            // https://github.com/bpampuch/pdfmake#getting-started
+            // Set page margins [left,top,right,bottom] or [horizontal,vertical]
+            // or one number for equal spread
+            // It's important to create enough space at the top for a header !!!
+            doc.pageMargins = [45, 75, 45, 60];
+            // Set the font size fot the entire document
+            doc.defaultStyle.fontSize = 9;
+            // Set the fontsize for the table header
+            doc.styles.tableHeader.fontSize = 9;
+            // Create a header object with 3 columns
+            // Left side: Logo
+            // Middle: brandname
+            // Right side: A document title
+            doc['header']=(function() {
+              return {
+                columns: [
+                  {
+                    alignment: 'center',
+                    text: user,
+                    fontSize: 12,
+                    margin: [300,15],
+                  }
+                ],
+                margin: 20
+              }
+            });
+            // Create a footer object with 2 columns
+            // Left side: report creation date
+            // Right side: current page and total pages
+            doc['footer']=(function(page, pages) {
+              return {
+                columns: [
+                  {
+                    alignment: 'left',
+                    text: ['Dibuat pada: ', { text: jsDate.toString() }]
+                  },
+                  {
+                    alignment: 'right',
+                    text: ['Halaman ', { text: page.toString() },  ' dari ', { text: pages.toString() }]
+                  }
+                ],
+                margin: 20
+              }
+            });
+            // Change dataTable layout (Table styling)
+            // To use predefined layouts uncomment the line below and comment the custom lines below
+            // doc.content[0].layout = 'lightHorizontalLines'; // noBorders , headerLineOnly
+            var objLayout = {};
+            objLayout['hLineWidth'] = function(i) { return .5; };
+            objLayout['vLineWidth'] = function(i) { return .5; };
+            objLayout['hLineColor'] = function(i) { return '#aaa'; };
+            objLayout['vLineColor'] = function(i) { return '#aaa'; };
+            objLayout['paddingLeft'] = function(i) { return 4; };
+            objLayout['paddingRight'] = function(i) { return 4; };
+            doc.content[0].layout = objLayout;
+
+            doc.content[0].table.widths = [
+              '2%',
+              '15%',
+              '12%',
+              '10%',
+              '10%',
+              '18%',
+              '15%',
+              '8%',
+              '10%',
+            ]
+        }
+        }
+        // {
+        //     extend: 'colvis',
+        //     text: 'Show/Hide Columns',
+        //     className: 'btn btn-danger btn-lg',
+        //     columnText: function ( dt, idx, title ) {
+        //         return (idx+1)+': '+title;
+        //     }
+        // } 
+      ],
+      "order": [], //Initial no order.
+
+      // Load data for the table's content from an Ajax source
+      "ajax": {
+        "url": "{{site_url('userpage/ajax_list')}}",
+        "type": "POST"
+      },
+
+      //Set column definition initialisation properties.
+      "columnDefs": [{
+          "targets": [0,-1], //last column
+          "orderable": false, //set not orderable
+        },
+        {
+          "targets": [-2], //2 last column (photo)
+          "orderable": false, //set not orderable
+        },
+        { responsivePriority: 1, targets: [0, 1, 2, 4, 7] },
+        { responsivePriority: 2, targets: [-1,-2] },
+      ],
+
+    });;
  
     //set input/textarea/select event when change value, remove class error and remove text help block 
     $("input").change(function(){
@@ -369,34 +376,36 @@ function edit_laporan(id)
     });
 }
 
-function lihat_laporan(id)
-{          
+function lihat_laporan(id) {
     $.ajax({
-        url : "<?php echo site_url('userpage/ajax_edit')?>/" + id,
-        type: "GET",
-        dataType: "JSON",
-        success: function(data)
-        {
-            $('[name="id_laporan"]').val(data.id_laporan);
-            $('[name="id_opd"]').val(data.id_opd);
-            $('[name="tanggal"]').val(data.tanggal);
-            $('[name="judul"]').val(data.judul);
-            $('[name="nama_bidang"]').val(data.nama_bidang);
-            var isi = $(data.isi_laporan).text();
-            $('[name="isi_laporan"]').val(isi);
-            var tind = $(data.tindakan).text();
-            $('[name="tindakan"]').val(tind);
-            $('[name="keterangan"]').val(data.keterangan);
-            $('[name="nama"]').val(data.nama);
-            // $('[name="file"]').val(data.file);
-            $('#modal_lihatlaporan').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Edit Laporan'); // Set title to Bootstrap modal title
- 
- 
- 
+      url: "{{site_url('userpage/ambil_satu_lap/')}}" + id,
+      type: "GET",
+      dataType: "JSON",
+      success: function(data) {
+        $('#modal_lihatlaporan').modal('show'); // show bootstrap modal when complete loaded
+
+        var namaFile = data.lihat_file;
+        var src = "{{site_url('upload/'.'" + namaFile + "'.'')}}";
+        $(".modal-body #nama-file-detail").attr("src", src);
+
+        $('#lihat-nama-opd').html(data.lihat_nama_opd);
+        $('#lihat-tanggal').html(data.lihat_tanggal);
+        $('#lihat-judul').html(data.lihat_judul);
+        $('#lihat-nama-bidang').html(data.lihat_nama_bidang);
+        $('#lihat-isi-laporan').html(data.lihat_isi_laporan);
+        $('#lihat-tindakan-laporan').html(data.lihat_tindakan);
+        if (data.lihat_keterangan == 'Selesai') {
+          $('#lihat-keterangan').html(data.lihat_keterangan).attr("class", "text-success");
+        } else {
+          $('#lihat-keterangan').html(data.lihat_keterangan).attr("class", "text-danger");
         }
+        $('#lihat-pelapor').html(data.lihat_nama);
+
+
+
+      }
     });
-}
+  }
  
 function reload_table()
 {

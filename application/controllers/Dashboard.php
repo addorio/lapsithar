@@ -1,9 +1,13 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 class Dashboard extends CI_Controller
 {
-    public function __construct()
+    public function __construct() 
     {
         parent::__construct();
+        if(!$this->session->userdata('username') || $this->session->userdata('id_level') != 1){
+            $this->session->set_flashdata('error','<div class="alert alert-danger">Maaf, anda harus login terlebih dahulu</div>');
+            redirect('Auth');
+        }
         $this->load->model('m_opd');
         $this->load->model('m_bidang');
         $this->load->model('m_laporan', 'laporan');
@@ -88,6 +92,7 @@ class Dashboard extends CI_Controller
 
 
             $insert = $this->laporan->save($data);
+            helper_log("add", "Menambahkan laporan dengan judul ".$this->input->post('judul'));
 
             echo json_encode(array("status" => TRUE));
         }
@@ -149,6 +154,7 @@ class Dashboard extends CI_Controller
         }
 
         $this->laporan->update(array('id_laporan' => $this->input->post('id_laporan')), $data);
+        helper_log("edit", "Mengubah laporan dengan judul ".$this->input->post('judul'));
         echo json_encode(array("status" => TRUE));
     }
 
@@ -160,6 +166,7 @@ class Dashboard extends CI_Controller
             unlink('upload/' . $laporan->file);
 
         $this->laporan->delete_by_id($id_laporan);
+        helper_log("delete", "Menghapus laporan");
         echo json_encode(array("status" => TRUE));
     }
 
@@ -243,6 +250,12 @@ class Dashboard extends CI_Controller
         $data = $this->laporan->filterData();
         json_encode($data);
     }
+
+    // function filter_laporan()
+    // {
+    //     $data = $this->laporan->filterTanggal();
+    //     json_encode($data);
+    // }
 
     function ambil_satu_lap($id_laporan)
     {

@@ -67,6 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       );
     $insert = $this->m_bidang->save($data);
     echo json_encode(array("status" => TRUE));
+    helper_log("add", "menambahkan ".$this->input->post('nama_bidang')." pada tabel bidang");
   }
 
   public function ajax_update()
@@ -79,10 +80,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       );
     $this->m_bidang->update($id_bidang, $data);
     echo json_encode(array("status" => TRUE));
+    helper_log("edit", "mengubah ".$this->input->post('nama_bidang')." pada tabel bidang");
   }
 
   public function ajax_delete($id_user)
   {
+    helper_log("hapus", "menghapus data sebuah bidang dari tabel bidang");
     $this->m_bidang->delete_by_id($id_user);
     echo json_encode(array("status" => TRUE));
   }

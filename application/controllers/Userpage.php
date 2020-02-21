@@ -1,7 +1,11 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 class Userpage extends CI_Controller {     
-  public function __construct(){         
-    parent::__construct();         
+  public function __construct(){          
+    parent::__construct(); 
+    if(!$this->session->userdata('username')){
+            $this->session->set_flashdata('error','<div class="alert alert-danger">Maaf, anda harus login terlebih dahulu</div>');
+            // view('auth', $data);
+        }        
      $this->load->model('m_opd');
     $this->load->model('m_bidang');
     $this->load->model('m_laporan', 'laporan');
@@ -25,40 +29,35 @@ class Userpage extends CI_Controller {
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $laporan) {
-          if ($laporan->id_opd == $id_opd) {
-          
+            if ($laporan->id_opd == $id_opd) {
             $no++;
             $row = array();
             $row[] = $no;
             $row[] = $laporan->nama_opd;
-            $row[] = $laporan->tanggal;
+            $row[] = date('d/m/Y (h:i:s)', strtotime($laporan->tanggal));
             $row[] = $laporan->judul;
             $row[] = $laporan->nama_bidang;
             $row[] = $laporan->isi_laporan;
             $row[] = $laporan->tindakan;
-            if($laporan->keterangan == 'Selesai'){
-              $row[] = '<span class="text-success">'.$laporan->keterangan.'</span>';
+            if ($laporan->keterangan == 'Selesai') {
+                $row[] = '<span class="text-success">' . $laporan->keterangan . '</span>';
             } else {
-              $row[] = '<span class="text-danger">'.$laporan->keterangan.'</span>';
+                $row[] = '<span class="text-danger">' . $laporan->keterangan . '</span>';
             }
             $row[] = $laporan->nama;
-            $row[] = '<a class="open btn mb-1 btn-flat btn-outline-success btn-sm" href="javascript:void(0)" data-toggle="modal" data-id="'.$laporan->file.'"><i class="glyphicon glyphicon-pencil"></i>Lihat</a>';
-            
-            //add html for action
-            $row[] = '<a class="btn btn-sm mb-1 btn-flat btn-outline-dark lihatlaporan" href="javascript:void(0)" title="Detail" onclick="lihat_laporan('."'".$laporan->id_laporan."'".')"><i class="glyphicon glyphicon-pencil"></i> Detail</a>';
-            $row[] = '<a class="btn mb-1 btn-flat btn-outline-primary btn-sm" href="javascript:void(0)" title="Edit" onclick="edit_laporan('."'".$laporan->id_laporan."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
-            $row[] = '<a class="btn mb-1 btn-flat btn-outline-danger btn-sm" href="javascript:void(0)" title="Hapus" onclick="delete_laporan('."'".$laporan->id_laporan."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
-         
+            $row[] = '<a class="btn btn-sm mb-1 btn-flat btn-outline-dark lihatlaporan" href="javascript:void(0)" title="Detail" onclick="lihat_laporan(' . "'" . $laporan->id_laporan . "'" . ')"><i class="glyphicon glyphicon-pencil"></i> Detail</a>';
+            $row[] = '<a class="btn mb-1 btn-flat btn-outline-primary btn-sm" href="javascript:void(0)" title="Edit" onclick="edit_laporan(' . "'" . $laporan->id_laporan . "'" . ')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
+            $row[] = '<a class="btn mb-1 btn-flat btn-outline-danger btn-sm" href="javascript:void(0)" title="Hapus" onclick="delete_laporan(' . "'" . $laporan->id_laporan . "'" . ')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
             $data[] = $row;
-            }
         }
- 
+        }
+
         $output = array(
-                        "draw" => $_POST['draw'],
-                        "recordsTotal" => $this->laporan->count_all(),
-                        "recordsFiltered" => $this->laporan->count_filtered(),
-                        "data" => $data,
-                );
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->laporan->count_all(),
+            "recordsFiltered" => $this->laporan->count_filtered(),
+            "data" => $data,
+        );
         //output to json format
         echo json_encode($output);
     }
@@ -94,6 +93,7 @@ class Userpage extends CI_Controller {
             
 
             $insert = $this->laporan->save($data);
+            helper_log("add", "Menambahkan laporan dengan judul ".$this->input->post('judul'));
  
             echo json_encode(array("status" => TRUE));
         }
@@ -134,6 +134,7 @@ class Userpage extends CI_Controller {
         }
  
         $this->laporan->update(array('id_laporan' => $this->input->post('id_laporan')), $data);
+        helper_log("edit", "Mengubah laporan dengan judul ".$this->input->post('judul'));
         echo json_encode(array("status" => TRUE));
     }
  
@@ -145,6 +146,7 @@ class Userpage extends CI_Controller {
             unlink('upload/'.$laporan->file);
          
         $this->laporan->delete_by_id($id_laporan);
+        helper_log("delete", "Menghapus laporan");
         echo json_encode(array("status" => TRUE));
     }
  
@@ -241,22 +243,20 @@ class Userpage extends CI_Controller {
           json_encode($data);
      }
 
-     function ambil_satu_lap()
+    function ambil_satu_lap($id_laporan)
     {
         $output = array();
-        $data = $this->laporan->ambilSatuLap($this->input->post('id_laporan'));
-        foreach($data as $row)
-        {
-            $output['id_laporan'] = $row->id_laporan;
-            $output['nama_opd'] = $row->nama_opd;
-            $output['tanggal'] = $row->tanggal;
-            $output['judul'] = $row->judul;
-            $output['nama_bidang'] = $row->nama_bidang;
-            $output['isi_laporan'] = $row->isi_laporan;
-            $output['tindakan'] = $row->tindakan;
-            $output['keterangan'] = $row->keterangan;
-            $output['nama'] = $row->keterangan;
-            // $output['file'] = $row->keterangan;
+        $data = $this->laporan->ambilSatuLap($id_laporan);
+        foreach ($data as $row) {
+            $output['lihat_nama_opd'] = $row->nama_opd;
+            $output['lihat_tanggal'] = date('d/m/Y (h:i:s)', strtotime($row->tanggal));
+            $output['lihat_judul'] = $row->judul;
+            $output['lihat_nama_bidang'] = $row->nama_bidang;
+            $output['lihat_isi_laporan'] = $row->isi_laporan;
+            $output['lihat_tindakan'] = $row->tindakan;
+            $output['lihat_keterangan'] = $row->keterangan;
+            $output['lihat_file'] = $row->file;
+            $output['lihat_nama'] = $row->nama;
         }
         echo json_encode($output);
     }

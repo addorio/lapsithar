@@ -44,6 +44,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       $row[] = $person->nama_opd;
       $row[] = $person->nama;
       $row[] = $person->username;
+      if($person->id_level == 1){
+        $row[] = 'Admin';
+      } elseif ($person->id_level == 2) {
+        $row[] = 'User';
+      }
 
       //add html for action
       $row[] = '<a class="btn mb-1 btn-flat btn-outline-primary" href="javascript:void(0)" title="Edit" onclick="edit_person('."'".$person->id_user."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
@@ -80,6 +85,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         'id_level' => $this->input->post('id_level'),
       );
     $insert = $this->m_user->save($data);
+    helper_log("add", "Menambah user baru");
     echo json_encode(array("status" => TRUE));
   }
 
@@ -95,12 +101,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         'password' => $this->input->post('password'),
         'id_level' => $this->input->post('id_level'),
       );
+    helper_log("edit", "Mengubah detail user");
     $this->m_user->update($id_user, $data);
     echo json_encode(array("status" => TRUE));
   }
 
   public function ajax_delete($id_user)
   {
+    helper_log("delete", "Menghapus user");
     $this->m_user->delete_by_id($id_user);
     echo json_encode(array("status" => TRUE));
   }

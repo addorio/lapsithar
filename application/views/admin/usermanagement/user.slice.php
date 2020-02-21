@@ -16,6 +16,7 @@
                                         <th>OPD</th>
                                         <th>Nama</th>
                                         <th>Username</th>
+                                        <th>Level</th>
                                         <th align="justify">Edit</th>
                                         <th>Delete</th>
                                     </tr>
