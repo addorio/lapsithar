@@ -5,27 +5,22 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
+
         <div id="accordion-one" class="accordion">
           <div class="card">
             <div class="card-header">
-              <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa" aria-hidden="true"></i> 
-              Filter data {{$this->session->userdata('tanggal_mulai')}}  {{$this->session->userdata('tanggal_akhir')}}    {{$this->session->userdata('keterangan_laporan')}}         {{$this->session->userdata('opd_laporan')}}         {{$this->session->userdata('bidang_laporan')}}
-
-
-
-            </h5>
+              <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa" aria-hidden="true"></i> Filter per tanggal</h5>
             </div>
-            <div id="collapseOne" class="collapse hide" data-parent="#accordion-one">
+            <div id="collapseOne" class="collapse show" data-parent="#accordion-one">
               {{form_open("","id='form-filter'")}}
               <div class="card-body">
-
                 <div class="row">
-                  <div class="form-group col-6">
+                  <div class="col-3">
                     <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
                       <input type="text" id="start" name="start_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" placeholder="Dari tanggal" />
                     </div>
                   </div>
-                  <div class="form-group col-6">
+                  <div class="col-3">
                     <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
 
                       <input type="text" id="end" name="end_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" placeholder="Hingga tanggal"/>
@@ -36,53 +31,34 @@
                       <input type="text" name="ket" id="ket" class="form-control">
                     </div>
                   </div>
-                  <div class="form-group col-12">
-                    <select class="form-control" id="keterangan-filter" name="ket">
-                      <option value="">Pilih Keterangan</option>
-                      <option value="Selesai" class="text-success">Selesai</option>
-                      <option value="Belum Selesai" class="text-danger">Belum Selesai</option>
-                    </select>
-                  </div>
-                  <div class="form-group col-12">
-                    <select class="form-control" id="opd-filter" name="opd">
-                    <option value="">Pilih OPD</option>
-                      @foreach ($opd as $row)
-                      <option value="{{$row->id_opd}}">{{$row->nama_opd}}</option>
-                      @endforeach
-                    </select>
-                  </div>
-                  <div class="form-group col-12">
-                    <select class="form-control" id="bidang-filter" name="bidang">
-                    <option value="">Pilih Bidang</option>
-                      @foreach ($bidang as $row)
-                      <option value="{{$row->nama_bidang}}">{{$row->nama_bidang}}</option>
-                      @endforeach
-                    </select>
-                  </div>
-                </div>
 
-                <div class="row">
-                  <div class="col-12 col-lg-6">
+                      
+                    </div>
+                  </div>
+
+                  <div class="col-2">
                     <div class="form-group">
                       {{form_submit("submit","Filter","class='btn mb-1 btn-flat btn-outline-primary input-group'")}}
                     </div>
                   </div>
-                  <div class="col-12 col-lg-6">
+                  <div class="col-2">
                     <div class="form-group">
-                    {{form_submit("submit","Reset","class='btn mb-1 btn-flat btn-outline-dark input-group'")}}
+                      {{form_submit("submit","Reset","class='btn mb-1 btn-flat btn-outline-secondary input-group'")}}
                     </div>
                   </div>
                 </div>
               </div>
               {{form_close()}}
             </div>
+
           </div>
         </div>
+        
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Rekapitulasi Laporan<span><button style="float: right;" class="btn mb-1 btn-flat btn-outline-success" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Laporan</button></span></h5>
             <div class="table-responsive">
-              <table id="table" class="table table-striped table-bordered nowrap display responsive" cellspacing="0" width="100%">
+              <table id="table" class="table table-striped table-bordered display nowrap responsive" cellspacing="0" width="100%">
                 <thead>
                   <tr>
                     <th width="1%">No</th>
@@ -94,7 +70,9 @@
                     <th>Tindakan</th>
                     <th>Ket</th>
                     <th>Nama</th>
-                    <th class="text-center">Aksi</th>
+                    <th>Detail</th>
+                    <th>Ubah</th>
+                    <th>Hapus</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -109,8 +87,9 @@
 </div>
 @include('admin.dashboard.modal')
 @endsection
+<script src="{{APP_ASSETS}}plugins/jquery/jquery.min.js"></script>
 
-@section('js')
+
 <script type="text/javascript">
   var save_method; //for save method string
   var table;
@@ -148,7 +127,7 @@
 
     $('#form-filter').submit('click', function() {
       $.ajax({
-        url: "<?php echo site_url('dashboard/filter_data'); ?>",
+        url: "<?php echo site_url('dashboard/filter_tanggal'); ?>",
         method: "POST",
         data: new FormData(this),
         contentType: false,
@@ -156,15 +135,11 @@
         success: function(data) {
           $('#start').val("");
           $('#end').val("");
-          $('#keterangan-filter').val("").trigger("change");
-          $('#opd-filter').val("").trigger("change");
-          $('#bidang-filter').val("").trigger("change");
           swal(
             'Sedang memfilter..',
             'Tunggu sebentar..',
             'info'
           );
-          $('#collapseOne').attr("class","collapse hide");      
           table.ajax.reload();
         }
       });
@@ -336,12 +311,12 @@
 
       //Set column definition initialisation properties.
       "columnDefs": [{
-          "targets": [0, -1, -2], //last column
+          "targets": [0,-1], //last column
           "orderable": false, //set not orderable
         },
         {
-          responsivePriority: 1,
-          targets: [0, 1, -1]
+          "targets": [-2], //2 last column (photo)
+          "orderable": false, //set not orderable
         },
         { responsivePriority: 1, targets: [0, 1, 2, 4, 7] },
         { responsivePriority: 2, targets: [-1,-2] },
@@ -370,9 +345,6 @@
   function add_laporan() {
     save_method = 'add';
     $('#form')[0].reset(); // reset form on modals
-    $('#isi-laporan').summernote('reset');
-    $('#tindakan-laporan').summernote('reset');
-
     $('.form-group').removeClass('has-error'); // clear error class
     $('.help-block').empty(); // clear error string
     $('#modal_form').modal('show'); // show bootstrap modal
@@ -452,8 +424,6 @@
           $('#lihat-keterangan').html(data.lihat_keterangan).attr("class", "text-danger");
         }
         $('#lihat-pelapor').html(data.lihat_nama);
-        $('.modal-title').text('Detail Laporan'); // Set Title to Bootstrap modal title
-
 
 
 
@@ -517,44 +487,27 @@
     });
   }
 
-  $('#table').on("click", ".hapus_record", function() {
-    var id = $(this).data('id');
-    swal({
-        title: "Yakin mau dihapus?",
-        text: "Kamu tidak bisa melihat data ini lagi..",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#DD6B55",
-        confirmButtonText: "Ya, HAPUS!",
-        cancelButtonText: "Eh jangan lah bang..",
-        closeOnConfirm: false,
-        closeOnCancel: false
-      },
-      function(isConfirm) {
-        if (isConfirm) {
-          // ajax delete data to database
-          $.ajax({
-            url: "<?php echo site_url('dashboard/ajax_delete') ?>/" + id,
-            type: "POST",
-            dataType: "JSON",
-            success: function(data) {
-              swal(
-                'Good job!',
-                'Data telah dihapus!',
-                'success'
-              );
-              $('#modal_form').modal('hide');
-              reload_table();
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-              alert('Error deleting data');
-            }
-          });
-        } else {
-          swal("Dibatalkan", "Data tidak jadi dihapus :)", "error");
+  function delete_laporan(id) {
+    if (confirm('Are you sure delete this data?')) {
+      // ajax delete data to database
+      $.ajax({
+        url: "<?php echo site_url('dashboard/ajax_delete') ?>/" + id,
+        type: "POST",
+        dataType: "JSON",
+        success: function(data) {
+          swal(
+            'Good job!',
+            'Data telah dihapus!',
+            'success'
+          );
+          $('#modal_form').modal('hide');
+          reload_table();
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          alert('Error deleting data');
         }
       });
-    return false;
-  });
+
+    }
+  }
 </script>
-@endsection

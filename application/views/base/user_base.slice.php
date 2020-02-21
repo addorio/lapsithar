@@ -5,31 +5,31 @@
  <!DOCTYPE html>
  <html lang="en">
 
- <head>
-     <meta charset="utf-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width,initial-scale=1">
-     <title>@php echo $title;@endphp</title>
-     <!-- Favicon icon -->
-     <link rel="icon" type="image/png" sizes="16x16" href="{{APP_ASSETS}}images/favicon.ico">
-     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
-     <!-- Datetimepicker -->
-     <link href="{{APP_ASSETS}}plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
-     <!-- Pignose Calender -->
-     <link href="{{APP_ASSETS}}plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
-     <!-- Chartist -->
-     <link rel="stylesheet" href="{{APP_ASSETS}}plugins/chartist/css/chartist.min.css">
-     <link rel="stylesheet" href="{{APP_ASSETS}}plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
-     <!-- Data Table -->
-     <link href="{{APP_ASSETS}}plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
-     <link href="{{APP_ASSETS}}plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
-     <link rel="stylesheet" type="text/css" href="{{APP_ASSETS}}plugins/sweetalert2/dist/sweetalert2.min.css">
-     <!-- FontAwesome -->
-     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-     <link href="{{APP_ASSETS}}plugins/summernote/dist/summernote.css" rel="stylesheet">
-     <!-- Custom Stylesheet -->
-     <link href="{{APP_ASSETS}}css/style.css" rel="stylesheet">
- </head>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width,initial-scale=1">  
+    <title>@php echo $title;@endphp</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{{APP_ASSETS}}images/favicon.ico">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
+    <!-- Datetimepicker -->
+    <link href="{{APP_ASSETS}}plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+    <!-- Pignose Calender -->
+    <link href="{{APP_ASSETS}}plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+    <!-- Chartist -->
+    <link rel="stylesheet" href="{{APP_ASSETS}}plugins/chartist/css/chartist.min.css">
+    <link rel="stylesheet" href="{{APP_ASSETS}}plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
+    <!-- Data Table -->
+    <link href="{{APP_ASSETS}}plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="{{APP_ASSETS}}plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{APP_ASSETS}}plugins/sweetalert2/dist/sweetalert2.min.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.css" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link href="{{APP_ASSETS}}css/style.css" rel="stylesheet">
+</head>
 
  <body>
     <div id="main-wrapper">
@@ -156,18 +156,26 @@
 
     <script src="{{APP_ASSETS}}js/dashboard/dashboard-1.js"></script>
 
-     <script src="{{APP_ASSETS}}plugins/tables/js/jquery.dataTables.min.js"></script>
-     <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.responsive.min.js"></script>
-     <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
-     <script src="{{APP_ASSETS}}plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
-     <script src="{{APP_ASSETS}}plugins/tables/js/buttons.flash.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/jquery.dataTables.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.responsive.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.buttons.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/buttons.flash.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/jszip.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/pdfmake.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/vfs_fonts.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/buttons.html5.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/buttons.print.min.js"></script>
-    <script src="{{APP_ASSETS}}plugins/sweetalert/js/sweetalert.min.js"></script>
-    <script src="{{APP_ASSETS}}plugins/summernote/dist/summernote.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/buttons.colVis.min.js"></script>
+    <script type="text/javascript" src="{{APP_ASSETS}}plugins/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
+    <script type="text/javascript">
+        $('#tanggal').bootstrapMaterialDatePicker({
+        format: 'YYYY-MM-DD hh:mm:ss',
+        sideBySide: true
+    });
+    </script>
 
     <script type="text/javascript">
         $('#start').datepicker({

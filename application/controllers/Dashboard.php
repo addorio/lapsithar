@@ -45,9 +45,9 @@ class Dashboard extends CI_Controller
                 $row[] = '<span class="text-danger">' . $laporan->keterangan . '</span>';
             }
             $row[] = $laporan->nama;
-            $row[] = '<div class="btn-group"><a class="btn btn-sm mb-1 btn-flat btn-outline-dark lihatlaporan" href="javascript:void(0)" title="Detail" onclick="lihat_laporan(' . "'" . $laporan->id_laporan . "'" . ')"><i class="glyphicon glyphicon-pencil"></i> Detail</a>
-            <a class="btn mb-1 btn-flat btn-outline-primary btn-sm" href="javascript:void(0)" title="Edit" onclick="edit_laporan(' . "'" . $laporan->id_laporan . "'" . ')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-            <a class="hapus_record btn mb-1 btn-flat btn-outline-danger btn-sm" href="javascript:void(0)" title="Hapus" data-id="'.$laporan->id_laporan.'"><i class="glyphicon glyphicon-trash"></i> Delete</a></div>';
+            $row[] = '<a class="btn btn-sm mb-1 btn-flat btn-outline-dark lihatlaporan" href="javascript:void(0)" title="Detail" onclick="lihat_laporan(' . "'" . $laporan->id_laporan . "'" . ')"><i class="glyphicon glyphicon-pencil"></i> Detail</a>';
+            $row[] = '<a class="btn mb-1 btn-flat btn-outline-primary btn-sm" href="javascript:void(0)" title="Edit" onclick="edit_laporan(' . "'" . $laporan->id_laporan . "'" . ')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
+            $row[] = '<a class="btn mb-1 btn-flat btn-outline-danger btn-sm" href="javascript:void(0)" title="Hapus" onclick="delete_laporan(' . "'" . $laporan->id_laporan . "'" . ')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
 
             $data[] = $row;
         }
@@ -245,9 +245,9 @@ class Dashboard extends CI_Controller
         }
     }
 
-    function filter_data()
+    function filter_tanggal()
     {
-        $data = $this->laporan->filterData();
+        $data = $this->laporan->filterTanggal();
         json_encode($data);
     }
 
