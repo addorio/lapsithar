@@ -45,9 +45,9 @@
         <div class="nav-header">
             <div class="brand-logo" style="vertical-align: middle;">
                 <a href="<?php echo base_url() ?>">
-                    <!-- <b class="logo-abbr"><img src="{{APP_ASSETS}}images/bintan.png" alt="" sizes="100x100">Lapsithar</b> -->
-                    <!-- <img src="{{APP_ASSETS}}images/bintan.png" alt="" style="max-height: 25px; max-width: 25px;"> -->
-                    <span class="brand-title" style="color: white;">
+                    <b class="logo-abbr brand-logo"><img src="{{APP_ASSETS}}images/bintan.png" alt=""></b>
+                    <img class="logo-compact" src="{{APP_ASSETS}}images/bintan.png">
+                    <span class="brand-title text-white">
                         LAPSITHAR
                     </span>
                 </a>
