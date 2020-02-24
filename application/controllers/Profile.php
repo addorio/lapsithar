@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           
 
           //add html for action
-          $row[] = '<a class="btn mb-1 btn-flat btn-outline-primary btn-sm" href="javascript:void(0)" title="Edit" onclick="edit_person('."'".$person->id_user."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
+          $row[] = '<a class="btn mb-1 btn-flat btn-outline-primary btn-sm" href="javascript:void(0)" title="Edit" onclick="edit_person('."'".$person->id_user."'".')"><i class="glyphicon glyphicon-pencil"></i> Ubah</a>';
         
           $data[] = $row;
         }
