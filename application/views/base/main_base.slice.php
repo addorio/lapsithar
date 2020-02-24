@@ -96,22 +96,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </li>
                     <li>
                         <a href="<?php echo base_url('User')?>" aria-expanded="false">
-                            <i class="icon-user menu-icon"></i><span class="nav-text"> Users</span>
+                            <i class="icon-people menu-icon"></i><span class="nav-text"> Users</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?php echo base_url('Opd')?>" aria-expanded="false">
-                            <i class="icon-user menu-icon"></i><span class="nav-text"> OPD</span>
+                            <i class="icon-list menu-icon"></i><span class="nav-text"> OPD</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?php echo base_url('Bidang')?>" aria-expanded="false">
-                            <i class="icon-user menu-icon"></i><span class="nav-text"> Bidang</span>
+                            <i class="icon-list menu-icon"></i><span class="nav-text"> Bidang</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?php echo base_url('Riwayat')?>" aria-expanded="false">
-                            <i class="icon-user menu-icon"></i><span class="nav-text"> Riwayat</span>
+                            <i class="icon-info menu-icon"></i><span class="nav-text"> Riwayat</span>
                         </a>
                     </li>                       
                 </ul>
