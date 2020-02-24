@@ -1,10 +1,10 @@
 <div id="editModal" class="modal fade">  
-      <div class="modal-dialog modal-lg modal-dialog-centered">  
-           <form method="post" id="edit_form">  
+      <div class="modal-dialog modal modal-dialog-centered">  
                 <div class="modal-content">  
                      <div class="modal-header">  
                           <button type="button" class="close" data-dismiss="modal">&times;</button>   
                      </div>  
+                     <form method="post" id="edit_form">
                      <div class="modal-body">
                       <div class="form-group">
                         <input type="text" class="form-control input-flat" name="id_user" placeholder="Nama" hidden>
@@ -42,8 +42,9 @@
                      <div class="modal-footer">  
                           <button type="button" id="btnSave" onclick="save()" class="btn mb-1 btn-flat btn-primary">Simpan</button>
                           <button type="button" class="btn mb-1 btn-flat btn-danger" data-dismiss="modal">Batal</button>
-                     </div>  
+                     </div>
+                     </form>    
                 </div>  
-           </form>  
+           
       </div>  
  </div>

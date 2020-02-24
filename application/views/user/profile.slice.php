@@ -7,8 +7,9 @@
             <div class="card col-12">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table zero-configuration" style="font-size: 13px; width: 100%;" id="user">
-                            <thead>
+                        <!-- <table class="table zero-configuration" style="font-size: 13px; width: 100%;" id="user"> -->
+                            <table class="table" style="width: 100%;">
+                            <!-- <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>Nama OPD</th>
@@ -16,8 +17,29 @@
                                     <th>Username</th>
                                     <th align="justify"></th>
                                 </tr>
+                            </thead> -->
+                            <thead>
+                                <tr>
+                                    <td style="width: 15%;">ID</td>
+                                    <td style="width: 2%;">:</td>
+                                    <td><?=$user->id_user?></td>
+                                </tr>
+                                <tr>
+                                    <td>Nama OPD</td>
+                                    <td>:</td>
+                                    <td><?=$user->nama_opd?></td>
+                                </tr>
+                                    <td>Nama Admin</td>
+                                    <td>:</td>
+                                    <td><?=$user->nama?></td>
+                                <tr>
+                                    <td>Username</td>
+                                    <td>:</td>
+                                    <td><?=$user->username?></td>
+                                </tr>
                             </thead>
                         </table>
+                        <a class="btn mb-1 btn-flat btn-outline-primary btn-sm" href="javascript:void(0)" title="Edit" onclick="edit_person(<?=$user->id_user?>)"><i class="glyphicon glyphicon-pencil"></i> Ubah</a>
                     </div>
                 </div>
             </div>
@@ -38,30 +60,30 @@ var table;
 $(document).ready(function() {
 
     //datatables
-    table = $('#user').DataTable({ 
-        "bPaginate": false,
-        "bLengthChange": false,
-        "bFilter": false,
-        "bInfo": false,
-        "processing": false, //Feature control the processing indicator.
-        "serverSide": true, //Feature control DataTables' server-side processing mode.
-        "order": [], //Initial no order.
+    // table = $('#user').DataTable({ 
+    //     "bPaginate": false,
+    //     "bLengthChange": false,
+    //     "bFilter": false,
+    //     "bInfo": false,
+    //     "processing": false, //Feature control the processing indicator.
+    //     "serverSide": true, //Feature control DataTables' server-side processing mode.
+    //     "order": [], //Initial no order.
 
-        // Load data for the table's content from an Ajax source
-        "ajax": {
-            "url": "<?php echo site_url('userprofile/ajax_list')?>",
-            "type": "POST"
-        },
+    //     // Load data for the table's content from an Ajax source
+    //     "ajax": {
+    //         "url": "<?php echo site_url('userprofile/ajax_list')?>",
+    //         "type": "POST"
+    //     },
 
-        //Set column definition initialisation properties.
-        "columnDefs": [
-        { 
-            "targets": [0,1,2,3,4], //last column
-            "orderable": false, //set not orderable
-        },
-        ],
+    //     //Set column definition initialisation properties.
+    //     "columnDefs": [
+    //     { 
+    //         "targets": [0,1,2,3,4], //last column
+    //         "orderable": false, //set not orderable
+    //     },
+    //     ],
 
-    });
+    // });
 
 });
 
@@ -113,7 +135,8 @@ function edit_person(id)
 
 function reload_table()
 {
-    table.ajax.reload(null,false); //reload datatable ajax 
+    //table.ajax.reload(null,false); //reload datatable ajax 
+    location.reload(); 
 }
 
 function save()
@@ -177,11 +200,11 @@ function save()
 
             if(data.status) //if success close modal and reload ajax table
             {
-                swal(
-                  'Berhasil',
-                  'Data diperbaharui',
-                  'success'
-                );
+                // swal(
+                //   'Berhasil',
+                //   'Data diperbaharui',
+                //   'success'
+                // );
                 $('#editModal').modal('hide');
                 reload_table();
             }

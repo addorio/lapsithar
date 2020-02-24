@@ -19,13 +19,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   }
       //functions  
       function index(){ 
-          $id_user = $this->session->userdata('username');
+          $id_user = $this->session->userdata('id_user');
           $id_opd = $this->session->userdata('id_opd');
            $data['title'] = "LAPSITHAR | User";
            $data['opd'] = $this->m_opd->getAll();
            $data['op'] = $this->m_opd->getAll();
            $data['level'] = $this->m_level->getAll();
-           // $data['user'] = $this->m_user->get_by_idjoin($id_user, $id_opd);
+           $data['user'] = $this->m_user->getbyid($id_user);
            view('admin.profile.profile', $data);  
       }
 
