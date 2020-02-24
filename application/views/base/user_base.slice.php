@@ -21,9 +21,9 @@
     <link rel="stylesheet" href="{{APP_ASSETS}}plugins/chartist/css/chartist.min.css">
     <link rel="stylesheet" href="{{APP_ASSETS}}plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     <!-- Data Table -->
-    <!-- <link href="{{APP_ASSETS}}plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
+    <link href="{{APP_ASSETS}}plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="{{APP_ASSETS}}plugins/tables/css/extensions/responsive.dataTables.min.css" rel="stylesheet">
-    <link href="{{APP_ASSETS}}plugins/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!-- <link href="{{APP_ASSETS}}plugins/datatables/css/jquery.dataTables.min.css" rel="stylesheet"> -->
     <link href="{{APP_ASSETS}}plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
     <link href="{{APP_ASSETS}}plugins/sweetalert/css/sweetalert.css" rel="stylesheet">
     <!-- FontAwesome -->

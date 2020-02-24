@@ -76,8 +76,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         'id_user' => $this->input->post('id_user'),
         'id_opd' => $this->input->post('id_opd'),
         'nama' => $this->input->post('nama'),
-        'username' => $this->input->post('username'),
-        'password' => $this->input->post('password'),
+        'username' => htmlspecialchars($this->input->post('username')),
+        'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
         'id_level' => $this->input->post('id_level'),
       );
     $this->m_user->update($id_user, $data);

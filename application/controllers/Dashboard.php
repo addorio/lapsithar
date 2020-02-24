@@ -34,7 +34,7 @@ class Dashboard extends CI_Controller
             $row = array();
             $row[] = $no;
             $row[] = $laporan->nama_opd;
-            $row[] = date('d/m/Y (h:i:s)', strtotime($laporan->tanggal));
+            $row[] = date('d - m - Y (h:i:s)', strtotime($laporan->tanggal));
             $row[] = $laporan->judul;
             $row[] = $laporan->nama_bidang;
             $row[] = $laporan->isi_laporan;
