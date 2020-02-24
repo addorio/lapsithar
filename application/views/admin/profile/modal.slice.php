@@ -1,7 +1,7 @@
 <div id="editModal" class="modal">  
-      <div class="modal-dialog modal-lg modal-dialog-centered">  
+      <div class="modal-dialog modal-lg" style="width: 100%;">  
            <form method="post" id="edit_form">  
-                <div class="modal-content animated fadeInDown">  
+                <div class="modal-content">  
                      <div class="modal-header p-2">  
                           <button type="button" class="close" data-dismiss="modal">&times;</button>   
                      </div>  

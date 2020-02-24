@@ -1,15 +1,17 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-class Userpage extends CI_Controller {     
-  public function __construct(){          
-    parent::__construct(); 
-    if(!$this->session->userdata('username')){
+class Userpage extends CI_Controller 
+{     
+    public function __construct()
+    {           
+        parent::__construct(); 
+        if(!$this->session->userdata('username')){
             $this->session->set_flashdata('error','<div class="alert alert-danger">Maaf, anda harus login terlebih dahulu</div>');
-            // view('auth', $data);
+            redirect('Auth');
         }        
-     $this->load->model('m_opd');
-    $this->load->model('m_bidang');
-    $this->load->model('m_laporan', 'laporan');
-    $this->load->model('m_user');  
+        $this->load->model('m_opd');
+        $this->load->model('m_bidang');
+        $this->load->model('m_laporan', 'laporan');
+        $this->load->model('m_user');  
     }
  
     public function index()
@@ -45,9 +47,10 @@ class Userpage extends CI_Controller {
                 $row[] = '<span class="text-danger">' . $laporan->keterangan . '</span>';
             }
             $row[] = $laporan->nama;
-            $row[] = '<a class="btn btn-sm mb-1 btn-flat btn-outline-dark lihatlaporan" href="javascript:void(0)" title="Detail" onclick="lihat_laporan(' . "'" . $laporan->id_laporan . "'" . ')"><i class="glyphicon glyphicon-pencil"></i> Detail</a>';
-            $row[] = '<a class="btn mb-1 btn-flat btn-outline-primary btn-sm" href="javascript:void(0)" title="Edit" onclick="edit_laporan(' . "'" . $laporan->id_laporan . "'" . ')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
-            $row[] = '<a class="btn mb-1 btn-flat btn-outline-danger btn-sm" href="javascript:void(0)" title="Hapus" onclick="delete_laporan(' . "'" . $laporan->id_laporan . "'" . ')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            $row[] = '<div class="btn-group"><a class="btn btn-sm mb-1 btn-flat btn-outline-dark lihatlaporan" href="javascript:void(0)" title="Detail" onclick="lihat_laporan(' . "'" . $laporan->id_laporan . "'" . ')"><i class="glyphicon glyphicon-pencil"></i> Detail</a>
+            <a class="btn mb-1 btn-flat btn-outline-primary btn-sm" href="javascript:void(0)" title="Edit" onclick="edit_laporan(' . "'" . $laporan->id_laporan . "'" . ')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+            <a class="hapus_record btn mb-1 btn-flat btn-outline-danger btn-sm" href="javascript:void(0)" title="Hapus" data-id="'.$laporan->id_laporan.'"><i class="glyphicon glyphicon-trash"></i> Delete</a></div>';
+
             $data[] = $row;
         }
         }
@@ -77,14 +80,14 @@ class Userpage extends CI_Controller {
         {
             $data = array(
                 'id_laporan'          =>     $this->input->post('id_laporan'),
-                     'id_opd'          =>     $this->input->post('id_opd'),  
-                     'tanggal'               =>     $this->input->post("tanggal"),
-                     'judul'          =>     $this->input->post('judul'),  
-                     'nama_bidang'               =>     $this->input->post("nama_bidang"),
-                     'isi_laporan'          =>     $this->input->post('isi_laporan'),  
-                     'tindakan'               =>     $this->input->post("tindakan"),
-                     'keterangan'               =>     $this->input->post("keterangan"),
-                     'nama'               =>     $this->input->post("nama"),
+                'id_opd'          =>     $this->input->post('id_opd'),  
+                'tanggal'               =>     $this->input->post("tanggal"),
+                'judul'          =>     $this->input->post('judul'),  
+                'nama_bidang'               =>     $this->input->post("nama_bidang"),
+                'isi_laporan'          =>     $this->input->post('isi_laporan'),  
+                'tindakan'               =>     $this->input->post("tindakan"),
+                'keterangan'               =>     $this->input->post("keterangan"),
+                'nama'               =>     $this->input->post("nama"),
             );
 
             $upload = $this->_do_upload();
@@ -104,14 +107,14 @@ class Userpage extends CI_Controller {
         $this->_validate();
         $data = array(
                 'id_laporan'          =>     $this->input->post('id_laporan'),
-                     'id_opd'          =>     $this->input->post('id_opd'),  
-                     'tanggal'               =>     $this->input->post("tanggal"),
-                     'judul'          =>     $this->input->post('judul'),  
-                     'nama_bidang'               =>     $this->input->post("nama_bidang"),
-                     'isi_laporan'          =>     $this->input->post('isi_laporan'),  
-                     'tindakan'               =>     $this->input->post("tindakan"),
-                     'keterangan'               =>     $this->input->post("keterangan"),
-                     'nama'               =>     $this->input->post("nama"),
+                'id_opd'          =>     $this->input->post('id_opd'),  
+                'tanggal'               =>     $this->input->post("tanggal"),
+                'judul'          =>     $this->input->post('judul'),  
+                'nama_bidang'               =>     $this->input->post("nama_bidang"),
+                'isi_laporan'          =>     $this->input->post('isi_laporan'),  
+                'tindakan'               =>     $this->input->post("tindakan"),
+                'keterangan'               =>     $this->input->post("keterangan"),
+                'nama'               =>     $this->input->post("nama"),
             );
  
         if($this->input->post('remove_file')) // if remove file checked
@@ -233,15 +236,11 @@ class Userpage extends CI_Controller {
         }
     }
 
-    function filter_tanggal(){
-          $data = $this->laporan->filterTanggal();
-          json_encode($data);
-     }
-
-     function filter_ket(){
-          $data = $this->laporan->filterKet();
-          json_encode($data);
-     }
+    function filter_data()
+    {
+        $data = $this->laporan->filterData();
+        json_encode($data);
+    }
 
     function ambil_satu_lap($id_laporan)
     {

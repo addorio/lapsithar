@@ -54,13 +54,13 @@
                         <div class="row">
                           <div class="col-6">
                             <label>Isi Laporan</label>
-                            <textarea rows="6" class="form-control h-150px summernote" rows="6" name="isi_laporan" id="isi_laporan" required /></textarea>
+                            <textarea id="isi-laporan" rows="6" class="form-control h-150px summernote" rows="6" name="isi_laporan" id="isi_laporan" required /></textarea>
                             <span name="laporan_error" style="color: red;"></span>
                             <div style="color: red;"></div>
                           </div>
                           <div class="col-6">
                             <label>Tindakan yang dilakukan</label>
-                            <textarea rows="6" class="form-control h-150px summernote" rows="6" name="tindakan" id="tindakan"></textarea>
+                            <textarea id="tindakan-laporan" rows="6" class="form-control h-150px summernote" rows="6" name="tindakan" id="tindakan"></textarea>
                             <span name="tindakan_error" style="color: red;"></span>
                             <div style="color: red;"></div>
                           </div>

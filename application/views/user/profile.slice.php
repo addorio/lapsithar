@@ -41,7 +41,7 @@
                         <table class="table zero-configuration" style="font-size: 13px; width: 100%;" id="user">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>No</th>
                                     <th>Nama OPD</th>
                                     <th>Nama Admin</th>
                                     <th>Username</th>

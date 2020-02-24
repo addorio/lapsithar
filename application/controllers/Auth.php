@@ -6,16 +6,17 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+       
         $this->load->library('form_validation');
     }
 
     public function index()
     {
-        // if ($this->session->userdata('username') || $this->session->userdata('id_level') != 1) {
-        //     redirect('Dashboard');
-        // } elseif ($this->session->userdata('username') || $this->session->userdata('id_level') != 2) {
-        //     redirect('Userpage');
-        // }
+        if($this->session->userdata('username') && $this->session->userdata('id_level') == 1){
+            redirect('Dashboard');
+        } elseif ($this->session->userdata('username') && $this->session->userdata('id_level') == 2){
+            redirect('Userpage');
+        }
 
         $this->form_validation->set_rules('username', 'Username', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
@@ -75,8 +76,8 @@ class Auth extends CI_Controller
     public function logout()
     {
         helper_log("logout", "Logged Out");
-        $this->session->unset_userdata('username');
-        $this->session->unset_userdata('id_level');
+        // $this->session->unset_userdata('username');
+        // $this->session->unset_userdata('id_level');
         $this->session->sess_destroy();
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logged out!</div>');

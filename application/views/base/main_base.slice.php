@@ -23,10 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Data Table -->
     <link href="{{APP_ASSETS}}plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="{{APP_ASSETS}}plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{APP_ASSETS}}plugins/sweetalert2/dist/sweetalert2.min.css">
+    <link href="{{APP_ASSETS}}plugins/sweetalert/css/sweetalert.css" rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.css" rel="stylesheet">
+    <link href="{{APP_ASSETS}}plugins/summernote/dist/summernote.css" rel="stylesheet">
+    <link href="{{APP_ASSETS}}plugins/select2/css/select2.min.css" rel="stylesheet"> 
     <!-- Custom Stylesheet -->
     <link href="{{APP_ASSETS}}css/style.css" rel="stylesheet">
 </head>
@@ -47,9 +48,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="nav-header">
             <div class="brand-logo" style="vertical-align: middle;">
                 <a href="{{base_url('Dashboard')}}">
-                    <!-- <b class="logo-abbr"><img src="{{APP_ASSETS}}images/bintan.png" alt="" sizes="100x100">Lapsithar</b> -->
-                    <!-- <img src="{{APP_ASSETS}}images/bintan.png" alt="" style="max-height: 25px; max-width: 25px;"> -->
-                    <span class="brand-title" style="color: white;">
+                    <b class="logo-abbr brand-logo"><img src="{{APP_ASSETS}}images/bintan.png" alt=""></b>
+                    <img class="logo-compact" src="{{APP_ASSETS}}images/bintan.png">
+                    <span class="brand-title text-white">
                         LAPSITHAR
                     </span>
                 </a>
@@ -138,7 +139,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Datamap -->
     <script src="{{APP_ASSETS}}plugins/d3v3/index.js"></script>
     <script src="{{APP_ASSETS}}plugins/topojson/topojson.min.js"></script>
-    <script src="{{APP_ASSETS}}plugins/datamaps/datamaps.world.min.js"></script>
     <!-- Morrisjs -->
     <script src="{{APP_ASSETS}}plugins/raphael/raphael.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/morris/morris.min.js"></script>
@@ -152,8 +152,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="{{APP_ASSETS}}plugins/chartist/js/chartist.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
 
-    <script src="{{APP_ASSETS}}js/dashboard/dashboard-1.js"></script>
-
     <script src="{{APP_ASSETS}}plugins/tables/js/jquery.dataTables.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.responsive.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
@@ -165,9 +163,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="{{APP_ASSETS}}plugins/tables/js/vfs_fonts.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/buttons.html5.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/buttons.print.min.js"></script>
-    <script src="{{APP_ASSETS}}plugins/tables/js/buttons.colVis.min.js"></script>
-    <script type="text/javascript" src="{{APP_ASSETS}}plugins/sweetalert2/dist/sweetalert2.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/sweetalert/js/sweetalert.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/summernote/dist/summernote.min.js"></script> 
+    <script src="{{APP_ASSETS}}plugins/select2/js/select2.full.min.js"></script> 
+    
     <script type="text/javascript">
         $('#tanggal').bootstrapMaterialDatePicker({
         format: 'YYYY-MM-DD hh:mm:ss',
@@ -187,7 +186,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         });
     </script>
   
-
+@yield('js')
 
 </body>
 </html>

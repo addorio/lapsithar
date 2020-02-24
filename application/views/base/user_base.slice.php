@@ -1,4 +1,4 @@
- @php
+@php
  defined('BASEPATH') OR exit('No direct script access allowed');
  @endphp
 
@@ -23,10 +23,11 @@
     <!-- Data Table -->
     <link href="{{APP_ASSETS}}plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="{{APP_ASSETS}}plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{APP_ASSETS}}plugins/sweetalert2/dist/sweetalert2.min.css">
+    <link href="{{APP_ASSETS}}plugins/sweetalert/css/sweetalert.css" rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.css" rel="stylesheet">
+    <link href="{{APP_ASSETS}}plugins/summernote/dist/summernote.css" rel="stylesheet">
+    <link href="{{APP_ASSETS}}plugins/select2/css/select2.min.css" rel="stylesheet"> 
     <!-- Custom Stylesheet -->
     <link href="{{APP_ASSETS}}css/style.css" rel="stylesheet">
 </head>
@@ -64,19 +65,6 @@
                 <div class="nav-control">
                     <div class="hamburger">
                         <span class="toggle-icon"><i class="icon-menu"></i></span>
-                    </div>
-                </div>
-                <div class="header-left">
-                    <div class="input-group icons">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
-                        </div>
-                        <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
-                        <div class="drop-down animated flipInX d-md-none">
-                            <form action="#">
-                                <input type="text" class="form-control" placeholder="Search">
-                            </form>
-                        </div>
                     </div>
                 </div>
                 <div class="header-right">
@@ -126,7 +114,7 @@
     </div>
 
      <!-- @section('javascript') -->
-     <script src="{{APP_ASSETS}}plugins/jquery/jquery.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/jquery/jquery.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/common/common.min.js"></script>
     <script src="{{APP_ASSETS}}js/custom.min.js"></script>
     <script src="{{APP_ASSETS}}js/settings.js"></script>
@@ -140,7 +128,6 @@
     <!-- Datamap -->
     <script src="{{APP_ASSETS}}plugins/d3v3/index.js"></script>
     <script src="{{APP_ASSETS}}plugins/topojson/topojson.min.js"></script>
-    <script src="{{APP_ASSETS}}plugins/datamaps/datamaps.world.min.js"></script>
     <!-- Morrisjs -->
     <script src="{{APP_ASSETS}}plugins/raphael/raphael.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/morris/morris.min.js"></script>
@@ -154,8 +141,6 @@
     <script src="{{APP_ASSETS}}plugins/chartist/js/chartist.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
 
-    <script src="{{APP_ASSETS}}js/dashboard/dashboard-1.js"></script>
-
     <script src="{{APP_ASSETS}}plugins/tables/js/jquery.dataTables.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.responsive.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
@@ -167,9 +152,9 @@
     <script src="{{APP_ASSETS}}plugins/tables/js/vfs_fonts.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/buttons.html5.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/buttons.print.min.js"></script>
-    <script src="{{APP_ASSETS}}plugins/tables/js/buttons.colVis.min.js"></script>
-    <script type="text/javascript" src="{{APP_ASSETS}}plugins/sweetalert2/dist/sweetalert2.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/sweetalert/js/sweetalert.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/summernote/dist/summernote.min.js"></script> 
+    <script src="{{APP_ASSETS}}plugins/select2/js/select2.full.min.js"></script>
     <script type="text/javascript">
         $('#tanggal').bootstrapMaterialDatePicker({
         format: 'YYYY-MM-DD hh:mm:ss',
@@ -189,6 +174,7 @@
         });
     </script>
 
+@yield('js')
 
  </body>
 

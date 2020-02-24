@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content animated fadeInDown">
       <div class="modal-header  p-2">
-        <h3 class="modal-title">Laporan Form</h3>
+        <h3 class="modal-title"></h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body form">
@@ -52,13 +52,13 @@
               <div class="row">
                 <div class="col-6">
                   <label>Isi Laporan</label>
-                  <textarea rows="6" class="form-control h-150px summernote" rows="6" name="isi_laporan" id="isi_laporan" required /></textarea>
+                  <textarea id="isi-laporan" rows="6" class="form-control h-150px summernote" rows="6" name="isi_laporan" id="isi_laporan" required /></textarea>
                   <span name="laporan_error" style="color: red;"></span>
                   <div style="color: red;"></div>
                 </div>
                 <div class="col-6">
                   <label>Tindakan yang dilakukan</label>
-                  <textarea rows="6" class="form-control h-150px summernote" rows="6" name="tindakan" id="tindakan"></textarea>
+                  <textarea id="tindakan-laporan" rows="6" class="form-control h-150px summernote" rows="6" name="tindakan" id="tindakan"></textarea>
                   <span name="tindakan_error" style="color: red;"></span>
                   <div style="color: red;"></div>
                 </div>
@@ -122,7 +122,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title"><span class="fa fa-eye"></span> Detail Laporan</h4>
+        <h3 class="modal-title"></h3>
         <button id="reload-file" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       </div>
       <div class="modal-body">

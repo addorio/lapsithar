@@ -1,5 +1,5 @@
 <div id="editModal" class="modal fade">  
-      <div class="modal-dialog modal-lg" style="width: 90%;">  
+      <div class="modal-dialog modal-lg" style="width: 100%;">  
            <form method="post" id="edit_form">  
                 <div class="modal-content">  
                      <div class="modal-header">  
