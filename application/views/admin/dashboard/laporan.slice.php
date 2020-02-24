@@ -111,6 +111,17 @@
   var user = '<?= $user->nama_opd ?>';
 
   $(document).ready(function() {
+
+    // $('tbody').on('click', 'td', function () {
+
+    //      if ($(this).index() == 7 ) { // provide index of your column in which you prevent row click here is column of 4 index
+    //          return;
+    //      }
+
+    //         // you can do additional functionality by clicking on this column here                         
+    // });
+
+
     // CKEDITOR.replace( 'isi_laporan' );
     // CKEDITOR.replace( 'tindakan' );
     $('.summernote').summernote({
@@ -171,7 +182,13 @@
       "bInfo": false,
       "processing": true, //Feature control the processing indicator.
       "serverSide": true, //Feature control DataTables' server-side processing mode.
-      "responsive": true,
+      // "responsive": true,
+      responsive: {
+            details: {
+                type: 'column',
+                target: 'tr'
+            }
+        },
       dom: 'Bfrtlp',
       buttons: [{
           extend: 'excelHtml5',

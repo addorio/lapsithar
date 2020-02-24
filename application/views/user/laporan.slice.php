@@ -43,14 +43,16 @@
                       @endforeach
                     </select>
                   </div>
-                  <div class="form-group col-12">
+                  <!-- <div class="form-group col-12">
                     <select class="form-control" id="opd-filter" name="opd">
                     <option value="">Pilih OPD</option>
                       @foreach ($opd as $row)
+                      <?php if($row->id_opd == $this->session->userdata('id_opd')){?>
                       <option value="{{$row->id_opd}}">{{$row->nama_opd}}</option>
+                      <?php } ?>
                       @endforeach
                     </select>
-                  </div>
+                  </div> -->
                   
                 </div>
 
@@ -159,7 +161,13 @@ var user  = '<?= $user->nama_opd ?>';
         "bInfo" : false,
         "processing": true, //Feature control the processing indicator.
         "serverSide": true, //Feature control DataTables' server-side processing mode.
-        "responsive": true,
+        // "responsive": true,
+        responsive: {
+            details: {
+                type: 'column',
+                target: 'tr'
+            }
+        },
         dom: 'frBtlp',
         buttons: [{
           extend: 'excelHtml5',
