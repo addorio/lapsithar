@@ -100,7 +100,7 @@ function edit_person(id)
             $('[name="password"]').val(data.password);
             $('[name="id_level"]').val(data.id_level);
             $('#editModal').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Edit Person'); // Set title to Bootstrap modal title
+            $('.modal-title').text('Edit Profil'); // Set title to Bootstrap modal title
 
         },
         error: function (jqXHR, textStatus, errorThrown)
@@ -171,8 +171,8 @@ function save()
             if(data.status) //if success close modal and reload ajax table
             {
                             swal(
-                  'Good job!',
                   'Berhasil!',
+                  'Data Tersimpan',
                   'success'
                 );
                 $('#editModal').modal('hide');
@@ -216,8 +216,8 @@ function delete_person(id)
             {
                 //if success reload ajax table
                 swal(
-                            'Good job!',
-                            'Success',
+                            'Berhasil!',
+                            'Data Terhapus',
                             'success'
                           ); 
                 $('#userModal').modal('hide');

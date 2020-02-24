@@ -1,6 +1,6 @@
 <!-- Bootstrap modal -->
 <div class="modal fade" id="modal_form" role="dialog">
-    <div class="modal-dialog modal-lg" style="width: 90%;">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title">Laporan Form</h3>
@@ -93,8 +93,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" id="btnSave" onclick="save()" class="btn mb-1 btn-flat btn-outline-primary">Save</button>
-                <button type="button" class="btn mb-1 btn-flat btn-outline-danger" data-dismiss="modal">Cancel</button>
+                <button type="button" id="btnSave" onclick="save()" class="btn mb-1 btn-flat btn-primary">Save</button>
+                <button type="button" class="btn mb-1 btn-flat btn-danger" data-dismiss="modal">Batal</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -189,7 +189,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn mb-1 btn-flat btn-outline-dark" data-dismiss="modal">Tutup</button>
+        <button type="button" class="btn mb-1 btn-flat btn-dark" data-dismiss="modal">Tutup</button>
       </div>
     </div>
   </div>

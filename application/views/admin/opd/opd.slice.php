@@ -193,8 +193,8 @@ function delete_laporan(id)
             success: function(data)
             {
                 swal(
-                  'Good job!',
-                  'Data telah dihapus!',
+                  'Berhasil!',
+                  'Data Terhapus!',
                   'success'
                 );
                 $('#modal_form').modal('hide');

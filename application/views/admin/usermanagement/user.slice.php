@@ -103,7 +103,7 @@ function add_person()
     $('.form-group').removeClass('has-error'); // clear error class
     $('.help-block').empty(); // clear error string
     $('#userModal').modal('show'); // show bootstrap modal
-    $('.modal-title').text('Add Person'); // Set Title to Bootstrap modal title
+    $('.modal-title').text('Tambah User'); // Set Title to Bootstrap modal title
 }
 
 function edit_person(id)
@@ -128,7 +128,7 @@ function edit_person(id)
             $('[name="password"]').val(data.password);
             $('[name="id_level"]').val(data.id_level);
             $('#editModal').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Edit Person'); // Set title to Bootstrap modal title
+            $('.modal-title').text('Edit User'); // Set title to Bootstrap modal title
 
         },
         error: function (jqXHR, textStatus, errorThrown)
@@ -163,8 +163,8 @@ function save()
             if(data.status) //if success close modal and reload ajax table
             {
                 swal(
-                            'Good job!',
-                            'Success',
+                            'Berhasil!',
+                            'Data berhasil ditambahkan',
                             'success'
                           );
                 $('#userModal').modal('hide');
@@ -205,8 +205,8 @@ function save()
             if(data.status) //if success close modal and reload ajax table
             {
                 swal(
-                  'Good job!',
-                  'Data Updated!',
+                  'Berhasil!',
+                  'Data diperbaharui',
                   'success'
                 );
                 $('#editModal').modal('hide');
@@ -257,8 +257,8 @@ function delete_person(id)
             {
                 //if success reload ajax table
                 swal(
-                            'Good job!',
-                            'Success',
+                            'Berhasil!',
+                            'Data telah dihapus',
                             'success'
                           );
                 $('#userModal').modal('hide');

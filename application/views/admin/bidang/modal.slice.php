@@ -1,6 +1,6 @@
-<div class="modal" id="modal_form" role="dialog">
+<div class="modal fade" id="modal_form" role="dialog">
     <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content animated fadeInDown">
+        <div class="modal-content">
             <div class="modal-header p-2">
                 <h3 class="modal-title">Bidang Form</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -13,14 +13,14 @@
                         <label>Nama Bidang</label>
                         <input type="text" class="form-control input-flat" id="id_bidang" name="id_bidang" placeholder="Nama OPD / Kecamatan" required="" hidden>
                         <input type="text" class="form-control input-flat" id="nama_bidang" name="nama_bidang" placeholder="Nama Bidang" required="">
-                        <span name="nama_bidang" style="color: red;"></span>
+                        <span name="nama_bidang" class="txt-red"></span>
                       </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" id="btnSave" onclick="save()" class="btn mb-1 btn-flat btn-outline-primary">Simpan</button>
-                <button type="button" class="btn mb-1 btn-flat btn-outline-danger" data-dismiss="modal">Batal</button>
+                <button type="button" id="btnSave" onclick="save()" class="btn mb-1 btn-flat btn-primary">Simpan</button>
+                <button type="button" class="btn mb-1 btn-flat btn-danger" data-dismiss="modal">Batal</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
