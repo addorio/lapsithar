@@ -20909,3 +20909,7 @@ td.highlight {
     background: rgb(40, 54, 85);
     background: linear-gradient(90deg, rgba(40, 54, 85, 1) 0%, rgba(77, 100, 141, 1) 35%, rgba(174, 208, 255, 1) 100%);
 }
+
+.txt-red {
+    color: red !important;
+}

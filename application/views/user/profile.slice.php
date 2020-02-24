@@ -1,35 +1,4 @@
 @extends('base.user_base')
-<!-- <link href="{{APP_ASSETS}}plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet"> -->
-
-<!-- <style>
-    .datetimepicker {
-     z-index:10800 !important;
-  display: block;
-    }
-</style> -->
-
-<style>   
-           body  
-           {  
-                margin:0;  
-                padding:0;  
-                background-color:#f1f1f1;  
-           }  
-           .box  
-           {  
-                width:900px;  
-                padding:20px;  
-                background-color:#fff;  
-                border:1px solid #ccc;  
-                border-radius:5px;  
-                margin-top:10px;  
-           }
-           td.highlight {
-                font-weight: bold;
-                color: blue;
-            }  
-</style> 
-
 @section('content')
 <div class="content-body">
             <!-- row -->
@@ -167,8 +136,8 @@ function save()
             if(data.status) //if success close modal and reload ajax table
             {
                 swal(
-                  'Good job!',
                   'Berhasil!',
+                  'Data berhasil ditambahkan',
                   'success'
                 );
                 $('#userModal').modal('hide'); 
@@ -209,8 +178,8 @@ function save()
             if(data.status) //if success close modal and reload ajax table
             {
                 swal(
-                  'Good job!',
-                  'Data Updated!',
+                  'Berhasil',
+                  'Data diperbaharui',
                   'success'
                 );
                 $('#editModal').modal('hide');
@@ -257,8 +226,8 @@ function delete_person(id)
             {
                 //if success reload ajax table
                 swal(
-                            'Good job!',
-                            'Success',
+                            'Berhasil!',
+                            'Data Terhapus',
                             'success'
                           ); 
                 $('#userModal').modal('hide');

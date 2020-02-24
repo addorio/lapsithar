@@ -481,13 +481,13 @@
   $('#table').on("click", ".hapus_record", function() {
     var id = $(this).data('id');
     swal({
-        title: "Yakin mau dihapus?",
+        title: "Ingin Menghapus Data?",
         text: "Kamu tidak bisa melihat data ini lagi..",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#DD6B55",
         confirmButtonText: "Ya, HAPUS!",
-        cancelButtonText: "Eh jangan lah bang..",
+        cancelButtonText: "Batalkan",
         closeOnConfirm: false,
         closeOnCancel: false
       },
@@ -500,8 +500,8 @@
             dataType: "JSON",
             success: function(data) {
               swal(
-                'Good job!',
-                'Data telah dihapus!',
+                'Berhasil!',
+                'Data Terhapus!',
                 'success'
               );
               $('#modal_form').modal('hide');
@@ -512,7 +512,7 @@
             }
           });
         } else {
-          swal("Dibatalkan", "Data tidak jadi dihapus :)", "error");
+          swal("Dibatalkan", "Data tidak jadi dihapus", "error");
         }
       });
     return false;

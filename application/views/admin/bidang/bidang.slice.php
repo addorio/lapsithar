@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Daftar Bidang<span><button class="btn mb-1 btn-flat btn-outline-primary" style="float: right;" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Bidang</button></span></h5>
-                        
+
                         <div class="table-responsive">
                         <table id="table" class="table table-bordered" cellspacing="0" width="100%" style="width: 100%;">
                           <thead>
@@ -199,8 +199,8 @@ function delete_laporan(id)
             success: function(data)
             {
                 swal(
-                  'Good job!',
-                  'Data telah dihapus!',
+                  'Berhasil!',
+                  'Data Terhapus',
                   'success'
                 );
                 $('#modal_form').modal('hide');

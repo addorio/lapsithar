@@ -78,7 +78,7 @@
         
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Rekapitulasi Laporan<span><button style="float: right;" class="btn mb-1 btn-flat btn-outline-primary" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Laporan</button></span></h5>
+        <h5 class="card-title">Rekapitulasi Laporan<span><button style="float: right;" class="btn mb-1 btn-flat btn-primary" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Laporan</button></span></h5>
         <div class="table-responsive">
           <table id="table" class="table table-striped table-bordered nowrap display responsive" cellspacing="0" width="100%">
             <thead>
@@ -171,7 +171,7 @@ var user  = '<?= $user->nama_opd ?>';
         dom: 'frBtlp',
         buttons: [{
           extend: 'excelHtml5',
-          className: 'btn mb-1 btn-flat btn-outline-success',
+          className: 'btn mb-1 btn-flat btn-success',
           title: 'Laporan',
           exportOptions: {
             columns: [0, 1, 2, 3, 4, 5, 6, 7, 8]
@@ -179,7 +179,7 @@ var user  = '<?= $user->nama_opd ?>';
         },
         {
           extend: 'pdfHtml5',
-          className: 'btn mb-1 btn-flat btn-outline-danger',
+          className: 'btn mb-1 btn-flat btn-danger',
           title: user,
           orientation: 'landscape',
           pageSize: 'FOLIO',
@@ -438,8 +438,8 @@ function save()
             if(data.status) //if success close modal and reload ajax table
             {
                 swal(
-                  'Good job!',
-                  'Berhasil',
+                  'Berhasil!',
+                  'Data tersimpan',
                   'success'
                 );
                 $('#modal_form').modal('hide');
@@ -471,13 +471,13 @@ function save()
 $('#table').on("click", ".hapus_record", function() {
     var id = $(this).data('id');
     swal({
-        title: "Yakin mau dihapus?",
-        text: "Kamu tidak bisa melihat data ini lagi..",
+        title: "Menghapus Data?",
+        text: "Anda tidak bisa melihat data ini lagi..",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#DD6B55",
         confirmButtonText: "Ya, HAPUS!",
-        cancelButtonText: "Eh jangan lah bang..",
+        cancelButtonText: "Batalkan",
         closeOnConfirm: false,
         closeOnCancel: false
       },
@@ -490,7 +490,7 @@ $('#table').on("click", ".hapus_record", function() {
             dataType: "JSON",
             success: function(data) {
               swal(
-                'Good job!',
+                'Berhasil!',
                 'Data telah dihapus!',
                 'success'
               );
@@ -498,7 +498,7 @@ $('#table').on("click", ".hapus_record", function() {
               reload_table();
             },
             error: function(jqXHR, textStatus, errorThrown) {
-              alert('Error deleting data');
+              alert('Gagal menghapus data');
             }
           });
         } else {
