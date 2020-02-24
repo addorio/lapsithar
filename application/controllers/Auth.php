@@ -8,7 +8,10 @@ class Auth extends CI_Controller
         parent::__construct();
        
         $this->load->library('form_validation');
+        $username = $this->input->post('username');
     }
+
+
 
     public function index()
     {
@@ -94,7 +97,7 @@ class Auth extends CI_Controller
     {
         $username = $this->input->post('username');
 
-        $user['user'] = $this->db->get_where('tb_user', ['username' => $username])->row_array();
+        $user['user'] = $this->db->get_where('tb_user', ['username' => $username])->row();
         if ($user) {
             view('resetpassword', $user);
         } else {
@@ -106,7 +109,6 @@ class Auth extends CI_Controller
 
     public function changePassword()
     {
-        $id = $this->input->post('id_user');
         $username = $this->input->post('username');
         $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
         $data = array(
@@ -114,7 +116,9 @@ class Auth extends CI_Controller
             'password' => $password
         );
 
-        $this->db->where('id_user', $id)->update('tb_user', $data);
+        echo ($data);
+
+        $this->db->where('username', $username)->update('tb_user', $data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Success. Please login with your new password</div>');
         redirect('auth');
 
