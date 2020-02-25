@@ -7,9 +7,11 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Daftar User<span><button class="btn mb-1 btn-flat btn-outline-primary" style="float: right;" onclick="add_person()"><i class="glyphicon glyphicon-plus"></i> Tambah User</button></span></h5>
+                        <h5 class="card-title">Daftar User<span><button class="btn mb-1 btn-flat btn-outline-primary float-right" onclick="add_person()"><i class="glyphicon glyphicon-plus"></i> Tambah User</button></span></h5>
                         <div class="table-responsive">
-                            <table class="table table-bordered display nowrap responsive" id="user_data" width="100%"> 
+
+                            <table class="table table-bordered display nowrap responsive txt-sm" id="user_data">
+
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -112,7 +114,7 @@
                 $('[name="password"]').val(data.password);
                 $('[name="id_level"]').val(data.id_level);
                 $('#editModal').modal('show'); // show bootstrap modal when complete loaded
-                $('.modal-title').text('Edit User'); // Set title to Bootstrap modal title
+                $('.modal-title').text('Ubah User'); // Set title to Bootstrap modal title
 
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -274,6 +276,7 @@ function delete_person(id)
           });
         } else {
           swal("Dibatalkan", "Data tidak jadi dihapus", "error");
+
         }
       });
     return false;
