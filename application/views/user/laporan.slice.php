@@ -80,7 +80,7 @@
       <div class="card-body">
         <h5 class="card-title">Rekapitulasi Laporan<span><button style="float: right;" class="btn mb-1 btn-flat btn-primary" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Laporan</button></span></h5>
         <div class="table-responsive">
-          <table id="table" class="table table-striped table-bordered nowrap display responsive" cellspacing="0" width="100%">
+          <table id="table" class="table table-bordered nowrap display responsive" cellspacing="0" width="100%">
             <thead>
               <tr>
                 <th width="1%">No</th>
