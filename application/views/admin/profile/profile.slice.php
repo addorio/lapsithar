@@ -6,7 +6,7 @@
             <div class="card col-12">
                 <div class="card-body">
                     <div class="">
-                        <table class="table" style="width: 100%;">
+                        <table class="table txt-sm">
                             <thead>
                                 <tr>
                                     <td style="width: 15%;">ID</td>
@@ -112,7 +112,7 @@ function edit_person(id)
             $('[name="password"]').val(data.password);
             $('[name="id_level"]').val(data.id_level);
             $('#editModal').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Edit Profil'); // Set title to Bootstrap modal title
+            $('.modal-title').text('Ubah Profil'); // Set title to Bootstrap modal title
 
         },
         error: function (jqXHR, textStatus, errorThrown)

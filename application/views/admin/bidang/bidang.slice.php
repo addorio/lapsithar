@@ -7,10 +7,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Daftar Bidang<span><button class="btn mb-1 btn-flat btn-outline-primary" style="float: right;" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Bidang</button></span></h5>
-
+                        <h5 class="card-title">Daftar Bidang<span><button class="btn mb-1 btn-flat btn-outline-primary float-right" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Bidang</button></span></h5>
                         <div class="table-responsive">
-                        <table id="table" class="table table-bordered display nowrap responsive" width="100%">
+                        <table id="table" class="table table-bordered display nowrap responsive txt-sm">
                           <thead>
                             <tr>
                               <th width="1%">No</th>
@@ -117,7 +116,7 @@ function edit_laporan(id)
             $('[name="id_bidang"]').val(data.id_bidang);
             $('[name="nama_bidang"]').val(data.nama_bidang);
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Edit Bidang'); // Set title to Bootstrap modal title
+            $('.modal-title').text('Ubah Bidang'); // Set title to Bootstrap modal title
         },
         error: function (jqXHR, textStatus, errorThrown)
         {

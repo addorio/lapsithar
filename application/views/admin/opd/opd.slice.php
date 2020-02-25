@@ -6,10 +6,10 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Daftar OPD<span><button class="btn mb-1 btn-flat btn-outline-primary" style="float: right;" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah OPD</button></span></h5>
+                        <h5 class="card-title">Daftar OPD<span><button class="btn mb-1 btn-flat btn-outline-primary float-right" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah OPD</button></span></h5>
                         
                         <div class="table-responsive">
-                        <table id="table" class="table table-bordered" cellspacing="0" width="100%">
+                        <table id="table" class="table table-bordered txt-sm" cellspacing="0">
                           <thead>
                             <tr>
                               <th width="1%">No</th>
@@ -112,7 +112,7 @@ function edit_laporan(id)
             $('[name="id_opd"]').val(data.id_opd);
             $('[name="nama_opd"]').val(data.nama_opd);
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Edit OPD'); // Set title to Bootstrap modal title
+            $('.modal-title').text('Ubah OPD'); // Set title to Bootstrap modal title
         },
         error: function (jqXHR, textStatus, errorThrown)
         {

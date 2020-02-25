@@ -9,7 +9,7 @@
                         <h5 class="card-title">Riwayat Aktivitas<span></span></h5>
                         
                         <div class="table-responsive">
-                            <table id="table" class="table table-striped display nowrap" cellspacing="0" width="100%">
+                            <table id="table" class="table table-striped display nowrap txt-sm" cellspacing="0">
                           <thead>
                             <tr>
                               <th class="text-center">Aktivitas Log</th>
