@@ -75,11 +75,7 @@
           <div class="card-body">
             <h5 class="card-title">Rekapitulasi Laporan<span><button class="btn mb-1 btn-flat btn-outline-primary float-right" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Laporan</button></span></h5>
             <div class="table-responsive">
-<<<<<<< Updated upstream
-              <table id="table" class="table table-bordered nowrap display responsive" cellspacing="0" width="100%">
-=======
-              <table id="table" class="table table-striped table-bordered nowrap display responsive txt-sm" cellspacing="0">
->>>>>>> Stashed changes
+              <table id="table" class="table table-bordered nowrap display responsive txt-sm" cellspacing="0">
                 <thead>
                   <tr>
                     <th width="1%">No</th>
