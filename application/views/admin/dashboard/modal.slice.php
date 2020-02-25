@@ -11,7 +11,6 @@
           <input type="hidden" value="" name="id" />
           <div class="form-body">
             <div class="form-group">
-
               <div class="row">
                 <div class="col-6">
                   <input type="text" class="form-control input-flat" id="id_laporan" name="id_laporan" hidden>
@@ -67,7 +66,7 @@
               <div class="row">
                 <div class="col-12 col-lg-12 pt-2">
                   <label>Isi Laporan</label>
-                  <textarea id="isi-laporan" rows="6" class="form-control h-150px summernote" rows="6" name="isi_laporan" required /></textarea>
+                  <textarea id="isi-laporan" rows="6" class="form-control h-150px summernote" rows="6" name="isi_laporan" required></textarea>
                   <span name="laporan_error" class="txt-red"></span>
                   <div class="txt-red"></div>
                 </div>

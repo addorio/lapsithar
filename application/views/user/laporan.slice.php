@@ -73,14 +73,13 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
+     
         
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Rekapitulasi Laporan<span><button style="float: right;" class="btn mb-1 btn-flat btn-primary" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Laporan</button></span></h5>
         <div class="table-responsive">
-          <table id="table" class="table table-bordered nowrap display responsive" cellspacing="0" width="100%">
+          <table id="table" class="table table-bordered nowrap display responsive txt-sm" cellspacing="0">
             <thead>
               <tr>
                 <th width="1%">No</th>
@@ -102,6 +101,8 @@
       </div>
     </div>
   </div>
+   </div>
+    </div>
 </div>
 @include('user.modal')
 @endsection
@@ -283,8 +284,14 @@ var user  = '<?= $user->nama_opd ?>';
           responsivePriority: 1,
           targets: [0, 1, -1]
         },
-        { responsivePriority: 1, targets: [0, 1, 2, 4, 7] },
-        { responsivePriority: 2, targets: [-1,-2] },
+        {
+          responsivePriority: 1,
+          targets: [0, 1, 2, 4, 7]
+        },
+        {
+          responsivePriority: 2,
+          targets: [-1, -2]
+        },
       ],
 
     });;
@@ -485,7 +492,7 @@ $('#table').on("click", ".hapus_record", function() {
         if (isConfirm) {
           // ajax delete data to database
           $.ajax({
-            url: "<?php echo site_url('dashboard/ajax_delete') ?>/" + id,
+            url: "<?php echo site_url('userpage/ajax_delete') ?>/" + id,
             type: "POST",
             dataType: "JSON",
             success: function(data) {

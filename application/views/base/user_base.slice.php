@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">  
     <title>@php echo $title;@endphp</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{APP_ASSETS}}images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{APP_ASSETS}}images/favicon.ico"> 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
     <!-- Datetimepicker -->
     <link href="{{APP_ASSETS}}plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
@@ -35,15 +35,16 @@
 </head>
 
  <body>
-    <div id="main-wrapper">
-     <!-- Preloader  -->
-     <div id="preloader">
+    <div id="preloader">
          <div class="loader">
              <svg class="circular" viewBox="25 25 50 50">
                  <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
              </svg>
          </div>
      </div>
+    <div id="main-wrapper">
+     <!-- Preloader  -->
+     
         <div class="nav-header">
             <div class="brand-logo" style="vertical-align: middle;">
                 <a href="<?php echo base_url() ?>">
