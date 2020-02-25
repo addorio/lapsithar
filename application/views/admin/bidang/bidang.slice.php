@@ -158,11 +158,22 @@ function save()
  
             if(data.status) //if success close modal and reload ajax table
             {
+                swal(
+                            'Berhasil!',
+                            'Data diperbaharui',
+                            'success'
+                        );
                 $('#modal_form').modal('hide');
                 reload_table();
             }
             else
             {
+                swal(
+                            'error',
+                            'Form tidak boleh kosong',
+                            'Something went wrong!',
+                            '<a href>Why do I have this issue?</a>'
+                        );
                 for (var i = 0; i < data.inputerror.length; i++) 
                 {
                     $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
@@ -221,7 +232,7 @@ function delete_laporan(id)
         cancelButtonText: "Batalkan",
         closeOnConfirm: false,
         closeOnCancel: false
-      },
+      }, 
       function(isConfirm) {
         if (isConfirm) {
           // ajax delete data to database

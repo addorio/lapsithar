@@ -14,7 +14,7 @@
             </div>
             <div id="collapseOne" class="collapse hide" data-parent="#accordion-one">
               {{form_open("","id='form-filter'")}}
-              <div class="card-body">
+              <div class="card-body"> 
 
                 <div class="row">
                   <div class="form-group col-3">

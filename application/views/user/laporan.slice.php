@@ -171,7 +171,7 @@ var user  = '<?= $user->nama_opd ?>';
         dom: 'frBtlp',
         buttons: [{
           extend: 'excelHtml5',
-          className: 'btn mb-1 btn-flat btn-success',
+          className: 'btn mb-1 btn-flat btn-outline-success', 
           title: 'Laporan',
           exportOptions: {
             columns: [0, 1, 2, 3, 4, 5, 6, 7, 8]
@@ -179,7 +179,7 @@ var user  = '<?= $user->nama_opd ?>';
         },
         {
           extend: 'pdfHtml5',
-          className: 'btn mb-1 btn-flat btn-danger',
+          className: 'btn mb-1 btn-flat btn-outline-danger',
           title: user,
           orientation: 'landscape',
           pageSize: 'FOLIO',
