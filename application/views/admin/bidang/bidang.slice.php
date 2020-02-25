@@ -10,13 +10,12 @@
                         <h5 class="card-title">Daftar Bidang<span><button class="btn mb-1 btn-flat btn-outline-primary" style="float: right;" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Bidang</button></span></h5>
 
                         <div class="table-responsive">
-                        <table id="table" class="table table-bordered" cellspacing="0" width="100%" style="width: 100%;">
+                        <table id="table" class="table table-bordered display nowrap responsive" width="100%">
                           <thead>
                             <tr>
-                              <th>No</th>
+                              <th width="1%">No</th>
                               <th>Nama Bidang</th>
-                              <th>Ubah</th>
-                              <th>Hapus</th>
+                              <th  width="1%" class="text-center">Aksi</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -32,8 +31,8 @@
 
 @include('admin.bidang.modal')
  @endsection
-<script src="{{APP_ASSETS}}plugins/jquery/jquery.min.js"></script>
- 
+ @section('js')
+
  
 <script type="text/javascript">
  
@@ -66,7 +65,6 @@ $(document).ready(function() {
             },
             { 
                 "targets": [ -2 ], //2 last column (photo)
-                "orderable": false, //set not orderable
             },
         ],
  
@@ -215,3 +213,4 @@ function delete_laporan(id)
     }
 } 
 </script>
+@endsection

@@ -9,12 +9,10 @@
                         <h5 class="card-title">Riwayat Aktivitas<span></span></h5>
                         
                         <div class="table-responsive">
-                            <table id="table" class="table table-striped table-responsive" cellspacing="0" width="100%" style="font-size: 12px; width: 100%;">
+                            <table id="table" class="table table-striped display nowrap" cellspacing="0" width="100%">
                           <thead>
                             <tr>
-                              <th>Activity Log</th>
-                              <th></th>
-                              <th></th>
+                              <th class="text-center">Aktivitas Log</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -29,8 +27,8 @@
 </div>
 
  @endsection
-<script src="{{APP_ASSETS}}plugins/jquery/jquery.min.js"></script>
- 
+ @section('js')
+
  
 <script type="text/javascript">
     $(document).ready(function() {
@@ -51,16 +49,9 @@
                 "targets": [ 0 ], //last column
                 "orderable": false, //set not orderable
             },
-            { 
-                "targets": [ 1 ], //last column
-                "orderable": false, //set not orderable
-            },
-            { 
-                "targets": [ 2 ], //last column
-                "orderable": false, //set not orderable
-            },
         ],
  
     });
 });
 </script>
+@endsection

@@ -155,8 +155,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="{{APP_ASSETS}}plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
 
     <script src="{{APP_ASSETS}}plugins/tables/js/jquery.dataTables.min.js"></script>
-    <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.responsive.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.responsive.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.buttons.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/buttons.flash.min.js"></script>
