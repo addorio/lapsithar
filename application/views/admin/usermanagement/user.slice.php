@@ -9,7 +9,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Daftar User<span><button class="btn mb-1 btn-flat btn-outline-primary float-right" onclick="add_person()"><i class="glyphicon glyphicon-plus"></i> Tambah User</button></span></h5>
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered display nowrap responsive txt-sm" id="user_data">
+                            <table class="table table-bordered display nowrap responsive txt-sm" id="user_data">
                                 <thead>
                                     <tr>
                                         <th>No</th>
