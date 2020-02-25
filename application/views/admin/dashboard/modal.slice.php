@@ -67,13 +67,13 @@
               <div class="row">
                 <div class="col-12 col-lg-12 pt-2">
                   <label>Isi Laporan</label>
-                  <textarea id="isi-laporan" rows="6" class="form-control h-150px summernote" rows="6" name="isi_laporan" id="isi_laporan" required /></textarea>
+                  <textarea id="isi-laporan" rows="6" class="form-control h-150px summernote" rows="6" name="isi_laporan" required /></textarea>
                   <span name="laporan_error" class="txt-red"></span>
                   <div class="txt-red"></div>
                 </div>
                 <div class="col-12 col-lg-12 pt-2">
                   <label>Tindakan yang dilakukan</label>
-                  <textarea id="tindakan-laporan" rows="6" class="form-control h-150px summernote" rows="6" name="tindakan" id="tindakan"></textarea>
+                  <textarea id="tindakan-laporan" rows="6" class="form-control h-150px summernote" rows="6" name="tindakan"></textarea>
                   <span name="tindakan_error" class="txt-red"></span>
                   <div class="txt-red"></div>
                 </div>
@@ -95,25 +95,6 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!-- End Bootstrap modal -->
-
-<div class="modal" id="modal-lihat" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h6 class="modal-title"><span class="fa fa-eye"></span> Lihat File</h6>
-        <button id="reload-file" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-
-        <label id="judul-file" class="font-bold"></label>
-      </div>
-      <div class="modal-body">
-        <embed id="nama-file" width="100%" height="460" type="application/pdf"></embed>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn mb-1 btn-flat btn-dark" data-dismiss="modal">Tutup</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div class="modal" id="modal_lihatlaporan" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">

@@ -1,4 +1,4 @@
-@extends('base.main_base') 
+@extends('base.main_base')
 @section('content')
 <div class="content-body">
   <!-- row -->
@@ -8,9 +8,9 @@
         <div id="accordion-one" class="accordion">
           <div class="card">
             <div class="card-header">
-              <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa" aria-hidden="true"></i> 
-              Filter data {{$this->session->userdata('tanggal_mulai')}}  {{$this->session->userdata('tanggal_akhir')}}    {{$this->session->userdata('keterangan_laporan')}}         {{$this->session->userdata('opd_laporan')}}         {{$this->session->userdata('bidang_laporan')}}
-            </h5>
+              <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa" aria-hidden="true"></i>
+                Filter data {{$this->session->userdata('tanggal_mulai')}} {{$this->session->userdata('tanggal_akhir')}} {{$this->session->userdata('keterangan_laporan')}} {{$this->session->userdata('opd_laporan')}} {{$this->session->userdata('bidang_laporan')}}
+              </h5>
             </div>
             <div id="collapseOne" class="collapse hide" data-parent="#accordion-one">
               {{form_open("","id='form-filter'")}}
@@ -25,7 +25,7 @@
                   <div class="form-group col-3">
                     <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
 
-                      <input type="text" id="end" name="end_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" placeholder="Hingga tanggal"/>
+                      <input type="text" id="end" name="end_date" class="filter form-control datetimepicker-input" data-target="#datetimepicker2" autocomplete="off" placeholder="Hingga tanggal" />
                     </div>
                   </div>
                   <div class="form-group col-3">
@@ -37,7 +37,7 @@
                   </div>
                   <div class="form-group col-3">
                     <select class="form-control" id="bidang-filter" name="bidang">
-                    <option value="">Pilih Bidang</option>
+                      <option value="">Pilih Bidang</option>
                       @foreach ($bidang as $row)
                       <option value="{{$row->nama_bidang}}">{{$row->nama_bidang}}</option>
                       @endforeach
@@ -45,13 +45,13 @@
                   </div>
                   <div class="form-group col-12">
                     <select class="form-control" id="opd-filter" name="opd">
-                    <option value="">Pilih OPD</option>
+                      <option value="">Pilih OPD</option>
                       @foreach ($opd as $row)
                       <option value="{{$row->id_opd}}">{{$row->nama_opd}}</option>
                       @endforeach
                     </select>
                   </div>
-                  
+
                 </div>
 
                 <div class="row">
@@ -62,7 +62,7 @@
                   </div>
                   <div class="col-12 col-lg-6">
                     <div class="form-group">
-                    {{form_submit("submit","Reset","class='btn mb-1 btn-flat btn-outline-dark input-group'")}}
+                      {{form_submit("submit","Reset","class='btn mb-1 btn-flat btn-outline-dark input-group'")}}
                     </div>
                   </div>
                 </div>
@@ -168,7 +168,7 @@
             'Tunggu sebentar..',
             'info'
           );
-          $('#collapseOne').attr("class","collapse hide");      
+          $('#collapseOne').attr("class", "collapse hide");
           table.ajax.reload();
         }
       });
@@ -184,11 +184,11 @@
       "serverSide": true, //Feature control DataTables' server-side processing mode.
       // "responsive": true,
       responsive: {
-            details: {
-                type: 'column',
-                target: 'tr'
-            }
-        },
+        details: {
+          type: 'column',
+          target: 'tr'
+        }
+      },
       dom: 'Bfrtlp',
       buttons: [{
           extend: 'excelHtml5',
@@ -207,12 +207,12 @@
           exportOptions: {
             columns: [0, 1, 2, 3, 4, 5, 6, 7, 8]
           },
-          customize: function (doc) {
+          customize: function(doc) {
             //Remove the title created by datatTables
-            doc.content.splice(0,1);
+            doc.content.splice(0, 1);
             //Create a date string that we use in the footer. Format is dd-mm-yyyy
             var now = new Date();
-            var jsDate = now.getDate()+'-'+(now.getMonth()+1)+'-'+now.getFullYear();
+            var jsDate = now.getDate() + '-' + (now.getMonth() + 1) + '-' + now.getFullYear();
             doc.pageMargins = [45, 75, 45, 60];
             // Set the font size fot the entire document
             doc.defaultStyle.fontSize = 9;
@@ -222,32 +222,35 @@
             // Left side: Logo
             // Middle: brandname
             // Right side: A document title
-            doc['header']=(function() {
+            doc['header'] = (function() {
               return {
-                columns: [
-                  {
-                    alignment: 'center',
-                    text: user,
-                    fontSize: 12,
-                    margin: [300,15],
-                  }
-                ],
+                columns: [{
+                  alignment: 'center',
+                  text: user,
+                  fontSize: 12,
+                  margin: [300, 15],
+                }],
                 margin: 20
               }
             });
             // Create a footer object with 2 columns
             // Left side: report creation date
             // Right side: current page and total pages
-            doc['footer']=(function(page, pages) {
+            doc['footer'] = (function(page, pages) {
               return {
-                columns: [
-                  {
+                columns: [{
                     alignment: 'left',
-                    text: ['Dibuat pada: ', { text: jsDate.toString() }]
+                    text: ['Dibuat pada: ', {
+                      text: jsDate.toString()
+                    }]
                   },
                   {
                     alignment: 'right',
-                    text: ['Halaman ', { text: page.toString() },  ' dari ', { text: pages.toString() }]
+                    text: ['Halaman ', {
+                      text: page.toString()
+                    }, ' dari ', {
+                      text: pages.toString()
+                    }]
                   }
                 ],
                 margin: 20
@@ -257,12 +260,24 @@
             // To use predefined layouts uncomment the line below and comment the custom lines below
             // doc.content[0].layout = 'lightHorizontalLines'; // noBorders , headerLineOnly
             var objLayout = {};
-            objLayout['hLineWidth'] = function(i) { return .5; };
-            objLayout['vLineWidth'] = function(i) { return .5; };
-            objLayout['hLineColor'] = function(i) { return '#aaa'; };
-            objLayout['vLineColor'] = function(i) { return '#aaa'; };
-            objLayout['paddingLeft'] = function(i) { return 4; };
-            objLayout['paddingRight'] = function(i) { return 4; };
+            objLayout['hLineWidth'] = function(i) {
+              return .5;
+            };
+            objLayout['vLineWidth'] = function(i) {
+              return .5;
+            };
+            objLayout['hLineColor'] = function(i) {
+              return '#aaa';
+            };
+            objLayout['vLineColor'] = function(i) {
+              return '#aaa';
+            };
+            objLayout['paddingLeft'] = function(i) {
+              return 4;
+            };
+            objLayout['paddingRight'] = function(i) {
+              return 4;
+            };
             doc.content[0].layout = objLayout;
 
             doc.content[0].table.widths = [
@@ -276,7 +291,7 @@
               '8%',
               '10%',
             ]
-        }
+          }
         }
         // {
         //     extend: 'colvis',
@@ -304,8 +319,14 @@
           responsivePriority: 1,
           targets: [0, 1, -1]
         },
-        { responsivePriority: 1, targets: [0, 1, 2, 4, 7] },
-        { responsivePriority: 2, targets: [-1,-2] },
+        {
+          responsivePriority: 1,
+          targets: [0, 1, 2, 4, 7]
+        },
+        {
+          responsivePriority: 2,
+          targets: [-1, -2]
+        },
       ],
 
     });;
