@@ -1,6 +1,6 @@
 <!-- Bootstrap modal -->
 <div class="modal fade" id="modal_form" role="dialog">
-    <div class="modal-dialog modal-lg" style="width: 90%;">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title">Laporan Form</h3>
@@ -26,7 +26,7 @@
                               <label>Tanggal & Waktu</label>
                               <div class="form-group date" id="datetimepicker2" data-target-input="nearest">
                                   <input type="text" id="tanggal" name="tanggal" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
-                                  <div style="color: red;"></div>
+                                  <div class="txt-red"></div>
                               </div>
                             </div>
                         </div> <br>
@@ -36,7 +36,7 @@
                             <div class="form-group">
                             <label>Judul</label>
                             <input type="text" class="form-control input-flat" id="judul" name="judul" placeholder="Judul" required />
-                            <div style="color: red;"></div>
+                            <div class="txt-red"></div>
                             </div>
                           </div>
                           <div class="col-6">
@@ -54,13 +54,13 @@
                             <label>Isi Laporan</label>
                             <textarea rows="6" class="form-control h-150px summernote" rows="6" name="isi_laporan" id="isi_laporan" required /></textarea>
                             <span name="laporan_error"></span>
-                            <div style="color: red;"></div>
+                            <div class="txt-red"></div>
                           </div>
                           <div class="col-6">
                             <label>Tindakan yang dilakukan</label>
                             <textarea rows="6" class="form-control h-150px summernote" rows="6" name="tindakan" id="tindakan"></textarea>
                             <span name="tindakan_error"></span>
-                            <div style="color: red;"></div>
+                            <div class="txt-red"></div>
                           </div>
                         </div> <br>
 
@@ -75,7 +75,7 @@
                           <div class="col-6">
                             <label>Berkas Pendukung ( .jpg | .png | .pdf| ) maks 1 MB</label>
                             <input type="file" class="form-control-file" name="file" id="file">
-                            <div style="color: red;"></div>
+                            <div class="txt-red"></div>
                             <span id="user_uploaded_image"></span> 
                           </div>
                         </div>

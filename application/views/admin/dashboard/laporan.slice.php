@@ -73,9 +73,13 @@
         </div>
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Rekapitulasi Laporan<span><button style="float: right;" class="btn mb-1 btn-flat btn-outline-primary" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Laporan</button></span></h5>
+            <h5 class="card-title">Rekapitulasi Laporan<span><button class="btn mb-1 btn-flat btn-outline-primary float-right" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah Laporan</button></span></h5>
             <div class="table-responsive">
+<<<<<<< Updated upstream
               <table id="table" class="table table-bordered nowrap display responsive" cellspacing="0" width="100%">
+=======
+              <table id="table" class="table table-striped table-bordered nowrap display responsive txt-sm" cellspacing="0">
+>>>>>>> Stashed changes
                 <thead>
                   <tr>
                     <th width="1%">No</th>
@@ -388,7 +392,7 @@
         $('[name="keterangan"]').val(data.keterangan);
         $('[name="nama"]').val(data.nama);
         $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-        $('.modal-title').text('Edit Laporan'); // Set title to Bootstrap modal title
+        $('.modal-title').text('Ubah Laporan'); // Set title to Bootstrap modal title
 
         $('#file-preview').show(); // show file preview modal
 
