@@ -9,7 +9,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Daftar User<span><button class="btn mb-1 btn-flat btn-outline-primary" style="float: right;" onclick="add_person()"><i class="glyphicon glyphicon-plus"></i> Tambah User</button></span></h5>
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered zero-configuration" style="font-size: 13px; width: 100%;" id="user_data">
+                            <table class="table table-bordered zero-configuration" style="width: 100%;" id="user_data">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -246,31 +246,67 @@ function save()
 
 function delete_person(id)
 {
-    if(confirm('Are you sure delete this data?'))
-    {
-        // ajax delete data to database
-        $.ajax({
-            url : "<?php echo site_url('user/ajax_delete')?>/"+id,
+    // if(confirm('Are you sure delete this data?'))
+    // {
+    //     // ajax delete data to database
+    //     $.ajax({
+    //         url : "<?php echo site_url('user/ajax_delete')?>/"+id,
+    //         type: "POST",
+    //         dataType: "JSON",
+    //         success: function(data)
+    //         {
+    //             //if success reload ajax table
+    //             swal(
+    //                         'Berhasil!',
+    //                         'Data telah dihapus',
+    //                         'success'
+    //                       );
+    //             $('#userModal').modal('hide');
+    //             reload_table();
+    //         },
+    //         error: function (jqXHR, textStatus, errorThrown)
+    //         {
+    //             alert('Error deleting data');
+    //         }
+    //     });
+
+    // }
+    swal({
+        title: "Ingin Menghapus Data?",
+        text: "Kamu tidak bisa melihat data ini lagi..",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Ya, HAPUS!",
+        cancelButtonText: "Batalkan",
+        closeOnConfirm: false,
+        closeOnCancel: false
+      },
+      function(isConfirm) {
+        if (isConfirm) {
+          // ajax delete data to database
+          $.ajax({
+            url: "<?php echo site_url('user/ajax_delete') ?>/" + id,
             type: "POST",
             dataType: "JSON",
-            success: function(data)
-            {
-                //if success reload ajax table
-                swal(
-                            'Berhasil!',
-                            'Data telah dihapus',
-                            'success'
-                          );
-                $('#userModal').modal('hide');
-                reload_table();
+            success: function(data) {
+              swal(
+                'Berhasil!',
+                'Data Terhapus!',
+                'success'
+              );
+              $('#modal_form').modal('hide');
+              reload_table();
             },
-            error: function (jqXHR, textStatus, errorThrown)
-            {
-                alert('Error deleting data');
+            error: function(jqXHR, textStatus, errorThrown) {
+              alert('Error deleting data');
             }
-        });
-
-    }
+          });
+        } else {
+          swal("Dibatalkan", "Data tidak jadi dihapus", "error");
+        }
+      });
+    return false;
 }
 
 </script>

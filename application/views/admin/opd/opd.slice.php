@@ -183,29 +183,65 @@ function save()
  
 function delete_laporan(id)
 {
-    if(confirm('Are you sure delete this data?'))
-    {
-        // ajax delete data to database
-        $.ajax({
-            url : "<?php echo site_url('opd/ajax_delete')?>/"+id,
+    // if(confirm('Are you sure delete this data?'))
+    // {
+    //     // ajax delete data to database
+    //     $.ajax({
+    //         url : "<?php echo site_url('opd/ajax_delete')?>/"+id,
+    //         type: "POST",
+    //         dataType: "JSON",
+    //         success: function(data)
+    //         {
+    //             swal(
+    //               'Berhasil!',
+    //               'Data Terhapus!',
+    //               'success'
+    //             );
+    //             $('#modal_form').modal('hide');
+    //             reload_table();
+    //         },
+    //         error: function (jqXHR, textStatus, errorThrown)
+    //         {
+    //             alert('Error deleting data');
+    //         }
+    //     });
+ 
+    // }
+    swal({
+        title: "Ingin Menghapus Data?",
+        text: "Kamu tidak bisa melihat data ini lagi..",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Ya, HAPUS!",
+        cancelButtonText: "Batalkan",
+        closeOnConfirm: false,
+        closeOnCancel: false
+      },
+      function(isConfirm) {
+        if (isConfirm) {
+          // ajax delete data to database
+          $.ajax({
+            url: "<?php echo site_url('opd/ajax_delete') ?>/" + id,
             type: "POST",
             dataType: "JSON",
-            success: function(data)
-            {
-                swal(
-                  'Berhasil!',
-                  'Data Terhapus!',
-                  'success'
-                );
-                $('#modal_form').modal('hide');
-                reload_table();
+            success: function(data) {
+              swal(
+                'Berhasil!',
+                'Data Terhapus!',
+                'success'
+              );
+              $('#modal_form').modal('hide');
+              reload_table();
             },
-            error: function (jqXHR, textStatus, errorThrown)
-            {
-                alert('Error deleting data');
+            error: function(jqXHR, textStatus, errorThrown) {
+              alert('Error deleting data');
             }
-        });
- 
-    }
+          });
+        } else {
+          swal("Dibatalkan", "Data tidak jadi dihapus", "error");
+        }
+      });
+    return false;
 } 
 </script>
