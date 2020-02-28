@@ -89,17 +89,22 @@ class Auth extends CI_Controller
 
     public function forgotPassword()
     {
-        view('forgotpassword');
+        $data['title'] = 'Forgot Password';
+        view('forgotpassword', $data);
+
+
     }
 
 
     public function resetPassword()
     {
+        // $data['title'] = 'Reset Password';
         $username = $this->input->post('username');
 
-        $user['user'] = $this->db->get_where('tb_user', ['username' => $username])->row();
-        if ($user) {
-            view('resetpassword', $user);
+        $user = $this->db->get_where('tb_user', ['username' => $username]);
+        if ($user->num_rows() > 0) {
+            $data['user'] = $user->result();
+            view('resetpassword', $data);
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username is not registered!</div>');
             redirect('auth/forgotPassword');
@@ -109,8 +114,10 @@ class Auth extends CI_Controller
 
     public function changePassword()
     {
+        $data['title'] = 'Change Password';
         $username = $this->input->post('username');
         $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+
         $data = array(
             'username' => $username,
             'password' => $password

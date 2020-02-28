@@ -132,6 +132,19 @@ class M_user extends CI_Model {
 		return $query->row();
 	}
 
+	public function check_user($username)
+	{
+		$this->db->select('*'); 
+	    $this->db->from('tb_user');
+	    $this->db->where('username', $username);
+	    $query = $this->db->get();
+	    if ($query->num_rows() == 0) {
+	        return true;
+	    } else {
+	        return false;
+	    }
+	}
+
 	public function getbyid($id_user){
 		$this->db->from('tb_opd')->where('id_user',$id_user)->join('tb_user', 'tb_opd.id_opd = tb_user.id_opd');
 		$query = $this->db->get();

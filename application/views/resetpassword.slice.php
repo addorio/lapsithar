@@ -5,7 +5,7 @@
         <div class="row justify-content-center h-100">
             <div class="col-12 col-lg-6">
                 <div class="form-input-content">
-                    <?php echo $user->username ?>
+                    
                     <div class="card login-form shadow-lg mb-0">
                         <div class="card-body text-center">
                             <a href="<?= base_url() ?>">
@@ -20,7 +20,11 @@
                             <?php echo $this->session->flashdata('error') ?>
                             <form class="p-2 login-input" method="post" action="<?= base_url('auth/changePassword'); ?>">
                                 <div class="form-group m-0">
-                                    <input type="username" class="form-control" name="username" value="<?= $user->username ?>" hidden>
+                                    <?php foreach ($user as $row) { ?>
+                        
+                    
+                                    <input type="username" class="form-control" name="username" value="<?php echo $row->username ?>" hidden>
+                                <?php }?>
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control" name="password" placeholder="Masukkan Password Baru...">
