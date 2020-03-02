@@ -80,10 +80,10 @@
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
-                                        <li>
+                                        <li style="list-style: none;">
                                             <a href="<?php echo base_url('Userprofile') ?>"><i class="icon-user"></i> <span>Profile</span></a>
                                         </li>
-                                        <li><a href="<?php echo base_url('Auth/logout') ?>"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        <li style="list-style: none;"><a href="<?php echo base_url('Auth/logout') ?>"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     </ul>
                                 </div>
                             </div>

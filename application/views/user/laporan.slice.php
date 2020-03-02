@@ -118,18 +118,25 @@ var user  = '<?= $user->nama_opd ?>';
  
 
       $(document).ready(function() {
-          $('.summernote').summernote({
+          
+        $('.summernote').summernote({
           height: 150,
           toolbar: [
-              // [groupName, [list of button]]
-              ['style', ['bold', 'italic', 'underline', 'clear']],
-              ['font', ['strikethrough', 'superscript', 'subscript']],
-              ['fontsize', ['fontsize']],
-              ['para', ['ul', 'ol', 'paragraph']],
-              ['height', ['height']]
+            // [groupName, [list of button]]
+            ['style', ['style']],
+            ['font', ['bold', 'italic', 'underline', 'clear']],
+            ['fontname', ['fontname']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
+            ['table', ['table']],
+            ['insert', ['link', 'hr']],
+            ['view', ['fullscreen', 'codeview']],
+            ['help', ['help']]
           ],
           tooltip: false
-      });
+        });
 
       $('#form-filter').submit('click', function() {
       $.ajax({

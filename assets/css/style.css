@@ -10233,7 +10233,8 @@ ul {
 }
 
 li {
-    list-style: none;
+    list-style: inherit;
+    list-style-position: inside;
 }
 
 .img-responsive {

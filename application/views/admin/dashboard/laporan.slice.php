@@ -128,11 +128,17 @@
       height: 150,
       toolbar: [
         // [groupName, [list of button]]
-        ['style', ['bold', 'italic', 'underline', 'clear']],
-        ['font', ['strikethrough', 'superscript', 'subscript']],
+        ['style', ['style']],
+        ['font', ['bold', 'italic', 'underline', 'clear']],
+        ['fontname', ['fontname']],
         ['fontsize', ['fontsize']],
+        ['color', ['color']],
         ['para', ['ul', 'ol', 'paragraph']],
-        ['height', ['height']]
+        ['height', ['height']],
+        ['table', ['table']],
+        ['insert', ['link', 'hr']],
+        ['view', ['fullscreen', 'codeview']],
+        ['help', ['help']]
       ],
       tooltip: false
     });
