@@ -10171,8 +10171,8 @@ a.text-dark:focus {
 * {
     outline: none;
     box-sizing: inherit;
-    margin: 0;
-    padding: 0;
+    /* margin: 0;
+    padding: 0; */
 }
 
 *::after {
@@ -10227,14 +10227,17 @@ a.link:focus,
 a.link:hover {
     color: #4d7cff;
 }
-
+/* 
 ul {
     padding: 0;
-}
+} */
 
 li {
     list-style: inherit;
-    list-style-position: inside;
+}
+
+ul,li .summernote{
+    list-style: inherit !important;
 }
 
 .img-responsive {
