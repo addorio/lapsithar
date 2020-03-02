@@ -19,13 +19,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   } 
       //functions  
       function index(){ 
-          $id_user = $this->session->userdata('username');
+          $id_user = $this->session->userdata('id_user');
           $id_opd = $this->session->userdata('id_opd');
            $data['title'] = "LAPSITHAR | User";
            $data['opd'] = $this->m_opd->getAll();
            $data['op'] = $this->m_opd->getAll();
            $data['level'] = $this->m_level->getAll();
-           // $data['user'] = $this->m_user->get_by_idjoin($id_user, $id_opd);
+           $data['user'] = $this->m_user->getbyid($id_user);
            view('user.profile', $data);  
       }
 
@@ -44,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           
 
           //add html for action
-          $row[] = '<a class="btn mb-1 btn-flat btn-outline-primary btn-sm" href="javascript:void(0)" title="Edit" onclick="edit_person('."'".$person->id_user."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
+          $row[] = '<a class="btn mb-1 btn-flat btn-outline-primary btn-sm" href="javascript:void(0)" title="Edit" onclick="edit_person('."'".$person->id_user."'".')"><i class="glyphicon glyphicon-pencil"></i> Ubah</a>';
         
           $data[] = $row;
         }
@@ -74,9 +74,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         'id_user' => $this->input->post('id_user'),
         'id_opd' => $this->input->post('id_opd'),
         'nama' => $this->input->post('nama'),
-        'username' => $this->input->post('username'),
-        'password' => $this->input->post('password'),
-        'id_level' => $this->input->post('id_level'),
+        'username' => htmlspecialchars($this->input->post('username')),
+        'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+        'id_level' => $this->input->post('id_level'), 
       );
     $this->m_user->update($id_user, $data);
     helper_log("edit", "Mengubah profil");

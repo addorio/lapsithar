@@ -6,16 +6,15 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Daftar OPD<span><button class="btn mb-1 btn-flat btn-outline-primary" style="float: right;" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah OPD</button></span></h5>
+                        <h5 class="card-title">Daftar OPD<span><button class="btn mb-1 btn-flat btn-outline-primary float-right" onclick="add_laporan()"><i class="glyphicon glyphicon-plus"></i> Tambah OPD</button></span></h5>
                         
                         <div class="table-responsive">
-                        <table id="table" class="table table-bordered" cellspacing="0" width="100%" style="width: 100%;">
+                        <table id="table" class="table table-bordered txt-sm" cellspacing="0">
                           <thead>
                             <tr>
-                              <th>No</th>
+                              <th width="1%">No</th>
                               <th>Nama OPD</th>
-                              <th>Ubah</th>
-                              <th>Hapus</th>
+                              <th width="1%" class="text-center">Aksi</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -29,9 +28,9 @@
     </div>
   </div>
 
-@include('admin.opd.modal')
+@include('admin.opd.modal') 
  @endsection
-<script src="{{APP_ASSETS}}plugins/jquery/jquery.min.js"></script>
+ @section('js')
  
  
 <script type="text/javascript">
@@ -113,7 +112,7 @@ function edit_laporan(id)
             $('[name="id_opd"]').val(data.id_opd);
             $('[name="nama_opd"]').val(data.nama_opd);
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Edit OPD'); // Set title to Bootstrap modal title
+            $('.modal-title').text('Ubah OPD'); // Set title to Bootstrap modal title
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
@@ -154,11 +153,22 @@ function save()
  
             if(data.status) //if success close modal and reload ajax table
             {
+                swal(
+                            'Berhasil!',
+                            'Data diperbaharui',
+                            'success'
+                        );
                 $('#modal_form').modal('hide');
                 reload_table();
             }
             else
             {
+                swal(
+                            'error',
+                            'Form tidak boleh kosong',
+                            'Something went wrong!',
+                            '<a href>Why do I have this issue?</a>'
+                        );
                 for (var i = 0; i < data.inputerror.length; i++) 
                 {
                     $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
@@ -183,29 +193,66 @@ function save()
  
 function delete_laporan(id)
 {
-    if(confirm('Are you sure delete this data?'))
-    {
-        // ajax delete data to database
-        $.ajax({
-            url : "<?php echo site_url('opd/ajax_delete')?>/"+id,
+    // if(confirm('Are you sure delete this data?'))
+    // {
+    //     // ajax delete data to database
+    //     $.ajax({
+    //         url : "<?php echo site_url('opd/ajax_delete')?>/"+id,
+    //         type: "POST",
+    //         dataType: "JSON",
+    //         success: function(data)
+    //         {
+    //             swal(
+    //               'Berhasil!',
+    //               'Data Terhapus!',
+    //               'success'
+    //             );
+    //             $('#modal_form').modal('hide');
+    //             reload_table();
+    //         },
+    //         error: function (jqXHR, textStatus, errorThrown)
+    //         {
+    //             alert('Error deleting data');
+    //         }
+    //     });
+ 
+    // }
+    swal({
+        title: "Ingin Menghapus Data?",
+        text: "Kamu tidak bisa melihat data ini lagi..",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Ya, HAPUS!",
+        cancelButtonText: "Batalkan",
+        closeOnConfirm: false,
+        closeOnCancel: false
+      },
+      function(isConfirm) {
+        if (isConfirm) {
+          // ajax delete data to database
+          $.ajax({
+            url: "<?php echo site_url('opd/ajax_delete') ?>/" + id,
             type: "POST",
             dataType: "JSON",
-            success: function(data)
-            {
-                swal(
-                  'Good job!',
-                  'Data telah dihapus!',
-                  'success'
-                );
-                $('#modal_form').modal('hide');
-                reload_table();
+            success: function(data) {
+              swal(
+                'Berhasil!',
+                'Data Terhapus!',
+                'success'
+              );
+              $('#modal_form').modal('hide');
+              reload_table();
             },
-            error: function (jqXHR, textStatus, errorThrown)
-            {
-                alert('Error deleting data');
+            error: function(jqXHR, textStatus, errorThrown) {
+              alert('Error deleting data');
             }
-        });
- 
-    }
+          });
+        } else {
+          swal("Dibatalkan", "Data tidak jadi dihapus", "error");
+        }
+      });
+    return false;
 } 
 </script>
+@endsection

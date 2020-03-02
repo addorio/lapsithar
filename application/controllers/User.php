@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     foreach ($list as $person) {
       $no++;
       $row = array();
-      $row[] = $no++;
+      $row[] = $no;
       $row[] = $person->nama_opd;
       $row[] = $person->nama;
       $row[] = $person->username;
@@ -49,11 +49,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       } elseif ($person->id_level == 2) {
         $row[] = 'User';
       }
+      if($person->id_user != $this->session->userdata('id_user')){
 
       //add html for action
-      $row[] = '<a class="btn mb-1 btn-flat btn-outline-primary" href="javascript:void(0)" title="Edit" onclick="edit_person('."'".$person->id_user."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
-      $row[] = '<a class="btn mb-1 btn-flat btn-outline-danger" href="javascript:void(0)" title="Hapus" onclick="delete_person('."'".$person->id_user."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
-    
+      $row[] = '<div class="btn-group"><a class="btn mb-1 btn-flat btn-outline-primary btn-sm" href="javascript:void(0)" title="Edit" onclick="edit_person('."'".$person->id_user."'".')"><i class="glyphicon glyphicon-pencil"></i> Ubah</a><a class="btn mb-1 btn-flat btn-outline-danger btn-sm" href="javascript:void(0)" title="Hapus" onclick="delete_person('."'".$person->id_user."'".')"><i class="glyphicon glyphicon-trash"></i> Hapus</a></div>';
+      } else {
+      $row[] = '';
+      }
       $data[] = $row;
     }
 

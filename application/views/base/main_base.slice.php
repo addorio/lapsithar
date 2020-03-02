@@ -7,8 +7,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width,initial-scale=1">   
     <title>@php echo $title;@endphp</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{APP_ASSETS}}images/favicon.ico">
@@ -22,18 +22,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="{{APP_ASSETS}}plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     <!-- Data Table -->
     <link href="{{APP_ASSETS}}plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="{{APP_ASSETS}}plugins/tables/css/extensions/responsive.dataTables.min.css" rel="stylesheet">
+    <!-- <link href="{{APP_ASSETS}}plugins/datatables/css/jquery.dataTables.min.css" rel="stylesheet"> -->
     <link href="{{APP_ASSETS}}plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
     <link href="{{APP_ASSETS}}plugins/sweetalert/css/sweetalert.css" rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="{{APP_ASSETS}}plugins/summernote/dist/summernote.css" rel="stylesheet">
-    <link href="{{APP_ASSETS}}plugins/select2/css/select2.min.css" rel="stylesheet">
+    <link href="{{APP_ASSETS}}plugins/select2/css/select2.min.css" rel="stylesheet"> 
     <!-- Custom Stylesheet -->
     <link href="{{APP_ASSETS}}css/style.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Preloader  -->
     <div id="preloader">
         <div class="loader">
             <svg class="circular" viewBox="25 25 50 50">
@@ -71,10 +72,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
-                                        <li>
+                                        <li style="list-style: none;">
                                             <a href="<?php echo base_url('Profile') ?>"><i class="icon-user"></i> <span>Profile</span></a>
                                         </li>
-                                        <li><a href="<?php echo base_url('Auth/logout') ?>"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        <li style="list-style: none;"><a href="<?php echo base_url('Auth/logout') ?>"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -93,22 +94,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </li>
                     <li>
                         <a href="<?php echo base_url('User')?>" aria-expanded="false">
-                            <i class="icon-user menu-icon"></i><span class="nav-text"> Users</span>
+                            <i class="icon-people menu-icon"></i><span class="nav-text"> Users</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?php echo base_url('Opd')?>" aria-expanded="false">
-                            <i class="icon-user menu-icon"></i><span class="nav-text"> OPD</span>
+                            <i class="icon-list menu-icon"></i><span class="nav-text"> OPD</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?php echo base_url('Bidang')?>" aria-expanded="false">
-                            <i class="icon-user menu-icon"></i><span class="nav-text"> Bidang</span>
+                            <i class="icon-list menu-icon"></i><span class="nav-text"> Bidang</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?php echo base_url('Riwayat')?>" aria-expanded="false">
-                            <i class="icon-user menu-icon"></i><span class="nav-text"> Riwayat</span>
+                            <i class="icon-info menu-icon"></i><span class="nav-text"> Riwayat</span>
                         </a>
                     </li>                       
                 </ul>
@@ -150,8 +151,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="{{APP_ASSETS}}plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
 
     <script src="{{APP_ASSETS}}plugins/tables/js/jquery.dataTables.min.js"></script>
-    <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.responsive.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.responsive.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/datatable/dataTables.buttons.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/buttons.flash.min.js"></script>
@@ -161,8 +162,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="{{APP_ASSETS}}plugins/tables/js/buttons.html5.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/buttons.print.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/sweetalert/js/sweetalert.min.js"></script>
-    <script src="{{APP_ASSETS}}plugins/summernote/dist/summernote.min.js"></script>
-    <script src="{{APP_ASSETS}}plugins/select2/js/select2.full.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/summernote/dist/summernote.min.js"></script> 
+    <script src="{{APP_ASSETS}}plugins/select2/js/select2.full.min.js"></script> 
+    
     <script type="text/javascript">
         $('#tanggal').bootstrapMaterialDatePicker({
             format: 'YYYY-MM-DD hh:mm:ss',

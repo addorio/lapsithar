@@ -5,18 +5,30 @@
         <div class="row">
             <div class="card col-12">
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped zero-configuration" style="font-size: 13px; width: 100%;" id="user">
+                    <div class="">
+                        <table class="table txt-sm">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Nama OPD</th>
-                                    <th>Nama Admin</th>
-                                    <th>Username</th>
-                                    <th align="justify">Edit</th>
+                                    <td style="width: 15%;">ID</td>
+                                    <td style="width: 2%;">:</td>
+                                    <td><?=$user->id_user?></td>
+                                </tr>
+                                <tr>
+                                    <td>Nama OPD</td>
+                                    <td>:</td>
+                                    <td><?=$user->nama_opd?></td>
+                                </tr>
+                                    <td>Nama Admin</td>
+                                    <td>:</td>
+                                    <td><?=$user->nama?></td>
+                                <tr>
+                                    <td>Username</td>
+                                    <td>:</td>
+                                    <td><?=$user->username?></td>
                                 </tr>
                             </thead>
                         </table>
+                        <a class="btn mb-1 btn-flat btn-outline-primary btn-sm" href="javascript:void(0)" title="Edit" onclick="edit_person(<?=$user->id_user?>)"><i class="glyphicon glyphicon-pencil"></i> Ubah</a>
                     </div>
                 </div>
             </div>
@@ -37,30 +49,30 @@ var table;
 $(document).ready(function() {
 
     //datatables
-    table = $('#user').DataTable({ 
-        "bPaginate": false,
-        "bLengthChange": false,
-        "bFilter": false,
-        "bInfo": false,
-        "processing": false, //Feature control the processing indicator.
-        "serverSide": true, //Feature control DataTables' server-side processing mode.
-        "order": [], //Initial no order.
+    // table = $('#user').DataTable({ 
+    //     "bPaginate": false,
+    //     "bLengthChange": false,
+    //     "bFilter": false,
+    //     "bInfo": false,
+    //     "processing": false, //Feature control the processing indicator.
+    //     "serverSide": true, //Feature control DataTables' server-side processing mode.
+    //     "order": [], //Initial no order.
 
-        // Load data for the table's content from an Ajax source
-        "ajax": {
-            "url": "<?php echo site_url('profile/ajax_list')?>",
-            "type": "POST"
-        },
+    //     // Load data for the table's content from an Ajax source
+    //     "ajax": {
+    //         "url": "<?php echo site_url('profile/ajax_list')?>",
+    //         "type": "POST"
+    //     },
 
-        //Set column definition initialisation properties.
-        "columnDefs": [
-        { 
-            "targets": [0,1,2,3,4], //last column
-            "orderable": false, //set not orderable
-        },
-        ],
+    //     //Set column definition initialisation properties.
+    //     "columnDefs": [
+    //     { 
+    //         "targets": [0,1,2,3,4], //last column
+    //         "orderable": false, //set not orderable
+    //     },
+    //     ],
 
-    });
+    // });
 
 });
 
@@ -100,7 +112,7 @@ function edit_person(id)
             $('[name="password"]').val(data.password);
             $('[name="id_level"]').val(data.id_level);
             $('#editModal').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Edit Person'); // Set title to Bootstrap modal title
+            $('.modal-title').text('Ubah Profil'); // Set title to Bootstrap modal title
 
         },
         error: function (jqXHR, textStatus, errorThrown)
@@ -112,7 +124,8 @@ function edit_person(id)
 
 function reload_table()
 {
-    table.ajax.reload(null,false); //reload datatable ajax 
+    //table.ajax.reload(null,false); //reload datatable ajax
+    location.reload(); 
 }
 
 function save()
@@ -136,6 +149,8 @@ function save()
             {
                 $('#userModal').modal('hide');
                 reload_table();
+
+
             }
             else
             {
@@ -145,6 +160,7 @@ function save()
                     $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
                 }
             }
+
             $('#btnSave').text('save'); //change button text
             $('#btnSave').attr('disabled',false); //set button enable 
 
@@ -170,11 +186,11 @@ function save()
 
             if(data.status) //if success close modal and reload ajax table
             {
-                            swal(
-                  'Good job!',
-                  'Berhasil!',
-                  'success'
-                );
+                //             swal(
+                //   'Berhasil!',
+                //   'Data Tersimpan',
+                //   'success'
+                // );
                 $('#editModal').modal('hide');
                 reload_table();
             }
@@ -216,8 +232,8 @@ function delete_person(id)
             {
                 //if success reload ajax table
                 swal(
-                            'Good job!',
-                            'Success',
+                            'Berhasil!',
+                            'Data Terhapus',
                             'success'
                           ); 
                 $('#userModal').modal('hide');

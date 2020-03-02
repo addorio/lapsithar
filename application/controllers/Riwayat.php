@@ -27,11 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $no = $_POST['start'];
         foreach ($list as $person) {
           $row = array();
-
-          $row[] = '<span style="font-style: italic;">'.$person->time.'</span>';
-          $row[] = '<span style="font-style: italic;">'.$person->username.'</span>';
-          $row[] = '<span style="font-style: italic;">'.$person->deskripsi.'</span>';
-
+          $row[] = '<span style="font-style: italic;">'.$person->time.'</span> &nbsp &nbsp <span style="font-style: italic;">'.$person->username.'</span> &nbsp &nbsp<span style="font-style: italic;">'.$person->deskripsi.'</span>';
           $data[] = $row;
         }
 

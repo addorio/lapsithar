@@ -107,7 +107,7 @@ class M_laporan extends CI_Model
     var $table = 'tb_laporan';
     var $column_order = array("id_laporan", "nama_opd", "tanggal", "judul", "nama_bidang", "isi_laporan", "tindakan", "keterangan", "file", null, null);
     //set column field database for datatable orderable    
-    var $column_search = array("id_laporan", "nama_opd", "tanggal", "judul", "nama_bidang", "isi_laporan", "tindakan", "keterangan"); //set column field database for datatable searchable   
+    var $column_search = array("id_laporan", "nama_opd", "judul", "nama_bidang", "isi_laporan", "nama", "tindakan", "keterangan"); //set column field database for datatable searchable   
     var $order = array('id_laporan' => 'desc'); // default order
 
     public function __construct()

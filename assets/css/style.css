@@ -10233,7 +10233,8 @@ ul {
 }
 
 li {
-    list-style: none;
+    list-style: inherit;
+    list-style-position: inside;
 }
 
 .img-responsive {
@@ -20908,4 +20909,13 @@ td.highlight {
 .bg-1 {
     background: rgb(40, 54, 85);
     background: linear-gradient(90deg, rgba(40, 54, 85, 1) 0%, rgba(77, 100, 141, 1) 35%, rgba(174, 208, 255, 1) 100%);
+}
+
+.txt-red {
+    color: red !important;
+}
+
+.txt-sm {
+    font-size: 14px !important;
+    width: 100% !important;
 }
