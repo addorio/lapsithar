@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <b class="logo-abbr brand-logo"><img src="{{APP_ASSETS}}images/bintan.png" alt=""></b>
                     <img class="logo-compact" src="{{APP_ASSETS}}images/bintan.png">
                     <span class="brand-title text-white">
-                        LAPSITHAR
+                        SI WASPADA
                     </span>
                 </a>
             </div>
@@ -118,7 +118,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         @yield('content')
         <div class="footer">
             <div class="copyright">
-            <p>Copyright &copy; 2020 Diskominfo All Right Reserved<span class="float-right"> Lapsithar v.1.0</span></p>
+            <p>Copyright &copy; 2020 Diskominfo All Right Reserved<span class="float-right"> Si Waspada v.1.0</span></p>
             </div>
         </div>
     </div>

@@ -12,7 +12,7 @@
                             <a href="<?= base_url() ?>">
                                 <img class="logo-sm" src="{{APP_ASSETS}}images/bintan.png" style="max-width: 100px;">
                                 <h4 class="login-form__title pt-3">
-                                    LAPSITHAR<br>
+                                    SI WASPADA<br>
                                     <small>Kabupaten Bintan</small>
                                 </h4>
                             </a>

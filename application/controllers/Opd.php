@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   }
       //functions  
       function index(){  
-           $data['title'] = "LAPSITHAR | OPD";
+           $data['title'] = "Si Waspada | OPD";
            // $data['users'] = $this->m_opd->getAll();
            view('admin.opd.opd', $data);  
       }  

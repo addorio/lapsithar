@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   }
       //functions  
       function index(){  
-           $data['title'] = "LAPSITHAR | User";
+           $data['title'] = "Si Waspada | User";
            $data['opd'] = $this->m_opd->getAll();
            $data['op'] = $this->m_opd->getAll();
            $data['level'] = $this->m_level->getAll();

@@ -18,7 +18,7 @@ class Userpage extends CI_Controller
     {   
         $id_user = $this->session->userdata('id_user');
         $data['user'] = $this->m_user->getbyid($id_user); 
-        $data['title'] = "LAPSITHAR | Dashboard";
+        $data['title'] = "Si Waspada | Dashboard";
         $data['opd'] = $this->m_opd->getAll();
         $data['bidang'] = $this->m_bidang->getAll();  
         view('user.laporan', $data);

@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   }
       //functions  
       function index(){  
-           $data['title'] = "LAPSITHAR | OPD";
+           $data['title'] = "Si Waspada | OPD";
            view('admin.bidang.bidang', $data);  
       }  
   //     public function index()

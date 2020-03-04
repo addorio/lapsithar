@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   }
       //functions  
       function index(){  
-           $data['title'] = "LAPSITHAR | Log Activity";
+           $data['title'] = "Si Waspada | Log Activity";
            view('admin.log.log', $data);
       }
 
