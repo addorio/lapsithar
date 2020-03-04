@@ -90,7 +90,7 @@
                     <th class="text-center">Aksi</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody style="list-style:none;">
                 </tbody>
               </table>
             </div>
