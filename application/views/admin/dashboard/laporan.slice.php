@@ -189,13 +189,14 @@
       "processing": true, //Feature control the processing indicator.
       "serverSide": true, //Feature control DataTables' server-side processing mode.
       // "responsive": true,
+      "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
       responsive: {
         details: {
           type: 'column',
           target: 'tr'
         }
       },
-      dom: 'Bfrtlp',
+      dom: 'Blfrtp',
       buttons: [{
           extend: 'excelHtml5',
           className: 'btn mb-1 btn-flat btn-outline-success',

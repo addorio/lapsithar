@@ -48,6 +48,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $row[] = 'Admin';
       } elseif ($person->id_level == 2) {
         $row[] = 'User';
+      } elseif ($person->id_level == 3) {
+        $row[] = 'Guest';
       }
       if($person->id_user != $this->session->userdata('id_user')){
 

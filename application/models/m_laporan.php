@@ -175,6 +175,12 @@ class M_laporan extends CI_Model
         $this->db->from('tb_laporan');
         $this->db->join('tb_opd', 'tb_opd.id_opd=tb_laporan.id_opd');
 
+        if($this->session->userdata('id_level') == '2'){
+            $this->db->where('tb_laporan.id_opd', $this->session->userdata('id_opd'));
+        } else if ($this->session->userdata('id_level') == '3'){
+            $this->db->where('tb_laporan.id_opd', $this->session->userdata('id_opd'));
+        }
+
         $i = 0;
 
         foreach ($this->column_search as $item) // loop column 

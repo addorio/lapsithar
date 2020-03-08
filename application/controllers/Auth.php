@@ -19,6 +19,8 @@ class Auth extends CI_Controller
             redirect('Dashboard');
         } elseif ($this->session->userdata('username') && $this->session->userdata('id_level') == 2){
             redirect('Userpage');
+        } elseif ($this->session->userdata('username') && $this->session->userdata('id_level') == 3){
+            redirect('Guestpage');
         }
 
         $this->form_validation->set_rules('username', 'Username', 'trim|required');
@@ -62,9 +64,12 @@ class Auth extends CI_Controller
                     if ($user['id_level'] == 1) {
                         helper_log("login", "Logged in");
                         redirect('Dashboard');
-                    } else {
+                    } elseif ($user['id_level'] == 2) {
                         helper_log("login", "Logged in");
                         redirect('Userpage');  
+                    } elseif ($user['id_level'] == 3) {
+                        helper_log("login", "Logged in");
+                        redirect('Guestpage');  
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');

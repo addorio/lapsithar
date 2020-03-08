@@ -31,7 +31,7 @@ class Userpage extends CI_Controller
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $laporan) {
-            if ($laporan->id_opd == $id_opd) {
+            if ($laporan->id_opd == '4') {
             $no++;
             $row = array();
             $row[] = $no;
