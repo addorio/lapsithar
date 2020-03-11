@@ -288,4 +288,98 @@ class M_laporan extends CI_Model
         $this->db->where('l.id_laporan', $id_laporan);
         return $this->db->get()->result();
     }
+
+    function ambilLaporan()
+	{
+        $tanggal_mulai = $this->session->userdata('tanggal_mulai');
+        $tanggal_akhir = $this->session->userdata('tanggal_akhir');
+        $keterangan = $this->session->userdata('keterangan_laporan');
+        $opd = $this->session->userdata('opd_laporan');
+        $bidang = $this->session->userdata('bidang_laporan');
+ 
+        $this->db->select('a.id_laporan, b.nama_opd, a.tanggal, a.judul, a.nama_bidang, a.isi_laporan, a.tindakan, a.keterangan, a.nama');
+        $this->db->from('tb_laporan a');
+        $this->db->join('tb_opd b','a.id_opd = b.id_opd');
+        
+        if ($tanggal_mulai != '' && $tanggal_akhir != '' && $keterangan != '' && $opd != '' && $bidang) {
+            $this->db->where('a.tanggal >=', $tanggal_mulai);
+            $this->db->where('a.tanggal <=', $tanggal_akhir);
+            $this->db->where('a.keterangan', $keterangan);
+            $this->db->where('a.id_opd', $opd);
+            $this->db->where('a.nama_bidang', $bidang);
+        } else if ($tanggal_mulai != '' && $tanggal_akhir != '' && $keterangan != '' && $opd != '') {
+            $this->db->where('a.tanggal >=', $tanggal_mulai);
+            $this->db->where('a.tanggal <=', $tanggal_akhir);
+            $this->db->where('a.keterangan', $keterangan);
+            $this->db->where('a.id_opd', $opd);
+        } else if ($tanggal_mulai != '' && $tanggal_akhir != '' && $keterangan != '' && $bidang != '') {
+            $this->db->where('a.tanggal >=', $tanggal_mulai);
+            $this->db->where('a.tanggal <=', $tanggal_akhir);
+            $this->db->where('a.keterangan', $keterangan);
+            $this->db->where('a.nama_bidang', $bidang);
+        } else if ($tanggal_mulai != '' && $tanggal_akhir != '' && $opd != '') {
+            $this->db->where('a.tanggal >=', $tanggal_mulai);
+            $this->db->where('a.tanggal <=', $tanggal_akhir);
+            $this->db->where('a.id_opd', $opd);
+        } else if ($tanggal_mulai != '' && $tanggal_akhir != '' && $keterangan != '') {
+            $this->db->where('a.tanggal >=', $tanggal_mulai);
+            $this->db->where('a.tanggal <=', $tanggal_akhir);
+            $this->db->where('a.keterangan', $keterangan);
+        } else if ($tanggal_mulai != '' && $tanggal_akhir != '' && $bidang != '') {
+            $this->db->where('a.tanggal >=', $tanggal_mulai);
+            $this->db->where('a.tanggal <=', $tanggal_akhir);
+            $this->db->where('a.nama_bidang', $bidang);
+        } else if ($keterangan != '' && $opd != '') {
+            $this->db->where('a.keterangan', $keterangan);
+            $this->db->where('a.id_opd', $opd);
+        } else if ($keterangan != '' && $bidang != '') {
+            $this->db->where('a.keterangan', $keterangan);
+            $this->db->where('a.nama_bidang', $bidang);
+        } else if ($opd != '' && $bidang != '') {
+            $this->db->where('a.id_opd', $opd);
+            $this->db->where('a.nama_bidang', $bidang);
+        } else if ($tanggal_mulai != '' && $tanggal_akhir != '') {
+            $this->db->where('a.tanggal >=', $tanggal_mulai);
+            $this->db->where('a.tanggal <=', $tanggal_akhir);
+        } else if ($keterangan != '') {
+            $this->db->where('a.keterangan', $keterangan);
+        } else if ($opd != '') {
+            $this->db->where('a.id_opd', $opd);
+        } else if ($bidang != '') {
+            $this->db->where('a.nama_bidang', $bidang);
+        }
+        
+        if($this->session->userdata('id_level') == '2'){
+            $this->db->where('a.id_opd', $this->session->userdata('id_opd'));
+        } else if ($this->session->userdata('id_level') == '3'){
+            $this->db->where('a.id_opd', $this->session->userdata('id_opd'));
+        }
+
+		return $this->db->get()->result();
+    }
+    // function ambilLaporan($a)
+	// {
+	// 	$data = explode(",", $a);
+    //     $this->db->select('a.id_laporan, b.nama_opd, a.tanggal, a.judul, a.nama_bidang, a.isi_laporan, a.tindakan, a.keterangan, a.nama');
+    //     $this->db->from('tb_laporan a');
+	// 	$this->db->join('tb_opd b','a.id_opd = b.id_opd');
+	// 	if ($data[0]!='all' && $data[1]!='all' && $data[2]!='all' && $data[3]!='all' && $data[4]!='all'){
+    //         $this->db->where('a.tanggal >=', $data[0]);
+    //         $this->db->where('a.tanggal <=', $data[1]);
+    //         $this->db->where('a.keterangan', urldecode($data[2]));
+    //         $this->db->where('a.nama_bidang', urldecode($data[3]));
+    //         $this->db->where('a.id_opd', $data[4]);
+    //     }else if($data[0]!='all' && $data[1]!='all' && $data[2]!='all' && $data[3]=='all' && $data[4]!='all'){
+    //         $this->db->where('a.tanggal >=', $data[0]);
+    //         $this->db->where('a.tanggal <=', $data[1]);
+    //         $this->db->where('a.keterangan', urldecode($data[2]));
+    //         $this->db->where('a.id_opd', $data[3]);
+    //     }else if($data[0]!='all' && $data[1]!='all' && $data[2]!='all' && $data[3]!='all' && $data[4]=='all'){
+    //         $this->db->where('a.tanggal >=', $data[0]);
+    //         $this->db->where('a.tanggal <=', $data[1]);
+    //         $this->db->where('a.keterangan', urldecode($data[2]));
+    //         $this->db->where('a.nama_bidang', urldecode($data[3]));
+    //     }
+	// 	return $this->db->get()->result();
+    // }
 }

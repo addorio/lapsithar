@@ -26,12 +26,12 @@ class Userpage extends CI_Controller
  
     public function ajax_list()
     {    
-        $id_opd = $this->session->userdata('id_opd');
+        // $id_opd = $this->session->userdata('id_opd');
         $list = $this->laporan->get_datatables();
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $laporan) {
-            if ($laporan->id_opd == '4') {
+            // if ($laporan->id_opd == '4') {
             $no++;
             $row = array();
             $row[] = $no;
@@ -53,7 +53,7 @@ class Userpage extends CI_Controller
 
             $data[] = $row;
         }
-        }
+        // }
 
         $output = array(
             "draw" => $_POST['draw'],
@@ -259,6 +259,18 @@ class Userpage extends CI_Controller
         }
         echo json_encode($output);
     }
+
+    
+    public function cetak_laporan()
+    {
+        $data['laporan'] = $this->laporan->ambilLaporan();        
+        $mpdf = new \Mpdf\Mpdf(['format' => [297, 210]]);
+        $html = view('admin.dashboard.print', $data, true);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();        
+
+    }
+    
     
  
 }

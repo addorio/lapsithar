@@ -169,3 +169,20 @@
     </div>
   </div>
 </div>
+
+<div class="modal" id="modal-cetak-laporan" tabindex="-1" role="dialog"  aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered">
+		<div class="modal-content">
+    <div class="modal-header">
+        <h3 class="modal-title"></h3>
+        <button id="reload-file" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      </div>
+			<div class="modal-body">
+				<div id="cetak-laporan"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-white" data-dismiss="modal">Tutup</button>
+			</div>
+		</div>
+	</div>
+</div>

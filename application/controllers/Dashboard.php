@@ -268,4 +268,24 @@ class Dashboard extends CI_Controller
         }
         echo json_encode($output);
     }
+
+    public function cetak_laporan()
+    {
+        $data['laporan'] = $this->laporan->ambilLaporan();        
+        $mpdf = new \Mpdf\Mpdf(['format' => [297, 210]]);
+        $html = view('admin.dashboard.print', $data, true);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();        
+
+    }
+    
+    // public function cetak_laporan($a)
+    // {
+    //     $data['laporan'] = $this->laporan->ambilLaporan($a);        
+    //     $mpdf = new \Mpdf\Mpdf(['format' => [297, 210]]);
+    //     $html = view('admin.dashboard.print', $data, true);
+    //     $mpdf->WriteHTML($html);
+    //     $mpdf->Output();        
+
+	// }
 }
