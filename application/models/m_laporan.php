@@ -278,7 +278,8 @@ class M_laporan extends CI_Model
             'tanggal_mulai' => $this->input->post('start_date'),
             'tanggal_akhir' => $this->input->post('end_date')
         ];
-        $this->session->set_userdata($sesi);
+         $this->session->set_userdata($sesi);
+         return $sesi;
     }
 
     function ambilSatuLap($id_laporan)

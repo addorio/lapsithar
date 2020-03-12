@@ -7,8 +7,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-    <meta name="viewport" content="width=device-width,initial-scale=1">   
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>@php echo $title;@endphp</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{APP_ASSETS}}images/favicon.ico">
@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- FontAwesome -->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="{{APP_ASSETS}}plugins/summernote/dist/summernote.css" rel="stylesheet">
-    <link href="{{APP_ASSETS}}plugins/select2/css/select2.min.css" rel="stylesheet"> 
+    <link href="{{APP_ASSETS}}plugins/select2/css/select2.min.css" rel="stylesheet">
     <!-- Custom Stylesheet -->
     <link href="{{APP_ASSETS}}css/style.css" rel="stylesheet">
 </head>
@@ -84,41 +84,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
         </div>
-        <div class="nk-sidebar">           
+        <div class="nk-sidebar">
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
                     <li>
-                        <a href="<?php echo base_url('Dashboard')?>" aria-expanded="false">
+                        <a href="<?php echo base_url('Dashboard') ?>" aria-expanded="false">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text"> Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('User')?>" aria-expanded="false">
+                        <a href="<?php echo base_url('User') ?>" aria-expanded="false">
                             <i class="icon-people menu-icon"></i><span class="nav-text"> Users</span>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('Opd')?>" aria-expanded="false">
+                        <a href="<?php echo base_url('Opd') ?>" aria-expanded="false">
                             <i class="icon-list menu-icon"></i><span class="nav-text"> OPD</span>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('Bidang')?>" aria-expanded="false">
+                        <a href="<?php echo base_url('Bidang') ?>" aria-expanded="false">
                             <i class="icon-list menu-icon"></i><span class="nav-text"> Bidang</span>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('Riwayat')?>" aria-expanded="false">
+                        <a href="<?php echo base_url('Riwayat') ?>" aria-expanded="false">
                             <i class="icon-info menu-icon"></i><span class="nav-text"> Riwayat</span>
                         </a>
-                    </li>                       
+                    </li>
                 </ul>
             </div>
         </div>
         @yield('content')
         <div class="footer">
             <div class="copyright">
-            <p>Copyright &copy; 2020 Diskominfo All Right Reserved<span class="float-right"> Si Waspada v.1.0</span></p>
+                <p>Copyright &copy; 2020 Diskominfo All Right Reserved<span class="float-right"> Si Waspada v.1.0</span></p>
             </div>
         </div>
     </div>
@@ -162,9 +162,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="{{APP_ASSETS}}plugins/tables/js/buttons.html5.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/tables/js/buttons.print.min.js"></script>
     <script src="{{APP_ASSETS}}plugins/sweetalert/js/sweetalert.min.js"></script>
-    <script src="{{APP_ASSETS}}plugins/summernote/dist/summernote.min.js"></script> 
-    <script src="{{APP_ASSETS}}plugins/select2/js/select2.full.min.js"></script> 
-    
+    <script src="{{APP_ASSETS}}plugins/summernote/dist/summernote.min.js"></script>
+    <script src="{{APP_ASSETS}}plugins/select2/js/select2.full.min.js"></script>
+
     <script type="text/javascript">
         $('#tanggal').bootstrapMaterialDatePicker({
             format: 'YYYY-MM-DD hh:mm:ss',
@@ -183,9 +183,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             format: 'yyyy-mm-dd'
         });
     </script>
-
     @yield('js')
-
 </body>
 
 </html>

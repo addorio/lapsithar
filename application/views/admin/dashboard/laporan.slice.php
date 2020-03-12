@@ -4,6 +4,24 @@
   <!-- row -->
   <div class="container-fluid">
     <div class="row">
+      <div class="col-12 filtered" style="display: none">
+              <div class="alert alert-primary alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button> <span id="start-filtered"></span> - <span id="end-filtered"></span>
+              </div>
+              <div class="alert alert-primary alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button> <span id="keterangan-filtered"></span>
+              </div>
+              <div class="alert alert-primary alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button> <span id="bidang-filtered"></span>
+              </div>
+              <div class="alert alert-primary alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button> <span id="opd-filtered"></span>
+              </div>
+      </div>
       <div class="col-12">
         <div id="accordion-one" class="accordion">
           <div class="card">
@@ -161,9 +179,37 @@
           url: "<?php echo site_url('dashboard/filter_data'); ?>",
           method: "POST",
           data: new FormData(this),
+          type: "JSON",
           contentType: false,
           processData: false,
           success: function(data) {
+            if($('#start').val() != '' && $('#end').val() != ''){
+              $('#start-filtered').html("Dari tanggal "+ $('#start').val());
+              $('#end-filtered').html("Hingga tanggal "+ $('#end').val());
+            }else{
+              $('#start-filtered').html("Tanggal tidak diisi");
+              $('#end-filtered').html("Tanggal tidak diisi");
+            }
+
+            if($('#keterangan-filter').val() != ''){
+              $('#keterangan-filtered').html("Keterangan " +$('#keterangan-filter').val());
+            }else{
+              $('#keterangan-filtered').html("Keterangan tidak dipilih");
+            }
+
+            if($('#opd-filter').val() != ''){
+              $('#opd-filtered').html("OPD " +$("#opd-filter option:selected").text());
+            }else{
+              $('#opd-filtered').html("OPD tidak dipilih");
+            }
+
+            if($('#bidang-filter').val() != ''){
+              $('#bidang-filtered').html("Bidang " +$('#bidang-filter').val());
+            }else{
+              $('#bidang-filtered').html("Bidang tidak dipilih");
+            }
+            $('.filtered').removeAttr("style");
+
             $('#start').val("");
             $('#end').val("");
             $('#keterangan-filter').val("").trigger("change");
@@ -445,10 +491,6 @@
           }
           $('#lihat-pelapor').html(data.lihat_nama);
           $('.modal-title').text('Detail Laporan'); // Set Title to Bootstrap modal title
-
-
-
-
         }
       });
     }
@@ -550,7 +592,11 @@
     });
 
     $(".buat_laporan").click(function() {
-
+      swal(
+        'Loading..',
+        'Tunggu sebentar..',
+        'info'
+      );
       $('#modal-cetak-laporan').modal('show');
       $('.modal-title').text('Cetak Laporan');
       $("#cetak-laporan").html(
