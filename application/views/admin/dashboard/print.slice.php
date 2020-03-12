@@ -21,11 +21,12 @@ table th{
         <h1>Laporan </h1>
 
         <div id="body">
-            <table border="1" style="border-collapse: collapse;" width="100%" cellpadding="6">
-                @php
+        @php
                 $no=1;
                 @endphp
                 @foreach ($laporan as $row)
+            <table border="1" style="border-collapse: collapse;" width="100%" cellpadding="6">
+        
                 <tr>
                     <td colspan="2" style="background-color:darkblue; color:ivory;">{{$no++}}</td>
                 </tr>
@@ -61,8 +62,10 @@ table th{
                     <th valign="top">Tindakan</th>
                     <td class="rata-kiri-kanan">{{$row->tindakan}}</td>
                 </tr>
-                @endforeach
             </table>
+            <pagebreak/>
+            @endforeach
+
         </div>
 
     </div>

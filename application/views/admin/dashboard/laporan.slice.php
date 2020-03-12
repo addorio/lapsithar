@@ -9,13 +9,12 @@
           <div class="card">
             <div class="card-header">
               <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa" aria-hidden="true"></i>
-                Filter data {{$this->session->userdata('tanggal_mulai')}} {{$this->session->userdata('tanggal_akhir')}} {{$this->session->userdata('keterangan_laporan')}} {{$this->session->userdata('opd_laporan')}} {{$this->session->userdata('bidang_laporan')}}
+                Filter data
               </h5>
             </div>
             <div id="collapseOne" class="collapse hide" data-parent="#accordion-one">
               {{form_open("","id='form-filter'")}}
               <div class="card-body">
-
                 <div class="row">
                   <div class="form-group col-3">
                     <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
