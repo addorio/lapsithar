@@ -4,6 +4,20 @@
   <!-- row -->
   <div class="container-fluid">
     <div class="row">
+    <div class="col-12 filtered" style="display: none">
+              <div class="alert alert-primary alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button> <span id="start-filtered"></span> - <span id="end-filtered"></span>
+              </div>
+              <div class="alert alert-primary alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button> <span id="keterangan-filtered"></span>
+              </div>
+              <div class="alert alert-primary alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button> <span id="bidang-filtered"></span>
+              </div>
+      </div>
       <div class="col-12">
         <div id="accordion-one" class="accordion">
           <div class="card">
@@ -148,6 +162,27 @@
         contentType: false,
         processData: false,
         success: function(data) {
+          if($('#start').val() != '' && $('#end').val() != ''){
+              $('#start-filtered').html("Dari tanggal "+ $('#start').val());
+              $('#end-filtered').html("Hingga tanggal "+ $('#end').val());
+            }else{
+              $('#start-filtered').html("Tanggal tidak dipilih");
+              $('#end-filtered').html("Tanggal tidak dipilih");
+            }
+
+            if($('#keterangan-filter').val() != ''){
+              $('#keterangan-filtered').html("Keterangan " +$('#keterangan-filter').val());
+            }else{
+              $('#keterangan-filtered').html("Keterangan tidak dipilih");
+            }
+
+            if($('#bidang-filter').val() != ''){
+              $('#bidang-filtered').html("Bidang " +$('#bidang-filter').val());
+            }else{
+              $('#bidang-filtered').html("Bidang tidak dipilih");
+            }
+            $('.filtered').removeAttr("style");
+
           $('#start').val("");
           $('#end').val("");
           $('#keterangan-filter').val("").trigger("change");

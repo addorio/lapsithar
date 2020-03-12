@@ -187,8 +187,8 @@
               $('#start-filtered').html("Dari tanggal "+ $('#start').val());
               $('#end-filtered').html("Hingga tanggal "+ $('#end').val());
             }else{
-              $('#start-filtered').html("Tanggal tidak diisi");
-              $('#end-filtered').html("Tanggal tidak diisi");
+              $('#start-filtered').html("Tanggal tidak dipilih");
+              $('#end-filtered').html("Tanggal tidak dipilih");
             }
 
             if($('#keterangan-filter').val() != ''){
